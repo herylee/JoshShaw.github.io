@@ -79,7 +79,7 @@
 首先我们知道二叉树的前序遍历的第一个节点就是根节点，上面的题目例子可以知道根节点是A。
 再看中序遍历，找到根节点A，那么A的前面是左子树，节点数为4，右边是右子树，节点数为6。
 回到前序遍历，根节点A">
-<meta property="og:updated_time" content="2016-03-19T07:04:06.734Z">
+<meta property="og:updated_time" content="2016-03-20T06:11:05.055Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一个经典的递归题目">
 <meta name="twitter:description" content="0x00 题目
@@ -298,7 +298,19 @@
 <li>重复上述。同时记得判断和递归的边界。<a id="more"></a>
 </li>
 </ol>
-<h2 id="0x02-代码"><a href="#0x02-代码" class="headerlink" title="0x02 代码"></a>0x02 代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">class TreeNode &#123;</span><br><span class="line">    int val;</span><br><span class="line">    TreeNode left;</span><br><span class="line">    TreeNode right;</span><br><span class="line">    TreeNode(int x) &#123; val = x; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Solution &#123;</span><br><span class="line"></span><br><span class="line">    public TreeNode buildTree(int[] preorder, int[] inorder) &#123;   </span><br><span class="line">		return buildTree0(preorder, 0, preorder.length-1, inorder, 0, inorder.length-1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private TreeNode buildTree0(int[] preorder, int pref, int prel, int[] inorder, int inf, int inl) &#123;  </span><br><span class="line">    	// New SubRoot</span><br><span class="line">        int subr = preorder[prel];</span><br><span class="line">        TreeNode subRoot = new TreeNode(subr);</span><br><span class="line"></span><br><span class="line">        // Find LeftTree &amp; RightTree</span><br><span class="line">        int index = getinorderRootIndex(subr, inorder, inf, inl);</span><br><span class="line">        int leftTreeSize = index - inf;</span><br><span class="line">        int rightTreeSize = inl - index;</span><br><span class="line">        if(leftTreeSize!=0)</span><br><span class="line">        	subRoot.left = buildTree0(preorder, pref, pref+leftTreeSize-1, inorder, inf, inf+leftTreeSize-1);</span><br><span class="line">        if(rightTreeSize!=0)</span><br><span class="line">        	subRoot.right = buildTree0(preorder, pref+leftTreeSize, prel-1, inorder, inf+leftTreeSize+1, inl);</span><br><span class="line"></span><br><span class="line">		return subRoot;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private int getinorderRootIndex(int subr, int[] inorder, int inf, int inl) &#123;</span><br><span class="line">    	for(int i=inf; i&lt;=inl; i++) &#123;</span><br><span class="line">    		if(subr==inorder[i])</span><br><span class="line">    			return i;</span><br><span class="line">    	&#125;</span><br><span class="line">    	return -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="0x02-Java代码"><a href="#0x02-Java代码" class="headerlink" title="0x02 Java代码"></a>0x02 Java代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    TreeNode left;</span><br><span class="line">    TreeNode right;</span><br><span class="line">    TreeNode(<span class="keyword">int</span> x) &#123; val = x; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">buildTree</span><span class="params">(<span class="keyword">int</span>[] preorder, <span class="keyword">int</span>[] inorder)</span> </span>&#123;   </span><br><span class="line">      <span class="keyword">return</span> buildTree0(preorder, <span class="number">0</span>, preorder.length-<span class="number">1</span>, inorder, <span class="number">0</span>, inorder.length-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> TreeNode <span class="title">buildTree0</span><span class="params">(<span class="keyword">int</span>[] preorder, <span class="keyword">int</span> pref, <span class="keyword">int</span> prel, <span class="keyword">int</span>[] inorder, <span class="keyword">int</span> inf, <span class="keyword">int</span> inl)</span> </span>&#123;  </span><br><span class="line">    	<span class="comment">// New SubRoot</span></span><br><span class="line">        <span class="keyword">int</span> subr = preorder[prel];</span><br><span class="line">        TreeNode subRoot = <span class="keyword">new</span> TreeNode(subr);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Find LeftTree &amp; RightTree</span></span><br><span class="line">        <span class="keyword">int</span> index = getinorderRootIndex(subr, inorder, inf, inl);</span><br><span class="line">        <span class="keyword">int</span> leftTreeSize = index - inf;</span><br><span class="line">        <span class="keyword">if</span>(leftTreeSize!=<span class="number">0</span>)</span><br><span class="line">        	subRoot.left = buildTree0(preorder, pref, pref+leftTreeSize-<span class="number">1</span>, inorder, inf, inf+leftTreeSize-<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span>(rightTreeSize!=<span class="number">0</span>)</span><br><span class="line">        	subRoot.right = buildTree0(preorder, pref+leftTreeSize, prel-<span class="number">1</span>, inorder, inf+leftTreeSize+<span class="number">1</span>, inl);</span><br><span class="line">        <span class="keyword">return</span> subRoot;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">getinorderRootIndex</span><span class="params">(<span class="keyword">int</span> subr, <span class="keyword">int</span>[] inorder, <span class="keyword">int</span> inf, <span class="keyword">int</span> inl)</span> </span>&#123;</span><br><span class="line">    	<span class="keyword">for</span>(<span class="keyword">int</span> i=inf; i&lt;=inl; i++) &#123;</span><br><span class="line">    		<span class="keyword">if</span>(subr==inorder[i])</span><br><span class="line">    			<span class="keyword">return</span> i;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="0x03-小结"><a href="#0x03-小结" class="headerlink" title="0x03 小结"></a>0x03 小结</h2><p>此题考查算法的分治法，其基本思想是可把问题分为独立求解的子问题，子问题与原问题类似，子问题的解合并得到原问题的解。<br>基本步骤：</p>
+<ul>
+<li>分解</li>
+<li>解决</li>
+<li>合并</li>
+</ul>
+<p>关键点：</p>
+<ul>
+<li>子问题独立</li>
+<li>子问题容易求解</li>
+<li>子问题与原问题类同</li>
+</ul>
 
       
     </div>
@@ -335,6 +347,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/20/关于公正和公信/" rel="prev" title="关于公正和公信">
+                关于公正和公信 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -402,7 +418,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">4</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -410,7 +426,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -419,7 +435,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -440,9 +456,17 @@
           
             
               <span class="links-of-author-item">
-                <a href="https://github.com/joshshaw" target="_blank">
+                <a href="https://github.com/joshuashawnetlab" target="_blank">
                   
                     <i class="fa fa-globe"></i> github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/joshshaw" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> github(page)
                   
                 </a>
               </span>
@@ -478,7 +502,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x00-题目"><span class="nav-number">1.</span> <span class="nav-text">0x00 题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-思路"><span class="nav-number">2.</span> <span class="nav-text">0x01 思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-代码"><span class="nav-number">3.</span> <span class="nav-text">0x02 代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x00-题目"><span class="nav-number">1.</span> <span class="nav-text">0x00 题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-思路"><span class="nav-number">2.</span> <span class="nav-text">0x01 思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-Java代码"><span class="nav-number">3.</span> <span class="nav-text">0x02 Java代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03-小结"><span class="nav-number">4.</span> <span class="nav-text">0x03 小结</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -499,7 +523,7 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
+  &copy;  2015 - 
   <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>

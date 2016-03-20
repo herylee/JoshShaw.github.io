@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://joshshaw.github.io/"/>
-  <updated>2016-03-19T07:04:06.734Z</updated>
+  <updated>2016-03-20T06:25:22.941Z</updated>
   <id>http://joshshaw.github.io/</id>
   
   <author>
@@ -16,11 +16,52 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>关于公正和公信</title>
+    <link href="http://joshshaw.github.io/2016/03/20/%E5%85%B3%E4%BA%8E%E5%85%AC%E6%AD%A3%E5%92%8C%E5%85%AC%E4%BF%A1/"/>
+    <id>http://joshshaw.github.io/2016/03/20/关于公正和公信/</id>
+    <published>2016-03-20T02:58:51.000Z</published>
+    <updated>2016-03-20T06:25:22.941Z</updated>
+    
+    <content type="html">&lt;p&gt;看完《八恶人》，其中有两个细节我想强调一下。&lt;br&gt;&lt;img src=&quot;/2016/03/20/关于公正和公信/poster.jpg&quot; alt=&quot;poster.jpg&quot; title=&quot;&quot;&gt;&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;公正&quot;&gt;&lt;a href=&quot;#公正&quot; class=&quot;headerlink&quot; title=&quot;公正&quot;&gt;&lt;/a&gt;公正&lt;/h2&gt;&lt;p&gt;因为谋杀被通缉，一种方法是奖金猎人把疑犯抓回接受审判，判定有罪后，由绞刑者实施绞刑，这被称为文明社会的正义。另一种方法是被杀者的亲人好友，直接把疑犯就地解决，这被称为边境裁决。&lt;/p&gt;
+&lt;blockquote class=&quot;blockquote-center&quot;&gt;&lt;p&gt;那最终这两种方法到底有什么区别？&lt;br&gt;真正的区别在于，对于绞刑者的我来说&lt;br&gt;我才不会在乎你做了什么，当我绞死你的时候&lt;br&gt;我不会暗爽，这只是我的工作&lt;br&gt;我在红石镇绞死你，然后我搬到别的镇子上，我又去绞死别人&lt;br&gt;那个拉动操纵杆绞死你的男人&lt;br&gt;他是个公正的人&lt;br&gt;那份公正才是正义的精髓正义若是不公平地传递下去的话&lt;br&gt;是会危害正义本身的&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;绞刑者&lt;/strong&gt;  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;img src=&quot;/2016/03/20/关于公正和公信/justice2.jpg&quot; alt=&quot;justice2.jpg&quot; title=&quot;&quot;&gt;
+&lt;blockquote class=&quot;blockquote-center&quot;&gt;&lt;p&gt;西方的公正在于评判者之中立，利益无关。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;公信&quot;&gt;&lt;a href=&quot;#公信&quot; class=&quot;headerlink&quot; title=&quot;公信&quot;&gt;&lt;/a&gt;公信&lt;/h2&gt;&lt;blockquote class=&quot;blockquote-center&quot;&gt;&lt;p&gt;然后他又开始求我了&lt;br&gt;只是这次不是为了回家&lt;br&gt;他知道他再也回不去了，而且他也不求我放他一命&lt;br&gt;因为他知道他已是将死之人&lt;br&gt;他只是想要一张毛毯&lt;/p&gt;
+&lt;p&gt;我没给你儿子毛毯&lt;br&gt;尽管他照我说的做了&lt;br&gt;还是没给他毛毯&lt;br&gt;那个毛毯不过是心碎的骗子给的一个承诺&lt;br&gt;就像联邦军给那些你所不承认的黑人骑兵们发的统一制服一样&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;黑人少校&lt;/strong&gt;  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;img src=&quot;/2016/03/20/关于公正和公信/accountability.jpg&quot; alt=&quot;accountability.jpg&quot; title=&quot;&quot;&gt;
+&lt;blockquote class=&quot;blockquote-center&quot;&gt;&lt;p&gt;承诺与实施，若不一致，公信全无。&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;看完《八恶人》，其中有两个细节我想强调一下。&lt;br&gt;&lt;img src=&quot;/2016/03/20/关于公正和公信/poster.jpg&quot; alt=&quot;poster.jpg&quot; title=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="一派胡言" scheme="http://joshshaw.github.io/categories/%E4%B8%80%E6%B4%BE%E8%83%A1%E8%A8%80/"/>
+    
+    
+      <category term="公正" scheme="http://joshshaw.github.io/tags/%E5%85%AC%E6%AD%A3/"/>
+    
+      <category term="公信" scheme="http://joshshaw.github.io/tags/%E5%85%AC%E4%BF%A1/"/>
+    
+      <category term="文" scheme="http://joshshaw.github.io/tags/%E6%96%87/"/>
+    
+  </entry>
+  
+  <entry>
     <title>一个经典的递归题目</title>
     <link href="http://joshshaw.github.io/2016/03/19/%E4%B8%80%E4%B8%AA%E7%BB%8F%E5%85%B8%E7%9A%84%E9%80%92%E5%BD%92%E9%A2%98%E7%9B%AE/"/>
     <id>http://joshshaw.github.io/2016/03/19/一个经典的递归题目/</id>
     <published>2016-03-19T06:31:06.000Z</published>
-    <updated>2016-03-19T07:04:06.734Z</updated>
+    <updated>2016-03-20T06:11:05.055Z</updated>
     
     <content type="html">&lt;h2 id=&quot;0x00-题目&quot;&gt;&lt;a href=&quot;#0x00-题目&quot; class=&quot;headerlink&quot; title=&quot;0x00 题目&quot;&gt;&lt;/a&gt;0x00 题目&lt;/h2&gt;&lt;blockquote&gt;
 &lt;p&gt;给出一颗二叉树的前序遍历（ABDEHCFIGJK）和中序遍历（DBHEAFICJGK），重构该二叉树。&lt;/p&gt;
@@ -34,7 +75,19 @@
 &lt;li&gt;重复上述。同时记得判断和递归的边界。&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&quot;0x02-代码&quot;&gt;&lt;a href=&quot;#0x02-代码&quot; class=&quot;headerlink&quot; title=&quot;0x02 代码&quot;&gt;&lt;/a&gt;0x02 代码&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;class TreeNode &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    int val;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    TreeNode left;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    TreeNode right;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    TreeNode(int x) &amp;#123; val = x; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;public class Solution &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    public TreeNode buildTree(int[] preorder, int[] inorder) &amp;#123;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		return buildTree0(preorder, 0, preorder.length-1, inorder, 0, inorder.length-1);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    private TreeNode buildTree0(int[] preorder, int pref, int prel, int[] inorder, int inf, int inl) &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    	// New SubRoot&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        int subr = preorder[prel];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        TreeNode subRoot = new TreeNode(subr);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        // Find LeftTree &amp;amp; RightTree&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        int index = getinorderRootIndex(subr, inorder, inf, inl);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        int leftTreeSize = index - inf;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        int rightTreeSize = inl - index;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        if(leftTreeSize!=0)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        	subRoot.left = buildTree0(preorder, pref, pref+leftTreeSize-1, inorder, inf, inf+leftTreeSize-1);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        if(rightTreeSize!=0)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        	subRoot.right = buildTree0(preorder, pref+leftTreeSize, prel-1, inorder, inf+leftTreeSize+1, inl);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		return subRoot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    private int getinorderRootIndex(int subr, int[] inorder, int inf, int inl) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    	for(int i=inf; i&amp;lt;=inl; i++) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    		if(subr==inorder[i])&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    			return i;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    	return -1;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;0x02-Java代码&quot;&gt;&lt;a href=&quot;#0x02-Java代码&quot; class=&quot;headerlink&quot; title=&quot;0x02 Java代码&quot;&gt;&lt;/a&gt;0x02 Java代码&lt;/h2&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;TreeNode&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; val;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    TreeNode left;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    TreeNode right;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    TreeNode(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; x) &amp;#123; val = x; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Solution&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; TreeNode &lt;span class=&quot;title&quot;&gt;buildTree&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;[] preorder, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;[] inorder)&lt;/span&gt; &lt;/span&gt;&amp;#123;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; buildTree0(preorder, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, preorder.length-&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, inorder, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, inorder.length-&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; TreeNode &lt;span class=&quot;title&quot;&gt;buildTree0&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;[] preorder, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; pref, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; prel, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;[] inorder, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; inf, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; inl)&lt;/span&gt; &lt;/span&gt;&amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    	&lt;span class=&quot;comment&quot;&gt;// New SubRoot&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; subr = preorder[prel];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        TreeNode subRoot = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; TreeNode(subr);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// Find LeftTree &amp;amp; RightTree&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; index = getinorderRootIndex(subr, inorder, inf, inl);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; leftTreeSize = index - inf;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(leftTreeSize!=&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        	subRoot.left = buildTree0(preorder, pref, pref+leftTreeSize-&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, inorder, inf, inf+leftTreeSize-&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(rightTreeSize!=&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        	subRoot.right = buildTree0(preorder, pref+leftTreeSize, prel-&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, inorder, inf+leftTreeSize+&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, inl);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; subRoot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;getinorderRootIndex&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; subr, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;[] inorder, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; inf, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; inl)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    	&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; i=inf; i&amp;lt;=inl; i++) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    		&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(subr==inorder[i])&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    			&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; i;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    	&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; -&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;0x03-小结&quot;&gt;&lt;a href=&quot;#0x03-小结&quot; class=&quot;headerlink&quot; title=&quot;0x03 小结&quot;&gt;&lt;/a&gt;0x03 小结&lt;/h2&gt;&lt;p&gt;此题考查算法的分治法，其基本思想是可把问题分为独立求解的子问题，子问题与原问题类似，子问题的解合并得到原问题的解。&lt;br&gt;基本步骤：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;分解&lt;/li&gt;
+&lt;li&gt;解决&lt;/li&gt;
+&lt;li&gt;合并&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;关键点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;子问题独立&lt;/li&gt;
+&lt;li&gt;子问题容易求解&lt;/li&gt;
+&lt;li&gt;子问题与原问题类同&lt;/li&gt;
+&lt;/ul&gt;
 </content>
     
     <summary type="html">
@@ -68,7 +121,7 @@
     <link href="http://joshshaw.github.io/2016/03/18/My-Profile/"/>
     <id>http://joshshaw.github.io/2016/03/18/My-Profile/</id>
     <published>2016-03-18T10:58:53.000Z</published>
-    <updated>2016-03-19T06:16:38.779Z</updated>
+    <updated>2016-03-20T06:02:22.116Z</updated>
     
     <content type="html">&lt;p&gt;&lt;a href=&quot;/2016/03/18/我的简历/&quot;&gt;Chinese version&lt;/a&gt; is here.&lt;/p&gt;
 &lt;hr&gt;
@@ -205,6 +258,8 @@
     
       <category term="profile" scheme="http://joshshaw.github.io/tags/profile/"/>
     
+      <category term="简历" scheme="http://joshshaw.github.io/tags/%E7%AE%80%E5%8E%86/"/>
+    
   </entry>
   
   <entry>
@@ -212,7 +267,7 @@
     <link href="http://joshshaw.github.io/2016/03/18/%E6%88%91%E7%9A%84%E7%AE%80%E5%8E%86/"/>
     <id>http://joshshaw.github.io/2016/03/18/我的简历/</id>
     <published>2016-03-18T10:55:43.000Z</published>
-    <updated>2016-03-19T06:17:03.952Z</updated>
+    <updated>2016-03-20T05:57:15.168Z</updated>
     
     <content type="html">&lt;p&gt;&lt;a href=&quot;/2016/03/18/My-Profile/&quot;&gt;英文版本&lt;/a&gt;在此。&lt;/p&gt;
 &lt;hr&gt;
@@ -346,6 +401,8 @@
     
       <category term="March" scheme="http://joshshaw.github.io/categories/March/"/>
     
+    
+      <category term="profile" scheme="http://joshshaw.github.io/tags/profile/"/>
     
       <category term="简历" scheme="http://joshshaw.github.io/tags/%E7%AE%80%E5%8E%86/"/>
     
