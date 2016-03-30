@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="堆,数据结构,排序," />
 
 
 
@@ -59,15 +59,27 @@
 
 
 
-<meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Joshua Shaw之秘密花园">
-<meta property="og:url" content="http://joshshaw.github.io/index.html">
+<meta name="description" content="0x00简介堆是一个完全二叉树的结构，可以用数组实现。最大（小）堆使用递归定义：非叶节点的权值比左右子节点的权值都大（小）。
+0x00代码引用一个博客的代码，在此基础之上小改了一点点，并且更新了一下注释。重点在于heapify(int i, int size)方法和buildHeap()方法。
+
+heapify(int i, int size)该方法使得当前节点通过权值的比较落到合适的位置，包括位">
+<meta property="og:type" content="article">
+<meta property="og:title" content="堆，堆排序，及Java实现">
+<meta property="og:url" content="http://joshshaw.github.io/2016/03/30/堆，堆排序，及Java实现/index.html">
 <meta property="og:site_name" content="Joshua Shaw之秘密花园">
-<meta property="og:description">
+<meta property="og:description" content="0x00简介堆是一个完全二叉树的结构，可以用数组实现。最大（小）堆使用递归定义：非叶节点的权值比左右子节点的权值都大（小）。
+0x00代码引用一个博客的代码，在此基础之上小改了一点点，并且更新了一下注释。重点在于heapify(int i, int size)方法和buildHeap()方法。
+
+heapify(int i, int size)该方法使得当前节点通过权值的比较落到合适的位置，包括位">
+<meta property="og:image" content="http://joshshaw.github.io/2016/03/30/堆，堆排序，及Java实现/pic1.png">
+<meta property="og:updated_time" content="2016-03-30T11:00:44.680Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Joshua Shaw之秘密花园">
-<meta name="twitter:description">
+<meta name="twitter:title" content="堆，堆排序，及Java实现">
+<meta name="twitter:description" content="0x00简介堆是一个完全二叉树的结构，可以用数组实现。最大（小）堆使用递归定义：非叶节点的权值比左右子节点的权值都大（小）。
+0x00代码引用一个博客的代码，在此基础之上小改了一点点，并且更新了一下注释。重点在于heapify(int i, int size)方法和buildHeap()方法。
+
+heapify(int i, int size)该方法使得当前节点通过权值的比较落到合适的位置，包括位">
+<meta name="twitter:image" content="http://joshshaw.github.io/2016/03/30/堆，堆排序，及Java实现/pic1.png">
 
 
 
@@ -85,7 +97,7 @@
   };
 </script>
 
-  <title> Joshua Shaw之秘密花园 </title>
+  <title> 堆，堆排序，及Java实现 | Joshua Shaw之秘密花园 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -116,9 +128,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -215,9 +225,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -237,10 +247,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/03/30/堆，堆排序，及Java实现/" itemprop="url">
-                  堆，堆排序，及Java实现
-                </a>
+                堆，堆排序，及Java实现
               
             
           </h1>
@@ -305,9 +312,7 @@
       
 
       
-        
-          
-            <h2 id="0x00简介"><a href="#0x00简介" class="headerlink" title="0x00简介"></a>0x00简介</h2><p>堆是一个完全二叉树的结构，可以用数组实现。最大（小）堆使用递归定义：非叶节点的权值比左右子节点的<br>权值都大（小）。</p>
+        <h2 id="0x00简介"><a href="#0x00简介" class="headerlink" title="0x00简介"></a>0x00简介</h2><p>堆是一个完全二叉树的结构，可以用数组实现。最大（小）堆使用递归定义：非叶节点的权值比左右子节点的<br>权值都大（小）。</p>
 <h2 id="0x00代码"><a href="#0x00代码" class="headerlink" title="0x00代码"></a>0x00代码</h2><p>引用一个博客的代码，在此基础之上小改了一点点，并且更新了一下注释。重点在于<code>heapify(int i, int size)</code><br>方法和<code>buildHeap()</code>方法。</p>
 <ul>
 <li><code>heapify(int i, int size)</code><br>该方法使得当前节点通过权值的比较落到合适的位置，包括位置不变或者落到子节点内。就最大堆为例，如图<br>子节点的<code>10</code>最大，于是<code>5</code>和<code>10</code>位置互换，此时以<code>5</code>为子根节点的子树结构可能不符合定义，于是递归<br>地为执行<code>heapify()</code>方法。     <img src="/2016/03/30/堆，堆排序，及Java实现/pic1.png" alt="堆化前后" title="堆化前后"></li>
@@ -318,532 +323,78 @@
 <li><a href="http://lotusyu.iteye.com/blog/1061822" target="_blank" rel="external">http://lotusyu.iteye.com/blog/1061822</a></li>
 </ul>
 
-          
-        
       
     </div>
 
     <div>
       
+        
+      
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/27/用栈模拟队列VS用队列模拟栈/" itemprop="url">
-                  用栈模拟队列VS用队列模拟栈
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-27T19:26:54+08:00" content="2016-03-27">
-              2016-03-27
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术博客/" itemprop="url" rel="index">
-                    <span itemprop="name">技术博客</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
+            <a href="/tags/堆/" rel="tag">#堆</a>
           
-
+            <a href="/tags/数据结构/" rel="tag">#数据结构</a>
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/27/用栈模拟队列VS用队列模拟栈/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/27/用栈模拟队列VS用队列模拟栈/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
+            <a href="/tags/排序/" rel="tag">#排序</a>
           
-
-          
-
-          
-          
-
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <blockquote>
-<blockquote>
-<blockquote>
-<p> 既生瑜，何生亮？《三国演义》</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<h2 id="0x01-用栈模拟队列"><a href="#0x01-用栈模拟队列" class="headerlink" title="0x01 用栈模拟队列"></a>0x01 用栈模拟队列</h2><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>队列是先进先出。如果把元素放进栈里，那么先出的是栈底元素。入队列直接用入栈1操作的话，<br>出队列就先把栈1内除开栈底的元素弹到另一个栈2，然后弹出栈1底元素。这是因为栈2原本没有<br>元素，如果栈2有元素，此时的元素的出队顺序和栈2弹出元素的顺序一致，栈2弹出元素即可，<br>直到栈2没有元素，此时又需要重复栈1弹到栈2的操作。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/03/27/用栈模拟队列VS用队列模拟栈/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/27/用栈模拟队列VS用队列模拟栈/" rel="next" title="用栈模拟队列VS用队列模拟栈">
+                <i class="fa fa-chevron-left"></i> 用栈模拟队列VS用队列模拟栈
+              </a>
+            
           </div>
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+          <div class="post-nav-prev post-nav-item">
             
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/24/JPEG图像部分加密/" itemprop="url">
-                  JPEG图像部分加密
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-24T14:28:20+08:00" content="2016-03-24">
-              2016-03-24
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术博客/" itemprop="url" rel="index">
-                    <span itemprop="name">技术博客</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/24/JPEG图像部分加密/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/24/JPEG图像部分加密/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="JPEG编码流程"><a href="#JPEG编码流程" class="headerlink" title="JPEG编码流程"></a>JPEG编码流程</h2><img src="/2016/03/24/JPEG图像部分加密/jpeg.png" alt="jpeg.png" title="">
-<h2 id="各种加密操作效果以及破解"><a href="#各种加密操作效果以及破解" class="headerlink" title="各种加密操作效果以及破解"></a>各种加密操作效果以及破解</h2><img src="/2016/03/24/JPEG图像部分加密/pic1.jpg" alt="pic1.jpg" title="">
-<img src="/2016/03/24/JPEG图像部分加密/pic2.jpg" alt="pic2.jpg" title="">
-<ul>
-<li>图（1, 1）Lena原图</li>
-<li>图（1, 2）= 图（1, 1）符号位加密</li>
-<li>图（1, 3）= 图（1, 2）DCT取正（包括DC和AC）</li>
-<li>图（2, 2）= 图（1, 1）AC置乱，符号位加密</li>
-<li>图（2, 3）= 图（2, 2）零块二值化</li>
-<li>图（3, 1）= Tiffany原图</li>
-<li>图（3, 2）= 图（3, 1）AC置乱，符号位加密</li>
-<li>图（3, 3）= 图（3, 2）零块二值化</li>
-</ul>
-<h2 id="MCU置换-AC置乱效果"><a href="#MCU置换-AC置乱效果" class="headerlink" title="MCU置换+AC置乱效果"></a>MCU置换+AC置乱效果</h2><img src="/2016/03/24/JPEG图像部分加密/pic3.jpg" alt="pic3.jpg" title="">
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/20/关于公正和公信/" itemprop="url">
-                  关于公正和公信
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-20T10:58:51+08:00" content="2016-03-20">
-              2016-03-20
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/一派胡言/" itemprop="url" rel="index">
-                    <span itemprop="name">一派胡言</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/20/关于公正和公信/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/20/关于公正和公信/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>看完《八恶人》，其中有两个细节我想强调一下。<br><img src="/2016/03/20/关于公正和公信/poster.jpg" alt="poster.jpg" title=""><br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/03/20/关于公正和公信/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
           </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/19/一个经典的递归题目/" itemprop="url">
-                  一个经典的递归题目
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-19T14:31:06+08:00" content="2016-03-19">
-              2016-03-19
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术博客/" itemprop="url" rel="index">
-                    <span itemprop="name">技术博客</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/19/一个经典的递归题目/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/19/一个经典的递归题目/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <h2 id="0x00-题目"><a href="#0x00-题目" class="headerlink" title="0x00 题目"></a>0x00 题目</h2><blockquote>
-<p>给出一颗二叉树的前序遍历（ABDEHCFIGJK）和中序遍历（DBHEAFICJGK），重构该二叉树。</p>
-</blockquote>
-<h2 id="0x01-思路"><a href="#0x01-思路" class="headerlink" title="0x01 思路"></a>0x01 思路</h2><p>经典的题目，考察把大问题分解成小问题的能力，也就是分而治之。</p>
-<ol>
-<li>首先我们知道二叉树的前序遍历的第一个节点就是根节点，上面的题目例子可以知道根节点是<strong>A</strong>。</li>
-<li>再看中序遍历，找到根节点<strong>A</strong>，那么<strong>A</strong>的前面是<strong>左子树</strong>，节点数为4，右边是<strong>右子树</strong>，节点数为6。</li>
-<li>回到前序遍历，根节点<strong>A</strong>后面的4个结点就是<strong>左子树</strong>，剩下的为<strong>右子树</strong>。</li>
-<li>到了这里，我们可以把问题分解成求解左右子树的重构问题，其中左子树的前序遍历为（BDEH），中序遍历为（DBHE）；<br>右子树的前序遍历为（CFIGJK），中序遍历为（FICJGK）。</li>
-<li>重复上述。同时记得判断和递归的边界。
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/03/19/一个经典的递归题目/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
 
+      
+    </div>
+  </div>
 
 
           </div>
@@ -851,6 +402,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/03/30/堆，堆排序，及Java实现/"
+           data-title="堆，堆排序，及Java实现" data-url="http://joshshaw.github.io/2016/03/30/堆，堆排序，及Java实现/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -870,8 +429,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -965,6 +533,23 @@
       </section>
 
       
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x00简介"><span class="nav-number">1.</span> <span class="nav-text">0x00简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x00代码"><span class="nav-number">2.</span> <span class="nav-text">0x00代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0xFF-References"><span class="nav-number">3.</span> <span class="nav-text">0xFF References</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
 
     </div>
   </aside>
@@ -1048,6 +633,167 @@
   
 
   
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
 
   
 
