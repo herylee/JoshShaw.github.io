@@ -307,7 +307,7 @@
       
         
           <h2 id="0x00简介"><a href="#0x00简介" class="headerlink" title="0x00简介"></a>0x00简介</h2><p>堆是一个完全二叉树的结构，可以用数组实现。最大（小）堆使用递归定义：非叶节点的权值比左右子节点的<br>权值都大（小）。</p>
-<h2 id="0x00代码"><a href="#0x00代码" class="headerlink" title="0x00代码"></a>0x00代码</h2><p>引用一个博客的代码，在此基础之上小改了一点点，并且更新了一下注释。重点在于<code>heapify(int i, int size)</code><br>方法和<code>buildHeap()</code>方法。</p>
+<h2 id="0x01代码"><a href="#0x01代码" class="headerlink" title="0x01代码"></a>0x01代码</h2><p>引用一个博客的代码，在此基础之上小改了一点点，并且更新了一下注释。重点在于<code>heapify(int i, int size)</code><br>方法和<code>buildHeap()</code>方法。</p>
 <ul>
 <li><code>heapify(int i, int size)</code><br>该方法使得当前节点通过权值的比较落到合适的位置，包括位置不变或者落到子节点内。就最大堆为例，如图<br>子节点的<code>10</code>最大，于是<code>5</code>和<code>10</code>位置互换，此时以<code>5</code>为子根节点的子树结构可能不符合定义，于是递归<br>地为执行<code>heapify()</code>方法。     <img src="/2016/03/30/堆，堆排序，及Java实现/pic1.png" alt="堆化前后" title="堆化前后">
           <div class="post-more-link text-center">

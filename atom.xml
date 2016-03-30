@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://joshshaw.github.io/"/>
-  <updated>2016-03-30T11:13:41.650Z</updated>
+  <updated>2016-03-30T11:14:56.710Z</updated>
   <id>http://joshshaw.github.io/</id>
   
   <author>
@@ -20,10 +20,10 @@
     <link href="http://joshshaw.github.io/2016/03/30/%E5%A0%86%EF%BC%8C%E5%A0%86%E6%8E%92%E5%BA%8F%EF%BC%8C%E5%8F%8AJava%E5%AE%9E%E7%8E%B0/"/>
     <id>http://joshshaw.github.io/2016/03/30/堆，堆排序，及Java实现/</id>
     <published>2016-03-30T09:21:12.000Z</published>
-    <updated>2016-03-30T11:13:41.650Z</updated>
+    <updated>2016-03-30T11:14:56.710Z</updated>
     
     <content type="html">&lt;h2 id=&quot;0x00简介&quot;&gt;&lt;a href=&quot;#0x00简介&quot; class=&quot;headerlink&quot; title=&quot;0x00简介&quot;&gt;&lt;/a&gt;0x00简介&lt;/h2&gt;&lt;p&gt;堆是一个完全二叉树的结构，可以用数组实现。最大（小）堆使用递归定义：非叶节点的权值比左右子节点的&lt;br&gt;权值都大（小）。&lt;/p&gt;
-&lt;h2 id=&quot;0x00代码&quot;&gt;&lt;a href=&quot;#0x00代码&quot; class=&quot;headerlink&quot; title=&quot;0x00代码&quot;&gt;&lt;/a&gt;0x00代码&lt;/h2&gt;&lt;p&gt;引用一个博客的代码，在此基础之上小改了一点点，并且更新了一下注释。重点在于&lt;code&gt;heapify(int i, int size)&lt;/code&gt;&lt;br&gt;方法和&lt;code&gt;buildHeap()&lt;/code&gt;方法。&lt;/p&gt;
+&lt;h2 id=&quot;0x01代码&quot;&gt;&lt;a href=&quot;#0x01代码&quot; class=&quot;headerlink&quot; title=&quot;0x01代码&quot;&gt;&lt;/a&gt;0x01代码&lt;/h2&gt;&lt;p&gt;引用一个博客的代码，在此基础之上小改了一点点，并且更新了一下注释。重点在于&lt;code&gt;heapify(int i, int size)&lt;/code&gt;&lt;br&gt;方法和&lt;code&gt;buildHeap()&lt;/code&gt;方法。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;heapify(int i, int size)&lt;/code&gt;&lt;br&gt;该方法使得当前节点通过权值的比较落到合适的位置，包括位置不变或者落到子节点内。就最大堆为例，如图&lt;br&gt;子节点的&lt;code&gt;10&lt;/code&gt;最大，于是&lt;code&gt;5&lt;/code&gt;和&lt;code&gt;10&lt;/code&gt;位置互换，此时以&lt;code&gt;5&lt;/code&gt;为子根节点的子树结构可能不符合定义，于是递归&lt;br&gt;地为执行&lt;code&gt;heapify()&lt;/code&gt;方法。     &lt;img src=&quot;/2016/03/30/堆，堆排序，及Java实现/pic1.png&quot; alt=&quot;堆化前后&quot; title=&quot;堆化前后&quot;&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/li&gt;
@@ -38,7 +38,7 @@
     <summary type="html">
     
       &lt;h2 id=&quot;0x00简介&quot;&gt;&lt;a href=&quot;#0x00简介&quot; class=&quot;headerlink&quot; title=&quot;0x00简介&quot;&gt;&lt;/a&gt;0x00简介&lt;/h2&gt;&lt;p&gt;堆是一个完全二叉树的结构，可以用数组实现。最大（小）堆使用递归定义：非叶节点的权值比左右子节点的&lt;br&gt;权值都大（小）。&lt;/p&gt;
-&lt;h2 id=&quot;0x00代码&quot;&gt;&lt;a href=&quot;#0x00代码&quot; class=&quot;headerlink&quot; title=&quot;0x00代码&quot;&gt;&lt;/a&gt;0x00代码&lt;/h2&gt;&lt;p&gt;引用一个博客的代码，在此基础之上小改了一点点，并且更新了一下注释。重点在于&lt;code&gt;heapify(int i, int size)&lt;/code&gt;&lt;br&gt;方法和&lt;code&gt;buildHeap()&lt;/code&gt;方法。&lt;/p&gt;
+&lt;h2 id=&quot;0x01代码&quot;&gt;&lt;a href=&quot;#0x01代码&quot; class=&quot;headerlink&quot; title=&quot;0x01代码&quot;&gt;&lt;/a&gt;0x01代码&lt;/h2&gt;&lt;p&gt;引用一个博客的代码，在此基础之上小改了一点点，并且更新了一下注释。重点在于&lt;code&gt;heapify(int i, int size)&lt;/code&gt;&lt;br&gt;方法和&lt;code&gt;buildHeap()&lt;/code&gt;方法。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;heapify(int i, int size)&lt;/code&gt;&lt;br&gt;该方法使得当前节点通过权值的比较落到合适的位置，包括位置不变或者落到子节点内。就最大堆为例，如图&lt;br&gt;子节点的&lt;code&gt;10&lt;/code&gt;最大，于是&lt;code&gt;5&lt;/code&gt;和&lt;code&gt;10&lt;/code&gt;位置互换，此时以&lt;code&gt;5&lt;/code&gt;为子根节点的子树结构可能不符合定义，于是递归&lt;br&gt;地为执行&lt;code&gt;heapify()&lt;/code&gt;方法。     &lt;img src=&quot;/2016/03/30/堆，堆排序，及Java实现/pic1.png&quot; alt=&quot;堆化前后&quot; title=&quot;堆化前后&quot;&gt;
     
