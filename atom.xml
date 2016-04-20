@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://joshshaw.github.io/"/>
-  <updated>2016-04-11T09:01:28.025Z</updated>
+  <updated>2016-04-20T08:50:27.993Z</updated>
   <id>http://joshshaw.github.io/</id>
   
   <author>
@@ -20,15 +20,53 @@
     <link href="http://joshshaw.github.io/2016/04/11/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E4%B8%8E%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/"/>
     <id>http://joshshaw.github.io/2016/04/11/TCP三次握手与四次挥手/</id>
     <published>2016-04-11T09:00:01.000Z</published>
-    <updated>2016-04-11T09:01:28.025Z</updated>
+    <updated>2016-04-20T08:50:27.993Z</updated>
     
     <content type="html">&lt;img src=&quot;/2016/04/11/TCP三次握手与四次挥手/tcp.png&quot; alt=&quot;tcp.png&quot; title=&quot;&quot;&gt;
+&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;上图左为tcp连接的状态机，每个圆矩形为一个状态，每个状态有一行或者两行，第一行为该状态的名称，&lt;br&gt;第二行（有的话）为该状态能（或者需要）发送的报文。&lt;br&gt;虚线箭头路径为服务器的常见状态转移路线。虚线框为关闭连接的状态集合。每个状态转移都是通过事件&lt;br&gt;触发，一般为收到一些特定的报文。&lt;br&gt;上图右为时间线下的状态转移示意图，分为常见和特殊情况。&lt;/p&gt;
+&lt;h2 id=&quot;状态&quot;&gt;&lt;a href=&quot;#状态&quot; class=&quot;headerlink&quot; title=&quot;状态&quot;&gt;&lt;/a&gt;状态&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#CLOSED&quot;&gt;CLOSED&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#LISTEN&quot;&gt;LISTEN&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#SYN_SENT&quot;&gt;SYN_SENT&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#SYN_RCVD&quot;&gt;SYN_RCVD&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#ESTABLISED&quot;&gt;ESTABLISED&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#FIN_WAIT_1&quot;&gt;FIN_WAIT_1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#FIN_WAIT_2&quot;&gt;FIN_WAIT_2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#CLOSING&quot;&gt;CLOSING&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#TIME_WAIT&quot;&gt;TIME_WAIT&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#CLOSE_WAIT&quot;&gt;CLOSE_WAIT&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#LAST_ACK&quot;&gt;LAST_ACK&lt;/a&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;详解&quot;&gt;&lt;a href=&quot;#详解&quot; class=&quot;headerlink&quot; title=&quot;详解&quot;&gt;&lt;/a&gt;详解&lt;/h2&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;CLOSED&quot;&gt;&lt;a href=&quot;#CLOSED&quot; class=&quot;headerlink&quot; title=&quot;CLOSED&quot;&gt;&lt;/a&gt;CLOSED&lt;/h3&gt;&lt;p&gt;端口未打开时为此状态。相当于初始状态和终止状态。&lt;/p&gt;
+&lt;h3 id=&quot;LISTEN&quot;&gt;&lt;a href=&quot;#LISTEN&quot; class=&quot;headerlink&quot; title=&quot;LISTEN&quot;&gt;&lt;/a&gt;LISTEN&lt;/h3&gt;&lt;p&gt;当服务器打开端口监听时，服务器等待客户端进行连接（被动）。  &lt;/p&gt;
+&lt;h3 id=&quot;SYN-SENT&quot;&gt;&lt;a href=&quot;#SYN-SENT&quot; class=&quot;headerlink&quot; title=&quot;SYN_SENT&quot;&gt;&lt;/a&gt;SYN_SENT&lt;/h3&gt;&lt;p&gt;客户端主动对服务器进行连接，会向服务器发送SYN报文。&lt;br&gt;有时候，服务器也会从LISTEN状态转到该状态，说明服务器端进行主动连接，但是&lt;strong&gt;极为罕见&lt;/strong&gt;。&lt;br&gt;此外，主动关闭连接或者客户端在一定时间范围内完全没有接到任何报文（超时）时，该状态会进入&lt;br&gt;CLOSED状态，结束连接。&lt;/p&gt;
+&lt;h3 id=&quot;SYN-RCVD&quot;&gt;&lt;a href=&quot;#SYN-RCVD&quot; class=&quot;headerlink&quot; title=&quot;SYN_RCVD&quot;&gt;&lt;/a&gt;SYN_RCVD&lt;/h3&gt;&lt;p&gt;服务器处于LISTEN状态，当收到客户端发送的SYN报文时，变为该状态。服务器处于该状态时需要完成&lt;br&gt;与客户端的握手流程，将会发送SYN和对此前客户端发送SYN报文的ACK确认。&lt;br&gt;当服务器收到客户端发送的RST报文后，说明客户端希望取消连接，此时服务器会回到LISTEN状态；&lt;br&gt;此外，服务器在一定时间范围内完全没有接到任何报文（超时）时，会关闭监听端口，到达CLOSED终止状态，&lt;br&gt;服务器主动关闭端口监听时，会进入FIN_WAIT_1状态。&lt;/p&gt;
+&lt;h3 id=&quot;ESTABLISED&quot;&gt;&lt;a href=&quot;#ESTABLISED&quot; class=&quot;headerlink&quot; title=&quot;ESTABLISED&quot;&gt;&lt;/a&gt;ESTABLISED&lt;/h3&gt;&lt;p&gt;客户端（服务器）收到服务器（客户端）对自己此前的SYN报文的ACK确认后，进入此状态，表明已经建立了连接。  &lt;/p&gt;
+&lt;h3 id=&quot;FIN-WAIT-1&quot;&gt;&lt;a href=&quot;#FIN-WAIT-1&quot; class=&quot;headerlink&quot; title=&quot;FIN_WAIT_1&quot;&gt;&lt;/a&gt;FIN_WAIT_1&lt;/h3&gt;&lt;p&gt;建立连接双方中的一方主动关闭连接时，会发送FIN报文，进入该状态。&lt;/p&gt;
+&lt;h3 id=&quot;FIN-WAIT-2&quot;&gt;&lt;a href=&quot;#FIN-WAIT-2&quot; class=&quot;headerlink&quot; title=&quot;FIN_WAIT_2&quot;&gt;&lt;/a&gt;FIN_WAIT_2&lt;/h3&gt;&lt;p&gt;主动关闭连接的一方收到被动方的对FIN的ACK确认报文后，进入该状态。&lt;/p&gt;
+&lt;h3 id=&quot;CLOSING&quot;&gt;&lt;a href=&quot;#CLOSING&quot; class=&quot;headerlink&quot; title=&quot;CLOSING&quot;&gt;&lt;/a&gt;CLOSING&lt;/h3&gt;&lt;p&gt;主动关闭连接的一方在监听对自己FIN报文的ACK确认报文期间收到对方的FIN报文时进入该状态。&lt;br&gt;该状态说明双方都在此段时间段内主动请求关闭。&lt;/p&gt;
+&lt;h3 id=&quot;TIME-WAIT&quot;&gt;&lt;a href=&quot;#TIME-WAIT&quot; class=&quot;headerlink&quot; title=&quot;TIME_WAIT&quot;&gt;&lt;/a&gt;TIME_WAIT&lt;/h3&gt;&lt;p&gt;主动请求关闭的一方收到对方的FIN报文后，会对该FIN报文进行ACK确认，那么此时进入该状态。&lt;br&gt;该状态等待2MSL的时间，若收不到对方的FIN报文，说明对方已经收到自己发出的ACK确认报文，最终&lt;br&gt;连接关闭，进入CLOSED。&lt;br&gt;有时候，FIN_WAIT_1会直接进入该状态，情况在于被动方刚好在发送ACK(FIN)的同时捎带了FIN，表明自己也&lt;br&gt;要关闭了，不过此情况也&lt;strong&gt;比较罕见&lt;/strong&gt;，并且可以通过先进入FIN_WAIT_2在进入TIME_WAIT来代替。&lt;/p&gt;
+&lt;h3 id=&quot;CLOSE-WAIT&quot;&gt;&lt;a href=&quot;#CLOSE-WAIT&quot; class=&quot;headerlink&quot; title=&quot;CLOSE_WAIT&quot;&gt;&lt;/a&gt;CLOSE_WAIT&lt;/h3&gt;&lt;p&gt;被动关闭的一方收到FIN报文时，进入该状态，该状态需要发送对FIN报文的ACK确认。&lt;/p&gt;
+&lt;h3 id=&quot;LAST-ACK&quot;&gt;&lt;a href=&quot;#LAST-ACK&quot; class=&quot;headerlink&quot; title=&quot;LAST_ACK&quot;&gt;&lt;/a&gt;LAST_ACK&lt;/h3&gt;&lt;p&gt;被动一方也关闭连接时，将发送FIN报文，进入该状态。收到自己发出的FIN的ACK确认报文后，关闭连接，&lt;br&gt;进入CLOSED。&lt;/p&gt;
 </content>
     
     <summary type="html">
     
       &lt;img src=&quot;/2016/04/11/TCP三次握手与四次挥手/tcp.png&quot; alt=&quot;tcp.png&quot; title=&quot;&quot;&gt;
-
+&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;上图左为tcp连接的状态机，每个圆矩形为一个状态，每个状态有一行或者两行，第一行为该状态的名称，&lt;br&gt;第二行（有的话）为该状态能（或者需要）发送的报文。&lt;br&gt;虚线箭头路径为服务器的常见状态转移路线。虚线框为关闭连接的状态集合。每个状态转移都是通过事件&lt;br&gt;触发，一般为收到一些特定的报文。&lt;br&gt;上图右为时间线下的状态转移示意图，分为常见和特殊情况。&lt;/p&gt;
+&lt;h2 id=&quot;状态&quot;&gt;&lt;a href=&quot;#状态&quot; class=&quot;headerlink&quot; title=&quot;状态&quot;&gt;&lt;/a&gt;状态&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#CLOSED&quot;&gt;CLOSED&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#LISTEN&quot;&gt;LISTEN&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#SYN_SENT&quot;&gt;SYN_SENT&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#SYN_RCVD&quot;&gt;SYN_RCVD&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#ESTABLISED&quot;&gt;ESTABLISED&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#FIN_WAIT_1&quot;&gt;FIN_WAIT_1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#FIN_WAIT_2&quot;&gt;FIN_WAIT_2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#CLOSING&quot;&gt;CLOSING&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#TIME_WAIT&quot;&gt;TIME_WAIT&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#CLOSE_WAIT&quot;&gt;CLOSE_WAIT&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#LAST_ACK&quot;&gt;LAST_ACK&lt;/a&gt;
     
     </summary>
     
@@ -448,9 +486,9 @@
       <category term="March" scheme="http://joshshaw.github.io/categories/March/"/>
     
     
-      <category term="简历" scheme="http://joshshaw.github.io/tags/%E7%AE%80%E5%8E%86/"/>
-    
       <category term="profile" scheme="http://joshshaw.github.io/tags/profile/"/>
+    
+      <category term="简历" scheme="http://joshshaw.github.io/tags/%E7%AE%80%E5%8E%86/"/>
     
   </entry>
   
@@ -594,9 +632,9 @@
       <category term="March" scheme="http://joshshaw.github.io/categories/March/"/>
     
     
-      <category term="简历" scheme="http://joshshaw.github.io/tags/%E7%AE%80%E5%8E%86/"/>
-    
       <category term="profile" scheme="http://joshshaw.github.io/tags/profile/"/>
+    
+      <category term="简历" scheme="http://joshshaw.github.io/tags/%E7%AE%80%E5%8E%86/"/>
     
   </entry>
   

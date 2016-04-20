@@ -306,10 +306,25 @@
 
       
         
-          
-            <img src="/2016/04/11/TCP三次握手与四次挥手/tcp.png" alt="tcp.png" title="">
-
-          
+          <img src="/2016/04/11/TCP三次握手与四次挥手/tcp.png" alt="tcp.png" title="">
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>上图左为tcp连接的状态机，每个圆矩形为一个状态，每个状态有一行或者两行，第一行为该状态的名称，<br>第二行（有的话）为该状态能（或者需要）发送的报文。<br>虚线箭头路径为服务器的常见状态转移路线。虚线框为关闭连接的状态集合。每个状态转移都是通过事件<br>触发，一般为收到一些特定的报文。<br>上图右为时间线下的状态转移示意图，分为常见和特殊情况。</p>
+<h2 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h2><ul>
+<li><a href="#CLOSED">CLOSED</a></li>
+<li><a href="#LISTEN">LISTEN</a></li>
+<li><a href="#SYN_SENT">SYN_SENT</a></li>
+<li><a href="#SYN_RCVD">SYN_RCVD</a></li>
+<li><a href="#ESTABLISED">ESTABLISED</a></li>
+<li><a href="#FIN_WAIT_1">FIN_WAIT_1</a></li>
+<li><a href="#FIN_WAIT_2">FIN_WAIT_2</a></li>
+<li><a href="#CLOSING">CLOSING</a></li>
+<li><a href="#TIME_WAIT">TIME_WAIT</a></li>
+<li><a href="#CLOSE_WAIT">CLOSE_WAIT</a></li>
+<li><a href="#LAST_ACK">LAST_ACK</a>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/11/TCP三次握手与四次挥手/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
