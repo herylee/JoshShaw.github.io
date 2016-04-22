@@ -62,14 +62,14 @@
 <meta name="description" content="0x00第一题（回形矩阵）0x01描述输入矩阵的边长，如5，然后生成如下的回形矩阵，最后一行行地输出。12345 1  2  3  4  516 17 18 19  615 24 25 20  714 23 22 21  813 12 11 10  9
 0x02思路定义上下左右四个方向，递增地往当前方向走，判断越界或者是否已经被占用，是则向右走，再一次判断是否可以走，可以则走，不可以说明已经全部走">
 <meta property="og:type" content="article">
-<meta property="og:title" content="腾讯实习生在线笔试的两道编程题">
-<meta property="og:url" content="http://joshshaw.github.io/2016/04/05/腾讯实习生在线笔试的两道编程题/index.html">
+<meta property="og:title" content="小资-两道编程题">
+<meta property="og:url" content="http://joshshaw.github.io/2016/04/05/小资-两道编程题/index.html">
 <meta property="og:site_name" content="Joshua Shaw之秘密花园">
 <meta property="og:description" content="0x00第一题（回形矩阵）0x01描述输入矩阵的边长，如5，然后生成如下的回形矩阵，最后一行行地输出。12345 1  2  3  4  516 17 18 19  615 24 25 20  714 23 22 21  813 12 11 10  9
 0x02思路定义上下左右四个方向，递增地往当前方向走，判断越界或者是否已经被占用，是则向右走，再一次判断是否可以走，可以则走，不可以说明已经全部走">
-<meta property="og:updated_time" content="2016-04-05T06:56:12.427Z">
+<meta property="og:updated_time" content="2016-04-22T06:25:38.711Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="腾讯实习生在线笔试的两道编程题">
+<meta name="twitter:title" content="小资-两道编程题">
 <meta name="twitter:description" content="0x00第一题（回形矩阵）0x01描述输入矩阵的边长，如5，然后生成如下的回形矩阵，最后一行行地输出。12345 1  2  3  4  516 17 18 19  615 24 25 20  714 23 22 21  813 12 11 10  9
 0x02思路定义上下左右四个方向，递增地往当前方向走，判断越界或者是否已经被占用，是则向右走，再一次判断是否可以走，可以则走，不可以说明已经全部走">
 
@@ -89,7 +89,7 @@
   };
 </script>
 
-  <title> 腾讯实习生在线笔试的两道编程题 | Joshua Shaw之秘密花园 </title>
+  <title> 小资-两道编程题 | Joshua Shaw之秘密花园 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -239,7 +239,7 @@
             
             
               
-                腾讯实习生在线笔试的两道编程题
+                小资-两道编程题
               
             
           </h1>
@@ -281,8 +281,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/05/腾讯实习生在线笔试的两道编程题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/05/腾讯实习生在线笔试的两道编程题/" itemprop="commentsCount"></span>
+                <a href="/2016/04/05/小资-两道编程题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/05/小资-两道编程题/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -318,7 +318,6 @@
 </ol>
 <h2 id="0x13代码"><a href="#0x13代码" class="headerlink" title="0x13代码"></a>0x13代码</h2><h3 id="0x14递归实现"><a href="#0x14递归实现" class="headerlink" title="0x14递归实现"></a>0x14递归实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">M</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">MaxLength</span><span class="params">(<span class="keyword">char</span> str[], <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span>   </span><br><span class="line">	</span>&#123;   </span><br><span class="line">	    <span class="keyword">if</span> (i == j)    </span><br><span class="line">	        <span class="keyword">return</span> <span class="number">1</span>;     </span><br><span class="line">	    <span class="keyword">else</span> <span class="keyword">if</span> (i &gt; j)   </span><br><span class="line">	        <span class="keyword">return</span> <span class="number">0</span>;     </span><br><span class="line">	    <span class="keyword">else</span> &#123;   </span><br><span class="line">	        <span class="keyword">if</span> (str[i] == str[j]) &#123;   </span><br><span class="line">	            <span class="keyword">return</span> <span class="number">2</span> + MaxLength(str, i + <span class="number">1</span>, j - <span class="number">1</span>);   </span><br><span class="line">	        &#125; <span class="keyword">else</span> &#123;   </span><br><span class="line">	            <span class="keyword">return</span> Math.max(MaxLength(str, i + <span class="number">1</span>, j), MaxLength(str, i, j - <span class="number">1</span>));   </span><br><span class="line">	        &#125;   </span><br><span class="line">	    &#125;   </span><br><span class="line">	&#125;   </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Scanner s = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">	    <span class="keyword">char</span> str[];</span><br><span class="line"></span><br><span class="line">	    str = s.nextLine().toCharArray();   </span><br><span class="line">	    System.out.println( MaxLength(str, <span class="number">0</span>, str.length-<span class="number">1</span>) );</span><br><span class="line"></span><br><span class="line">	&#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="0x15动态规划"><a href="#0x15动态规划" class="headerlink" title="0x15动态规划"></a>0x15动态规划</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">M2</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">char</span> str[];</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> slen;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> maxlen[][];   </span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">M2</span><span class="params">(String string)</span> </span>&#123;</span><br><span class="line">		slen = string.length();</span><br><span class="line">		str = string.toCharArray();</span><br><span class="line">		maxlen = <span class="keyword">new</span> <span class="keyword">int</span> [slen][slen];</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">LongestLen</span><span class="params">()</span> </span>&#123;   </span><br><span class="line">	    <span class="keyword">int</span> i, j, len;   </span><br><span class="line">	    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; slen; i++)     </span><br><span class="line">	        maxlen[i][i] = <span class="number">1</span>;     </span><br><span class="line">	    <span class="keyword">for</span> (len = <span class="number">1</span>; len &lt; slen; len++) &#123;   </span><br><span class="line">	        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; slen - len; i++) &#123;   </span><br><span class="line">	            j = i + len;   </span><br><span class="line">	            <span class="keyword">if</span> (str[i] == str[j]) &#123;   </span><br><span class="line">	                <span class="keyword">if</span> (i + <span class="number">1</span> &gt; j - <span class="number">1</span>)      </span><br><span class="line">	                    maxlen[i][j] = <span class="number">2</span>;     </span><br><span class="line">	                <span class="keyword">else</span>  </span><br><span class="line">	                    maxlen[i][j] = <span class="number">2</span> + maxlen[i + <span class="number">1</span>][j - <span class="number">1</span>];   </span><br><span class="line">	            &#125; <span class="keyword">else</span> &#123;   </span><br><span class="line">	                maxlen[i][j] = Math.max(maxlen[i + <span class="number">1</span>][j], maxlen[i][j - <span class="number">1</span>]);   </span><br><span class="line">	            &#125;  </span><br><span class="line">	            <span class="comment">//print();</span></span><br><span class="line"></span><br><span class="line">	        &#125;   </span><br><span class="line">	    &#125;   </span><br><span class="line">	    <span class="keyword">return</span> maxlen[<span class="number">0</span>][slen - <span class="number">1</span>];   </span><br><span class="line">	&#125;   </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;slen;++i) &#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;slen;++j)&#123;</span><br><span class="line">				System.out.print(<span class="string">""</span>+maxlen[i][j]+<span class="string">" "</span>);</span><br><span class="line">			&#125;System.out.println();</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String arg[])</span> </span>&#123;   </span><br><span class="line">	    Scanner s = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">	    String string = s.nextLine();</span><br><span class="line">	    <span class="keyword">int</span> l = <span class="keyword">new</span> M2(string).LongestLen();</span><br><span class="line">	    System.out.println(l);</span><br><span class="line">	&#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="0xFF总结"><a href="#0xFF总结" class="headerlink" title="0xFF总结"></a>0xFF总结</h1><p>其实问题不难，就是在线笔试不能用IDE，效率骤降，调试也较难。</p>
 
       
     </div>
@@ -405,8 +404,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/05/腾讯实习生在线笔试的两道编程题/"
-           data-title="腾讯实习生在线笔试的两道编程题" data-url="http://joshshaw.github.io/2016/04/05/腾讯实习生在线笔试的两道编程题/">
+      <div class="ds-thread" data-thread-key="2016/04/05/小资-两道编程题/"
+           data-title="小资-两道编程题" data-url="http://joshshaw.github.io/2016/04/05/小资-两道编程题/">
       </div>
     
   </div>
@@ -451,7 +450,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">10</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -459,7 +458,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -468,7 +467,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -551,7 +550,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0x00第一题（回形矩阵）"><span class="nav-number">1.</span> <span class="nav-text">0x00第一题（回形矩阵）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01描述"><span class="nav-number">1.1.</span> <span class="nav-text">0x01描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02思路"><span class="nav-number">1.2.</span> <span class="nav-text">0x02思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03代码"><span class="nav-number">1.3.</span> <span class="nav-text">0x03代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0x10第二题（求最长回文串长度）"><span class="nav-number">2.</span> <span class="nav-text">0x10第二题（求最长回文串长度）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x11描述"><span class="nav-number">2.1.</span> <span class="nav-text">0x11描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x12思路"><span class="nav-number">2.2.</span> <span class="nav-text">0x12思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x13代码"><span class="nav-number">2.3.</span> <span class="nav-text">0x13代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x14递归实现"><span class="nav-number">2.3.1.</span> <span class="nav-text">0x14递归实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x15动态规划"><span class="nav-number">2.3.2.</span> <span class="nav-text">0x15动态规划</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0xFF总结"><span class="nav-number">3.</span> <span class="nav-text">0xFF总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0x00第一题（回形矩阵）"><span class="nav-number">1.</span> <span class="nav-text">0x00第一题（回形矩阵）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01描述"><span class="nav-number">1.1.</span> <span class="nav-text">0x01描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02思路"><span class="nav-number">1.2.</span> <span class="nav-text">0x02思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03代码"><span class="nav-number">1.3.</span> <span class="nav-text">0x03代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0x10第二题（求最长回文串长度）"><span class="nav-number">2.</span> <span class="nav-text">0x10第二题（求最长回文串长度）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x11描述"><span class="nav-number">2.1.</span> <span class="nav-text">0x11描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x12思路"><span class="nav-number">2.2.</span> <span class="nav-text">0x12思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x13代码"><span class="nav-number">2.3.</span> <span class="nav-text">0x13代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x14递归实现"><span class="nav-number">2.3.1.</span> <span class="nav-text">0x14递归实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x15动态规划"><span class="nav-number">2.3.2.</span> <span class="nav-text">0x15动态规划</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

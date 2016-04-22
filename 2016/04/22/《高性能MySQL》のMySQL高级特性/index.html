@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="公正,公信,文," />
+  <meta name="keywords" content="关系型数据库,MySQL," />
 
 
 
@@ -59,20 +59,25 @@
 
 
 
-<meta name="description" content="看完《八恶人》，其中有两个细节我想强调一下。">
+<meta name="description" content="0x00前言本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。
+0x01简介本章讨论了MySQL的分区表，视图，外键，存储过程，绑定变量，插件，字符集，全文索引，XA事务，查询缓存。
+0x02具体
+分区表适用于大数据量的过滤场景，或者数据分为历史数据和热点数据，对于单条">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于公正和公信">
-<meta property="og:url" content="http://joshshaw.github.io/2016/03/20/关于公正和公信/index.html">
+<meta property="og:title" content="《高性能MySQL》のMySQL高级特性">
+<meta property="og:url" content="http://joshshaw.github.io/2016/04/22/《高性能MySQL》のMySQL高级特性/index.html">
 <meta property="og:site_name" content="Joshua Shaw之秘密花园">
-<meta property="og:description" content="看完《八恶人》，其中有两个细节我想强调一下。">
-<meta property="og:image" content="http://joshshaw.github.io/2016/03/20/关于公正和公信/poster.jpg">
-<meta property="og:image" content="http://joshshaw.github.io/2016/03/20/关于公正和公信/justice2.jpg">
-<meta property="og:image" content="http://joshshaw.github.io/2016/03/20/关于公正和公信/accountability.jpg">
-<meta property="og:updated_time" content="2016-03-20T06:25:22.941Z">
+<meta property="og:description" content="0x00前言本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。
+0x01简介本章讨论了MySQL的分区表，视图，外键，存储过程，绑定变量，插件，字符集，全文索引，XA事务，查询缓存。
+0x02具体
+分区表适用于大数据量的过滤场景，或者数据分为历史数据和热点数据，对于单条">
+<meta property="og:updated_time" content="2016-04-22T07:07:45.337Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于公正和公信">
-<meta name="twitter:description" content="看完《八恶人》，其中有两个细节我想强调一下。">
-<meta name="twitter:image" content="http://joshshaw.github.io/2016/03/20/关于公正和公信/poster.jpg">
+<meta name="twitter:title" content="《高性能MySQL》のMySQL高级特性">
+<meta name="twitter:description" content="0x00前言本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。
+0x01简介本章讨论了MySQL的分区表，视图，外键，存储过程，绑定变量，插件，字符集，全文索引，XA事务，查询缓存。
+0x02具体
+分区表适用于大数据量的过滤场景，或者数据分为历史数据和热点数据，对于单条">
 
 
 
@@ -90,7 +95,7 @@
   };
 </script>
 
-  <title> 关于公正和公信 | Joshua Shaw之秘密花园 </title>
+  <title> 《高性能MySQL》のMySQL高级特性 | Joshua Shaw之秘密花园 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -240,7 +245,7 @@
             
             
               
-                关于公正和公信
+                《高性能MySQL》のMySQL高级特性
               
             
           </h1>
@@ -252,8 +257,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-20T10:58:51+08:00" content="2016-03-20">
-              2016-03-20
+            <time itemprop="dateCreated" datetime="2016-04-22T14:28:02+08:00" content="2016-04-22">
+              2016-04-22
             </time>
           </span>
 
@@ -266,8 +271,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/一派胡言/" itemprop="url" rel="index">
-                    <span itemprop="name">一派胡言</span>
+                  <a href="/categories/计算机科学/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机科学</span>
                   </a>
                 </span>
 
@@ -282,8 +287,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/03/20/关于公正和公信/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/20/关于公正和公信/" itemprop="commentsCount"></span>
+                <a href="/2016/04/22/《高性能MySQL》のMySQL高级特性/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/22/《高性能MySQL》のMySQL高级特性/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -305,21 +310,22 @@
       
 
       
-        <p>看完《八恶人》，其中有两个细节我想强调一下。<br><img src="/2016/03/20/关于公正和公信/poster.jpg" alt="poster.jpg" title=""><br><a id="more"></a></p>
-<h2 id="公正"><a href="#公正" class="headerlink" title="公正"></a>公正</h2><p>因为谋杀被通缉，一种方法是奖金猎人把疑犯抓回接受审判，判定有罪后，由绞刑者实施绞刑，这被称为文明社会的正义。另一种方法是被杀者的亲人好友，直接把疑犯就地解决，这被称为边境裁决。</p>
-<blockquote class="blockquote-center"><p>那最终这两种方法到底有什么区别？<br>真正的区别在于，对于绞刑者的我来说<br>我才不会在乎你做了什么，当我绞死你的时候<br>我不会暗爽，这只是我的工作<br>我在红石镇绞死你，然后我搬到别的镇子上，我又去绞死别人<br>那个拉动操纵杆绞死你的男人<br>他是个公正的人<br>那份公正才是正义的精髓正义若是不公平地传递下去的话<br>是会危害正义本身的</p>
-<p><strong>绞刑者</strong>  </p>
-</blockquote>
-<img src="/2016/03/20/关于公正和公信/justice2.jpg" alt="justice2.jpg" title="">
-<blockquote class="blockquote-center"><p>西方的公正在于评判者之中立，利益无关。</p>
-</blockquote>
-<h2 id="公信"><a href="#公信" class="headerlink" title="公信"></a>公信</h2><blockquote class="blockquote-center"><p>然后他又开始求我了<br>只是这次不是为了回家<br>他知道他再也回不去了，而且他也不求我放他一命<br>因为他知道他已是将死之人<br>他只是想要一张毛毯</p>
-<p>我没给你儿子毛毯<br>尽管他照我说的做了<br>还是没给他毛毯<br>那个毛毯不过是心碎的骗子给的一个承诺<br>就像联邦军给那些你所不承认的黑人骑兵们发的统一制服一样</p>
-<p><strong>黑人少校</strong>  </p>
-</blockquote>
-<img src="/2016/03/20/关于公正和公信/accountability.jpg" alt="accountability.jpg" title="">
-<blockquote class="blockquote-center"><p>承诺与实施，若不一致，公信全无。</p>
-</blockquote>
+        <h2 id="0x00前言"><a href="#0x00前言" class="headerlink" title="0x00前言"></a>0x00前言</h2><p>本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，<br>以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。</p>
+<h2 id="0x01简介"><a href="#0x01简介" class="headerlink" title="0x01简介"></a>0x01简介</h2><p>本章讨论了MySQL的分区表，视图，外键，存储过程，绑定变量，插件，字符集，全文索引，XA事务，查询缓存。</p>
+<h2 id="0x02具体"><a href="#0x02具体" class="headerlink" title="0x02具体"></a>0x02具体</h2><ol>
+<li><strong>分区表</strong><br>适用于大数据量的过滤场景，或者数据分为历史数据和热点数据，对于单条记录的查询并没有多少优势。</li>
+<li><strong>视图</strong><br>简化应用程序的SQL语句编写（诸如表联结）。</li>
+<li><strong>外键</strong><br>为确保系统完整性的额外特性，会带来较高地效率代价。如果要设计高性能系统，建议通过应用程序而不是外键<br>来维护数据的完整性。</li>
+<li><strong>存储过程</strong><br>可以节省很多网络开销，也可以操纵一些没有权限的表，但是bug较多，使用时要慎重考虑。</li>
+<li><strong>绑定变量</strong><br>对于大量重复类型的查询语句，性能会有很大的提升。一般来说，利大于弊，使用还能保证一定的安全性。</li>
+<li><strong>插件</strong><br>用C或C++编写插件来扩展MySQL的功能，极客所为。</li>
+<li><strong>字符集</strong><br>数据库，表间的字符集最好统一，但是是否使用UTF-8看情况而定。</li>
+<li><strong>全文索引</strong><br>最好使用Lucene、Sphinx来解决全文索引问题。</li>
+<li><strong>XA事务</strong><br>除非真正明白XA事务，否则不要轻易更改默认配置。</li>
+<li><strong>查询缓存</strong><br>真正需要查询缓存时才使用，否则不要使用。使用时不要设置太大的缓存内存。<br>如果希望有更高的缓存效率，最好在应用程序提供缓存。</li>
+</ol>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>以上的高级特性都不是万能药，使用时要充分用与不用的测量，还包括考虑当前数据库的版本。</p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://book.douban.com/subject/4241826/" target="_blank" rel="external">《高性能MySQL · 第三版》</a></p>
 
       
     </div>
@@ -334,11 +340,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/公正/" rel="tag">#公正</a>
+            <a href="/tags/关系型数据库/" rel="tag">#关系型数据库</a>
           
-            <a href="/tags/公信/" rel="tag">#公信</a>
-          
-            <a href="/tags/文/" rel="tag">#文</a>
+            <a href="/tags/MySQL/" rel="tag">#MySQL</a>
           
         </div>
       
@@ -347,17 +351,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/19/一个经典的递归题目/" rel="next" title="一个经典的递归题目">
-                <i class="fa fa-chevron-left"></i> 一个经典的递归题目
+              <a href="/2016/04/11/TCP三次握手与四次挥手/" rel="next" title="TCP三次握手与四次挥手">
+                <i class="fa fa-chevron-left"></i> TCP三次握手与四次挥手
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/03/24/JPEG图像部分加密/" rel="prev" title="JPEG图像部分加密">
-                JPEG图像部分加密 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -406,8 +406,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/03/20/关于公正和公信/"
-           data-title="关于公正和公信" data-url="http://joshshaw.github.io/2016/03/20/关于公正和公信/">
+      <div class="ds-thread" data-thread-key="2016/04/22/《高性能MySQL》のMySQL高级特性/"
+           data-title="《高性能MySQL》のMySQL高级特性" data-url="http://joshshaw.github.io/2016/04/22/《高性能MySQL》のMySQL高级特性/">
       </div>
     
   </div>
@@ -552,7 +552,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#公正"><span class="nav-number">1.</span> <span class="nav-text">公正</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#公信"><span class="nav-number">2.</span> <span class="nav-text">公信</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x00前言"><span class="nav-number">1.</span> <span class="nav-text">0x00前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01简介"><span class="nav-number">2.</span> <span class="nav-text">0x01简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02具体"><span class="nav-number">3.</span> <span class="nav-text">0x02具体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">4.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">5.</span> <span class="nav-text">引用</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
