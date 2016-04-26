@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://joshshaw.github.io/"/>
-  <updated>2016-04-22T07:07:45.337Z</updated>
+  <updated>2016-04-26T05:31:09.187Z</updated>
   <id>http://joshshaw.github.io/</id>
   
   <author>
@@ -20,23 +20,57 @@
     <link href="http://joshshaw.github.io/2016/04/22/%E3%80%8A%E9%AB%98%E6%80%A7%E8%83%BDMySQL%E3%80%8B%E3%81%AEMySQL%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/"/>
     <id>http://joshshaw.github.io/2016/04/22/《高性能MySQL》のMySQL高级特性/</id>
     <published>2016-04-22T06:28:02.000Z</published>
-    <updated>2016-04-22T07:07:45.337Z</updated>
+    <updated>2016-04-26T05:31:09.187Z</updated>
     
     <content type="html">&lt;h2 id=&quot;0x00前言&quot;&gt;&lt;a href=&quot;#0x00前言&quot; class=&quot;headerlink&quot; title=&quot;0x00前言&quot;&gt;&lt;/a&gt;0x00前言&lt;/h2&gt;&lt;p&gt;本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，&lt;br&gt;以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。&lt;/p&gt;
 &lt;h2 id=&quot;0x01简介&quot;&gt;&lt;a href=&quot;#0x01简介&quot; class=&quot;headerlink&quot; title=&quot;0x01简介&quot;&gt;&lt;/a&gt;0x01简介&lt;/h2&gt;&lt;p&gt;本章讨论了MySQL的分区表，视图，外键，存储过程，绑定变量，插件，字符集，全文索引，XA事务，查询缓存。&lt;/p&gt;
-&lt;h2 id=&quot;0x02具体&quot;&gt;&lt;a href=&quot;#0x02具体&quot; class=&quot;headerlink&quot; title=&quot;0x02具体&quot;&gt;&lt;/a&gt;0x02具体&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;分区表&lt;/strong&gt;&lt;br&gt;适用于大数据量的过滤场景，或者数据分为历史数据和热点数据，对于单条记录的查询并没有多少优势。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;视图&lt;/strong&gt;&lt;br&gt;简化应用程序的SQL语句编写（诸如表联结）。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;外键&lt;/strong&gt;&lt;br&gt;为确保系统完整性的额外特性，会带来较高地效率代价。如果要设计高性能系统，建议通过应用程序而不是外键&lt;br&gt;来维护数据的完整性。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;存储过程&lt;/strong&gt;&lt;br&gt;可以节省很多网络开销，也可以操纵一些没有权限的表，但是bug较多，使用时要慎重考虑。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;绑定变量&lt;/strong&gt;&lt;br&gt;对于大量重复类型的查询语句，性能会有很大的提升。一般来说，利大于弊，使用还能保证一定的安全性。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;插件&lt;/strong&gt;&lt;br&gt;用C或C++编写插件来扩展MySQL的功能，极客所为。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;字符集&lt;/strong&gt;&lt;br&gt;数据库，表间的字符集最好统一，但是是否使用UTF-8看情况而定。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;全文索引&lt;/strong&gt;&lt;br&gt;最好使用Lucene、Sphinx来解决全文索引问题。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;XA事务&lt;/strong&gt;&lt;br&gt;除非真正明白XA事务，否则不要轻易更改默认配置。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;查询缓存&lt;/strong&gt;&lt;br&gt;真正需要查询缓存时才使用，否则不要使用。使用时不要设置太大的缓存内存。&lt;br&gt;如果希望有更高的缓存效率，最好在应用程序提供缓存。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&quot;小结&quot;&gt;&lt;a href=&quot;#小结&quot; class=&quot;headerlink&quot; title=&quot;小结&quot;&gt;&lt;/a&gt;小结&lt;/h2&gt;&lt;p&gt;以上的高级特性都不是万能药，使用时要充分用与不用的测量，还包括考虑当前数据库的版本。&lt;/p&gt;
+&lt;h2 id=&quot;0x02具体&quot;&gt;&lt;a href=&quot;#0x02具体&quot; class=&quot;headerlink&quot; title=&quot;0x02具体&quot;&gt;&lt;/a&gt;0x02具体&lt;/h2&gt;&lt;h3 id=&quot;分区表&quot;&gt;&lt;a href=&quot;#分区表&quot; class=&quot;headerlink&quot; title=&quot;分区表&quot;&gt;&lt;/a&gt;分区表&lt;/h3&gt;&lt;p&gt;适用于大数据量的过滤场景，或者数据分为历史数据和热点数据，对于单条记录的查询并没有多少优势。&lt;/p&gt;
+&lt;h4 id=&quot;原理&quot;&gt;&lt;a href=&quot;#原理&quot; class=&quot;headerlink&quot; title=&quot;原理&quot;&gt;&lt;/a&gt;原理&lt;/h4&gt;&lt;p&gt;通过句柄对象转化成对存储引擎的接口调用，对于SQL层是完全封装底层实现的黑盒子。&lt;br&gt;CURD操作都会先代开并锁住所有的底层表，然后在解锁不需要的表。所以并不是在处理过程中都锁住表。&lt;/p&gt;
+&lt;h4 id=&quot;适用条件&quot;&gt;&lt;a href=&quot;#适用条件&quot; class=&quot;headerlink&quot; title=&quot;适用条件&quot;&gt;&lt;/a&gt;适用条件&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;表非常大，或者表的最后部分是热点数据，其余是历史数据。&lt;/li&gt;
+&lt;li&gt;想大批量地删除数据，可以使用清除整个分区的方式。&lt;/li&gt;
+&lt;li&gt;分区表可以分布在不同的物理设备上。&lt;/li&gt;
+&lt;li&gt;避免某些特殊瓶颈。如ext3文件系统的inode锁竞争。&lt;/li&gt;
+&lt;li&gt;可以备份和恢复独立的分区。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;限制和性能问题&quot;&gt;&lt;a href=&quot;#限制和性能问题&quot; class=&quot;headerlink&quot; title=&quot;限制和性能问题&quot;&gt;&lt;/a&gt;限制和性能问题&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;所用分区都必须使用相同的存储引擎。&lt;/li&gt;
+&lt;li&gt;有些存储引擎不支持分区。&lt;/li&gt;
+&lt;li&gt;在创建分区时可以使用表达式，但在查询时却只能根据列来过滤分区。&lt;/li&gt;
+&lt;li&gt;分区列和索引列不匹配。&lt;/li&gt;
+&lt;li&gt;选择分区成本的成本很高时。&lt;/li&gt;
+&lt;li&gt;打开并锁住底层表的成本很高时（若本身查询操作是快速的）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;视图&quot;&gt;&lt;a href=&quot;#视图&quot; class=&quot;headerlink&quot; title=&quot;视图&quot;&gt;&lt;/a&gt;视图&lt;/h3&gt;&lt;p&gt;简化应用程序的SQL语句编写（诸如表联结），或者使用视图实现基于列的权限控制，重构schema等。&lt;/p&gt;
+&lt;h4 id=&quot;原理-1&quot;&gt;&lt;a href=&quot;#原理-1&quot; class=&quot;headerlink&quot; title=&quot;原理&quot;&gt;&lt;/a&gt;原理&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;临时表算法&lt;br&gt;先执行视图的查询语言生成临时表，再通过临时表执行查找。视图中包含GROUP BY、DISTINCT、任何&lt;br&gt;聚合函数、UNION、子查询等，只要无法在原表记录和视图记录中建立一一映射的场景时，只能采用临时表算法。&lt;/li&gt;
+&lt;li&gt;合并算法&lt;br&gt;将定义视图的语句与查询语句合并，进行一次查询操作。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;性能影响和缺点&quot;&gt;&lt;a href=&quot;#性能影响和缺点&quot; class=&quot;headerlink&quot; title=&quot;性能影响和缺点&quot;&gt;&lt;/a&gt;性能影响和缺点&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;临时表没有索引。&lt;/li&gt;
+&lt;li&gt;不支持物化视图。&lt;/li&gt;
+&lt;li&gt;有些情况视图不可以被更新（包括更改联接键，视图定义使用聚合函数等）。&lt;/li&gt;
+&lt;li&gt;MySQL目前不支持触发器。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;外键&quot;&gt;&lt;a href=&quot;#外键&quot; class=&quot;headerlink&quot; title=&quot;外键&quot;&gt;&lt;/a&gt;外键&lt;/h3&gt;&lt;p&gt;为确保系统完整性的额外特性，会带来较高地效率代价，外键导致的死锁问题难以排查。如果要设计高性能系统，&lt;br&gt;建议通过应用程序而不是外键来维护数据的完整性。&lt;/p&gt;
+&lt;h3 id=&quot;存储过程&quot;&gt;&lt;a href=&quot;#存储过程&quot; class=&quot;headerlink&quot; title=&quot;存储过程&quot;&gt;&lt;/a&gt;存储过程&lt;/h3&gt;&lt;p&gt;存储过程和存储函数都可以接收参数然后返回值，触发器和事件却不行。&lt;br&gt;可以节省很多网络开销，也可以操纵一些没有权限的表，但是bug较多，使用时要慎重考虑。&lt;/p&gt;
+&lt;h3 id=&quot;绑定变量&quot;&gt;&lt;a href=&quot;#绑定变量&quot; class=&quot;headerlink&quot; title=&quot;绑定变量&quot;&gt;&lt;/a&gt;绑定变量&lt;/h3&gt;&lt;p&gt;对于大量重复类型的查询语句，性能会有很大的提升。一般来说，利大于弊，使用还能保证一定的安全性。&lt;/p&gt;
+&lt;h4 id=&quot;优点&quot;&gt;&lt;a href=&quot;#优点&quot; class=&quot;headerlink&quot; title=&quot;优点&quot;&gt;&lt;/a&gt;优点&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;在服务器端只需要解析一次SQL语句。&lt;/li&gt;
+&lt;li&gt;某些优化器的工作只需要执行一次。&lt;/li&gt;
+&lt;li&gt;以二进制方式只发送参数和句柄，比起每次都发送ASCII码文本效率更高。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;代码样例&quot;&gt;&lt;a href=&quot;#代码样例&quot; class=&quot;headerlink&quot; title=&quot;代码样例&quot;&gt;&lt;/a&gt;代码样例&lt;/h4&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;insert&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(User user)&lt;/span&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;boolean&lt;/span&gt; flag=&lt;span class=&quot;keyword&quot;&gt;true&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        Connection conn=&lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        PreparedStatement ps=&lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        String sql=&lt;span class=&quot;string&quot;&gt;&quot;update user set pwd=? where name=?&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        conn=DBConnUtil.getConn();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            ps=conn.prepareStatement(sql);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            ps.setString(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, user.getPwd());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            ps.setString(&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, user.getName());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; i= ps.executeUpdate();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(i==&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                flag=&lt;span class=&quot;keyword&quot;&gt;false&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125; &lt;span class=&quot;keyword&quot;&gt;catch&lt;/span&gt; (SQLException e) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            e.printStackTrace();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;span class=&quot;keyword&quot;&gt;finally&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            DBConnUtil.closeAll(&lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;, ps, conn);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; flag;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;插件&quot;&gt;&lt;a href=&quot;#插件&quot; class=&quot;headerlink&quot; title=&quot;插件&quot;&gt;&lt;/a&gt;插件&lt;/h3&gt;&lt;p&gt;用C或C++编写插件来扩展MySQL的功能，极客所为。&lt;/p&gt;
+&lt;h3 id=&quot;字符集&quot;&gt;&lt;a href=&quot;#字符集&quot; class=&quot;headerlink&quot; title=&quot;字符集&quot;&gt;&lt;/a&gt;字符集&lt;/h3&gt;&lt;p&gt;数据库，表间的字符集最好统一，但是是否使用UTF-8看情况而定。&lt;/p&gt;
+&lt;h3 id=&quot;全文索引&quot;&gt;&lt;a href=&quot;#全文索引&quot; class=&quot;headerlink&quot; title=&quot;全文索引&quot;&gt;&lt;/a&gt;全文索引&lt;/h3&gt;&lt;p&gt;最好使用Lucene、Sphinx来解决全文索引问题。&lt;/p&gt;
+&lt;h3 id=&quot;XA事务&quot;&gt;&lt;a href=&quot;#XA事务&quot; class=&quot;headerlink&quot; title=&quot;XA事务&quot;&gt;&lt;/a&gt;XA事务&lt;/h3&gt;&lt;p&gt;除非真正明白XA事务，否则不要轻易更改默认配置。&lt;/p&gt;
+&lt;h3 id=&quot;查询缓存&quot;&gt;&lt;a href=&quot;#查询缓存&quot; class=&quot;headerlink&quot; title=&quot;查询缓存&quot;&gt;&lt;/a&gt;查询缓存&lt;/h3&gt;&lt;p&gt;真正需要查询缓存时才使用，否则不要使用。使用时不要设置太大的缓存内存。&lt;br&gt;如果希望有更高的缓存效率，最好在应用程序提供缓存。&lt;/p&gt;
+&lt;h4 id=&quot;适用条件-1&quot;&gt;&lt;a href=&quot;#适用条件-1&quot; class=&quot;headerlink&quot; title=&quot;适用条件&quot;&gt;&lt;/a&gt;适用条件&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;UPDATE、DELETE和INSERT操作相比SELECT来说非常少时。&lt;/li&gt;
+&lt;li&gt;被缓存的查询本身消耗巨大，即使缓存命中率非常低，也仍然会对系统性能提升有好处。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;0x04小结&quot;&gt;&lt;a href=&quot;#0x04小结&quot; class=&quot;headerlink&quot; title=&quot;0x04小结&quot;&gt;&lt;/a&gt;0x04小结&lt;/h2&gt;&lt;p&gt;以上的高级特性都不是万能药，使用时要充分用与不用的测量，还包括考虑当前数据库的版本。&lt;/p&gt;
 &lt;h2 id=&quot;引用&quot;&gt;&lt;a href=&quot;#引用&quot; class=&quot;headerlink&quot; title=&quot;引用&quot;&gt;&lt;/a&gt;引用&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://book.douban.com/subject/4241826/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《高性能MySQL · 第三版》&lt;/a&gt;&lt;/p&gt;
 </content>
     
@@ -150,9 +184,9 @@
       <category term="技术博客" scheme="http://joshshaw.github.io/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2/"/>
     
     
-      <category term="递归" scheme="http://joshshaw.github.io/tags/%E9%80%92%E5%BD%92/"/>
-    
       <category term="控制" scheme="http://joshshaw.github.io/tags/%E6%8E%A7%E5%88%B6/"/>
+    
+      <category term="递归" scheme="http://joshshaw.github.io/tags/%E9%80%92%E5%BD%92/"/>
     
       <category term="动态规划" scheme="http://joshshaw.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
@@ -375,9 +409,9 @@
       <category term="技术博客" scheme="http://joshshaw.github.io/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2/"/>
     
     
-      <category term="Leetcode" scheme="http://joshshaw.github.io/tags/Leetcode/"/>
-    
       <category term="递归" scheme="http://joshshaw.github.io/tags/%E9%80%92%E5%BD%92/"/>
+    
+      <category term="Leetcode" scheme="http://joshshaw.github.io/tags/Leetcode/"/>
     
       <category term="二叉树" scheme="http://joshshaw.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
     

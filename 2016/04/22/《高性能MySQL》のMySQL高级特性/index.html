@@ -61,23 +61,20 @@
 
 <meta name="description" content="0x00前言本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。
 0x01简介本章讨论了MySQL的分区表，视图，外键，存储过程，绑定变量，插件，字符集，全文索引，XA事务，查询缓存。
-0x02具体
-分区表适用于大数据量的过滤场景，或者数据分为历史数据和热点数据，对于单条">
+0x02具体分区表适用于大数据量的过滤场景，或者数据分为历史数据和热点数据，对于单条记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《高性能MySQL》のMySQL高级特性">
 <meta property="og:url" content="http://joshshaw.github.io/2016/04/22/《高性能MySQL》のMySQL高级特性/index.html">
 <meta property="og:site_name" content="Joshua Shaw之秘密花园">
 <meta property="og:description" content="0x00前言本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。
 0x01简介本章讨论了MySQL的分区表，视图，外键，存储过程，绑定变量，插件，字符集，全文索引，XA事务，查询缓存。
-0x02具体
-分区表适用于大数据量的过滤场景，或者数据分为历史数据和热点数据，对于单条">
-<meta property="og:updated_time" content="2016-04-22T07:07:45.337Z">
+0x02具体分区表适用于大数据量的过滤场景，或者数据分为历史数据和热点数据，对于单条记">
+<meta property="og:updated_time" content="2016-04-26T05:31:09.187Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《高性能MySQL》のMySQL高级特性">
 <meta name="twitter:description" content="0x00前言本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。
 0x01简介本章讨论了MySQL的分区表，视图，外键，存储过程，绑定变量，插件，字符集，全文索引，XA事务，查询缓存。
-0x02具体
-分区表适用于大数据量的过滤场景，或者数据分为历史数据和热点数据，对于单条">
+0x02具体分区表适用于大数据量的过滤场景，或者数据分为历史数据和热点数据，对于单条记">
 
 
 
@@ -312,19 +309,53 @@
       
         <h2 id="0x00前言"><a href="#0x00前言" class="headerlink" title="0x00前言"></a>0x00前言</h2><p>本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，<br>以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。</p>
 <h2 id="0x01简介"><a href="#0x01简介" class="headerlink" title="0x01简介"></a>0x01简介</h2><p>本章讨论了MySQL的分区表，视图，外键，存储过程，绑定变量，插件，字符集，全文索引，XA事务，查询缓存。</p>
-<h2 id="0x02具体"><a href="#0x02具体" class="headerlink" title="0x02具体"></a>0x02具体</h2><ol>
-<li><strong>分区表</strong><br>适用于大数据量的过滤场景，或者数据分为历史数据和热点数据，对于单条记录的查询并没有多少优势。</li>
-<li><strong>视图</strong><br>简化应用程序的SQL语句编写（诸如表联结）。</li>
-<li><strong>外键</strong><br>为确保系统完整性的额外特性，会带来较高地效率代价。如果要设计高性能系统，建议通过应用程序而不是外键<br>来维护数据的完整性。</li>
-<li><strong>存储过程</strong><br>可以节省很多网络开销，也可以操纵一些没有权限的表，但是bug较多，使用时要慎重考虑。</li>
-<li><strong>绑定变量</strong><br>对于大量重复类型的查询语句，性能会有很大的提升。一般来说，利大于弊，使用还能保证一定的安全性。</li>
-<li><strong>插件</strong><br>用C或C++编写插件来扩展MySQL的功能，极客所为。</li>
-<li><strong>字符集</strong><br>数据库，表间的字符集最好统一，但是是否使用UTF-8看情况而定。</li>
-<li><strong>全文索引</strong><br>最好使用Lucene、Sphinx来解决全文索引问题。</li>
-<li><strong>XA事务</strong><br>除非真正明白XA事务，否则不要轻易更改默认配置。</li>
-<li><strong>查询缓存</strong><br>真正需要查询缓存时才使用，否则不要使用。使用时不要设置太大的缓存内存。<br>如果希望有更高的缓存效率，最好在应用程序提供缓存。</li>
-</ol>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>以上的高级特性都不是万能药，使用时要充分用与不用的测量，还包括考虑当前数据库的版本。</p>
+<h2 id="0x02具体"><a href="#0x02具体" class="headerlink" title="0x02具体"></a>0x02具体</h2><h3 id="分区表"><a href="#分区表" class="headerlink" title="分区表"></a>分区表</h3><p>适用于大数据量的过滤场景，或者数据分为历史数据和热点数据，对于单条记录的查询并没有多少优势。</p>
+<h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>通过句柄对象转化成对存储引擎的接口调用，对于SQL层是完全封装底层实现的黑盒子。<br>CURD操作都会先代开并锁住所有的底层表，然后在解锁不需要的表。所以并不是在处理过程中都锁住表。</p>
+<h4 id="适用条件"><a href="#适用条件" class="headerlink" title="适用条件"></a>适用条件</h4><ul>
+<li>表非常大，或者表的最后部分是热点数据，其余是历史数据。</li>
+<li>想大批量地删除数据，可以使用清除整个分区的方式。</li>
+<li>分区表可以分布在不同的物理设备上。</li>
+<li>避免某些特殊瓶颈。如ext3文件系统的inode锁竞争。</li>
+<li>可以备份和恢复独立的分区。</li>
+</ul>
+<h4 id="限制和性能问题"><a href="#限制和性能问题" class="headerlink" title="限制和性能问题"></a>限制和性能问题</h4><ul>
+<li>所用分区都必须使用相同的存储引擎。</li>
+<li>有些存储引擎不支持分区。</li>
+<li>在创建分区时可以使用表达式，但在查询时却只能根据列来过滤分区。</li>
+<li>分区列和索引列不匹配。</li>
+<li>选择分区成本的成本很高时。</li>
+<li>打开并锁住底层表的成本很高时（若本身查询操作是快速的）。</li>
+</ul>
+<h3 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h3><p>简化应用程序的SQL语句编写（诸如表联结），或者使用视图实现基于列的权限控制，重构schema等。</p>
+<h4 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h4><ul>
+<li>临时表算法<br>先执行视图的查询语言生成临时表，再通过临时表执行查找。视图中包含GROUP BY、DISTINCT、任何<br>聚合函数、UNION、子查询等，只要无法在原表记录和视图记录中建立一一映射的场景时，只能采用临时表算法。</li>
+<li>合并算法<br>将定义视图的语句与查询语句合并，进行一次查询操作。</li>
+</ul>
+<h4 id="性能影响和缺点"><a href="#性能影响和缺点" class="headerlink" title="性能影响和缺点"></a>性能影响和缺点</h4><ul>
+<li>临时表没有索引。</li>
+<li>不支持物化视图。</li>
+<li>有些情况视图不可以被更新（包括更改联接键，视图定义使用聚合函数等）。</li>
+<li>MySQL目前不支持触发器。</li>
+</ul>
+<h3 id="外键"><a href="#外键" class="headerlink" title="外键"></a>外键</h3><p>为确保系统完整性的额外特性，会带来较高地效率代价，外键导致的死锁问题难以排查。如果要设计高性能系统，<br>建议通过应用程序而不是外键来维护数据的完整性。</p>
+<h3 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a>存储过程</h3><p>存储过程和存储函数都可以接收参数然后返回值，触发器和事件却不行。<br>可以节省很多网络开销，也可以操纵一些没有权限的表，但是bug较多，使用时要慎重考虑。</p>
+<h3 id="绑定变量"><a href="#绑定变量" class="headerlink" title="绑定变量"></a>绑定变量</h3><p>对于大量重复类型的查询语句，性能会有很大的提升。一般来说，利大于弊，使用还能保证一定的安全性。</p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>在服务器端只需要解析一次SQL语句。</li>
+<li>某些优化器的工作只需要执行一次。</li>
+<li>以二进制方式只发送参数和句柄，比起每次都发送ASCII码文本效率更高。</li>
+</ul>
+<h4 id="代码样例"><a href="#代码样例" class="headerlink" title="代码样例"></a>代码样例</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">insert</span><span class="params">(User user)</span></span>&#123;</span><br><span class="line">        <span class="keyword">boolean</span> flag=<span class="keyword">true</span>;</span><br><span class="line">        Connection conn=<span class="keyword">null</span>;</span><br><span class="line">        PreparedStatement ps=<span class="keyword">null</span>;</span><br><span class="line">        String sql=<span class="string">"update user set pwd=? where name=?"</span>;</span><br><span class="line">        conn=DBConnUtil.getConn();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            ps=conn.prepareStatement(sql);</span><br><span class="line">            ps.setString(<span class="number">1</span>, user.getPwd());</span><br><span class="line">            ps.setString(<span class="number">2</span>, user.getName());</span><br><span class="line">            <span class="keyword">int</span> i= ps.executeUpdate();</span><br><span class="line">            <span class="keyword">if</span>(i==<span class="number">0</span>)&#123;</span><br><span class="line">                flag=<span class="keyword">false</span>;</span><br><span class="line">            &#125;  </span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">            DBConnUtil.closeAll(<span class="keyword">null</span>, ps, conn);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> flag;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h3><p>用C或C++编写插件来扩展MySQL的功能，极客所为。</p>
+<h3 id="字符集"><a href="#字符集" class="headerlink" title="字符集"></a>字符集</h3><p>数据库，表间的字符集最好统一，但是是否使用UTF-8看情况而定。</p>
+<h3 id="全文索引"><a href="#全文索引" class="headerlink" title="全文索引"></a>全文索引</h3><p>最好使用Lucene、Sphinx来解决全文索引问题。</p>
+<h3 id="XA事务"><a href="#XA事务" class="headerlink" title="XA事务"></a>XA事务</h3><p>除非真正明白XA事务，否则不要轻易更改默认配置。</p>
+<h3 id="查询缓存"><a href="#查询缓存" class="headerlink" title="查询缓存"></a>查询缓存</h3><p>真正需要查询缓存时才使用，否则不要使用。使用时不要设置太大的缓存内存。<br>如果希望有更高的缓存效率，最好在应用程序提供缓存。</p>
+<h4 id="适用条件-1"><a href="#适用条件-1" class="headerlink" title="适用条件"></a>适用条件</h4><ul>
+<li>UPDATE、DELETE和INSERT操作相比SELECT来说非常少时。</li>
+<li>被缓存的查询本身消耗巨大，即使缓存命中率非常低，也仍然会对系统性能提升有好处。</li>
+</ul>
+<h2 id="0x04小结"><a href="#0x04小结" class="headerlink" title="0x04小结"></a>0x04小结</h2><p>以上的高级特性都不是万能药，使用时要充分用与不用的测量，还包括考虑当前数据库的版本。</p>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://book.douban.com/subject/4241826/" target="_blank" rel="external">《高性能MySQL · 第三版》</a></p>
 
       
@@ -552,7 +583,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x00前言"><span class="nav-number">1.</span> <span class="nav-text">0x00前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01简介"><span class="nav-number">2.</span> <span class="nav-text">0x01简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02具体"><span class="nav-number">3.</span> <span class="nav-text">0x02具体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">4.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">5.</span> <span class="nav-text">引用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x00前言"><span class="nav-number">1.</span> <span class="nav-text">0x00前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01简介"><span class="nav-number">2.</span> <span class="nav-text">0x01简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02具体"><span class="nav-number">3.</span> <span class="nav-text">0x02具体</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分区表"><span class="nav-number">3.1.</span> <span class="nav-text">分区表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原理"><span class="nav-number">3.1.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#适用条件"><span class="nav-number">3.1.2.</span> <span class="nav-text">适用条件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#限制和性能问题"><span class="nav-number">3.1.3.</span> <span class="nav-text">限制和性能问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#视图"><span class="nav-number">3.2.</span> <span class="nav-text">视图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原理-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#性能影响和缺点"><span class="nav-number">3.2.2.</span> <span class="nav-text">性能影响和缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#外键"><span class="nav-number">3.3.</span> <span class="nav-text">外键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存储过程"><span class="nav-number">3.4.</span> <span class="nav-text">存储过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绑定变量"><span class="nav-number">3.5.</span> <span class="nav-text">绑定变量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-number">3.5.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码样例"><span class="nav-number">3.5.2.</span> <span class="nav-text">代码样例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插件"><span class="nav-number">3.6.</span> <span class="nav-text">插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符集"><span class="nav-number">3.7.</span> <span class="nav-text">字符集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全文索引"><span class="nav-number">3.8.</span> <span class="nav-text">全文索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XA事务"><span class="nav-number">3.9.</span> <span class="nav-text">XA事务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询缓存"><span class="nav-number">3.10.</span> <span class="nav-text">查询缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#适用条件-1"><span class="nav-number">3.10.1.</span> <span class="nav-text">适用条件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x04小结"><span class="nav-number">4.</span> <span class="nav-text">0x04小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">5.</span> <span class="nav-text">引用</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
