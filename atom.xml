@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://joshshaw.github.io/"/>
-  <updated>2016-04-26T12:58:23.447Z</updated>
+  <updated>2016-04-26T13:02:37.663Z</updated>
   <id>http://joshshaw.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://joshshaw.github.io/2016/04/26/%E3%80%8A%E9%AB%98%E6%80%A7%E8%83%BDMySQL%E3%80%8B%E3%81%AE%E5%A4%8D%E5%88%B6/"/>
     <id>http://joshshaw.github.io/2016/04/26/《高性能MySQL》の复制/</id>
     <published>2016-04-26T11:19:20.000Z</published>
-    <updated>2016-04-26T12:58:23.447Z</updated>
+    <updated>2016-04-26T13:02:37.663Z</updated>
     
     <content type="html">&lt;h2 id=&quot;0x00前言&quot;&gt;&lt;a href=&quot;#0x00前言&quot; class=&quot;headerlink&quot; title=&quot;0x00前言&quot;&gt;&lt;/a&gt;0x00前言&lt;/h2&gt;&lt;p&gt;本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，&lt;br&gt;以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。&lt;/p&gt;
 &lt;h2 id=&quot;0x01简介&quot;&gt;&lt;a href=&quot;#0x01简介&quot; class=&quot;headerlink&quot; title=&quot;0x01简介&quot;&gt;&lt;/a&gt;0x01简介&lt;/h2&gt;&lt;p&gt;本章阐述所有与复制相关的内容&lt;/p&gt;
@@ -97,14 +97,14 @@
 &lt;li&gt;创建没有数据的日志服务器&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&quot;0x06复制和容量规划&quot;&gt;&lt;a href=&quot;#0x06复制和容量规划&quot; class=&quot;headerlink&quot; title=&quot;0x06复制和容量规划&quot;&gt;&lt;/a&gt;0x06复制和容量规划&lt;/h2&gt;&lt;p&gt;主备库的模式下，并不是增加备库就能线性增加读写功能。并且在开启复制功能时，要考虑监控延时，可用性（各个&lt;br&gt;库的状态，包括主和被），规划冗余容量和性能，改变主库，还有解决问题的方法。&lt;/p&gt;
-&lt;h2 id=&quot;MySQL复制的高级特性&quot;&gt;&lt;a href=&quot;#MySQL复制的高级特性&quot; class=&quot;headerlink&quot; title=&quot;MySQL复制的高级特性&quot;&gt;&lt;/a&gt;MySQL复制的高级特性&lt;/h2&gt;&lt;h3 id=&quot;半同步复制&quot;&gt;&lt;a href=&quot;#半同步复制&quot; class=&quot;headerlink&quot; title=&quot;半同步复制&quot;&gt;&lt;/a&gt;半同步复制&lt;/h3&gt;&lt;p&gt;可以帮助确保备库拥有主库数据的拷贝，减少潜在的数据丢失危机。有助于备库提供更好地冗余度和持久性。&lt;br&gt;半同步复制在提交过程中增加一个延迟：当提交事务时，在客户端接收到查询结束反馈前必须保证二进制日志已经传输&lt;br&gt;到至少一台备库上。&lt;/p&gt;
+&lt;h2 id=&quot;0x07-MySQL复制的高级特性&quot;&gt;&lt;a href=&quot;#0x07-MySQL复制的高级特性&quot; class=&quot;headerlink&quot; title=&quot;0x07 MySQL复制的高级特性&quot;&gt;&lt;/a&gt;0x07 MySQL复制的高级特性&lt;/h2&gt;&lt;h3 id=&quot;半同步复制&quot;&gt;&lt;a href=&quot;#半同步复制&quot; class=&quot;headerlink&quot; title=&quot;半同步复制&quot;&gt;&lt;/a&gt;半同步复制&lt;/h3&gt;&lt;p&gt;可以帮助确保备库拥有主库数据的拷贝，减少潜在的数据丢失危机。有助于备库提供更好地冗余度和持久性。&lt;br&gt;半同步复制在提交过程中增加一个延迟：当提交事务时，在客户端接收到查询结束反馈前必须保证二进制日志已经传输&lt;br&gt;到至少一台备库上。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;在主库上已经完成&lt;strong&gt;事务&lt;/strong&gt;提交，只有通知客户端被延迟了。&lt;/li&gt;
 &lt;li&gt;备库在接&lt;strong&gt;收到事务后&lt;/strong&gt;发送反馈而非（备库）完成事务后发送。&lt;/li&gt;
 &lt;li&gt;如果备库一直没有回应已收到事件，会超时并转化为正常的异步复制模式。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&quot;复制心跳&quot;&gt;&lt;a href=&quot;#复制心跳&quot; class=&quot;headerlink&quot; title=&quot;复制心跳&quot;&gt;&lt;/a&gt;复制心跳&lt;/h3&gt;&lt;p&gt;保持备库一直与主库相联系，避免悄无声息地断开连接。&lt;/p&gt;
-&lt;h2 id=&quot;0x07小结&quot;&gt;&lt;a href=&quot;#0x07小结&quot; class=&quot;headerlink&quot; title=&quot;0x07小结&quot;&gt;&lt;/a&gt;0x07小结&lt;/h2&gt;&lt;ul&gt;
+&lt;h2 id=&quot;0x08小结&quot;&gt;&lt;a href=&quot;#0x08小结&quot; class=&quot;headerlink&quot; title=&quot;0x08小结&quot;&gt;&lt;/a&gt;0x08小结&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;KISS原则（Keep It Simple Stupid），用简单的就好。&lt;/li&gt;
 &lt;li&gt;监控，监控，监控，重要的事情说三遍。&lt;/li&gt;
 &lt;li&gt;理解复制的异步本质，且设计你的应用避免或容忍从备库读取脏数据。&lt;/li&gt;
