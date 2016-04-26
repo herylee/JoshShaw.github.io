@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://joshshaw.github.io/"/>
-  <updated>2016-04-26T05:31:09.187Z</updated>
+  <updated>2016-04-26T05:32:05.197Z</updated>
   <id>http://joshshaw.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://joshshaw.github.io/2016/04/22/%E3%80%8A%E9%AB%98%E6%80%A7%E8%83%BDMySQL%E3%80%8B%E3%81%AEMySQL%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/"/>
     <id>http://joshshaw.github.io/2016/04/22/《高性能MySQL》のMySQL高级特性/</id>
     <published>2016-04-22T06:28:02.000Z</published>
-    <updated>2016-04-26T05:31:09.187Z</updated>
+    <updated>2016-04-26T05:32:05.197Z</updated>
     
     <content type="html">&lt;h2 id=&quot;0x00前言&quot;&gt;&lt;a href=&quot;#0x00前言&quot; class=&quot;headerlink&quot; title=&quot;0x00前言&quot;&gt;&lt;/a&gt;0x00前言&lt;/h2&gt;&lt;p&gt;本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，&lt;br&gt;以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。&lt;/p&gt;
 &lt;h2 id=&quot;0x01简介&quot;&gt;&lt;a href=&quot;#0x01简介&quot; class=&quot;headerlink&quot; title=&quot;0x01简介&quot;&gt;&lt;/a&gt;0x01简介&lt;/h2&gt;&lt;p&gt;本章讨论了MySQL的分区表，视图，外键，存储过程，绑定变量，插件，字符集，全文索引，XA事务，查询缓存。&lt;/p&gt;
@@ -31,7 +31,8 @@
 &lt;li&gt;想大批量地删除数据，可以使用清除整个分区的方式。&lt;/li&gt;
 &lt;li&gt;分区表可以分布在不同的物理设备上。&lt;/li&gt;
 &lt;li&gt;避免某些特殊瓶颈。如ext3文件系统的inode锁竞争。&lt;/li&gt;
-&lt;li&gt;可以备份和恢复独立的分区。&lt;/li&gt;
+&lt;li&gt;可以备份和恢复独立的分区。&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&quot;限制和性能问题&quot;&gt;&lt;a href=&quot;#限制和性能问题&quot; class=&quot;headerlink&quot; title=&quot;限制和性能问题&quot;&gt;&lt;/a&gt;限制和性能问题&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;所用分区都必须使用相同的存储引擎。&lt;/li&gt;
@@ -76,7 +77,16 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;0x00前言&quot;&gt;&lt;a href=&quot;#0x00前言&quot; class=&quot;headerlink&quot; title=&quot;0x00前言&quot;&gt;&lt;/a&gt;0x00前言&lt;/h2&gt;&lt;p&gt;本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重
+      &lt;h2 id=&quot;0x00前言&quot;&gt;&lt;a href=&quot;#0x00前言&quot; class=&quot;headerlink&quot; title=&quot;0x00前言&quot;&gt;&lt;/a&gt;0x00前言&lt;/h2&gt;&lt;p&gt;本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，&lt;br&gt;以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。&lt;/p&gt;
+&lt;h2 id=&quot;0x01简介&quot;&gt;&lt;a href=&quot;#0x01简介&quot; class=&quot;headerlink&quot; title=&quot;0x01简介&quot;&gt;&lt;/a&gt;0x01简介&lt;/h2&gt;&lt;p&gt;本章讨论了MySQL的分区表，视图，外键，存储过程，绑定变量，插件，字符集，全文索引，XA事务，查询缓存。&lt;/p&gt;
+&lt;h2 id=&quot;0x02具体&quot;&gt;&lt;a href=&quot;#0x02具体&quot; class=&quot;headerlink&quot; title=&quot;0x02具体&quot;&gt;&lt;/a&gt;0x02具体&lt;/h2&gt;&lt;h3 id=&quot;分区表&quot;&gt;&lt;a href=&quot;#分区表&quot; class=&quot;headerlink&quot; title=&quot;分区表&quot;&gt;&lt;/a&gt;分区表&lt;/h3&gt;&lt;p&gt;适用于大数据量的过滤场景，或者数据分为历史数据和热点数据，对于单条记录的查询并没有多少优势。&lt;/p&gt;
+&lt;h4 id=&quot;原理&quot;&gt;&lt;a href=&quot;#原理&quot; class=&quot;headerlink&quot; title=&quot;原理&quot;&gt;&lt;/a&gt;原理&lt;/h4&gt;&lt;p&gt;通过句柄对象转化成对存储引擎的接口调用，对于SQL层是完全封装底层实现的黑盒子。&lt;br&gt;CURD操作都会先代开并锁住所有的底层表，然后在解锁不需要的表。所以并不是在处理过程中都锁住表。&lt;/p&gt;
+&lt;h4 id=&quot;适用条件&quot;&gt;&lt;a href=&quot;#适用条件&quot; class=&quot;headerlink&quot; title=&quot;适用条件&quot;&gt;&lt;/a&gt;适用条件&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;表非常大，或者表的最后部分是热点数据，其余是历史数据。&lt;/li&gt;
+&lt;li&gt;想大批量地删除数据，可以使用清除整个分区的方式。&lt;/li&gt;
+&lt;li&gt;分区表可以分布在不同的物理设备上。&lt;/li&gt;
+&lt;li&gt;避免某些特殊瓶颈。如ext3文件系统的inode锁竞争。&lt;/li&gt;
+&lt;li&gt;可以备份和恢复独立的分区。
     
     </summary>
     
@@ -184,9 +194,9 @@
       <category term="技术博客" scheme="http://joshshaw.github.io/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2/"/>
     
     
-      <category term="控制" scheme="http://joshshaw.github.io/tags/%E6%8E%A7%E5%88%B6/"/>
-    
       <category term="递归" scheme="http://joshshaw.github.io/tags/%E9%80%92%E5%BD%92/"/>
+    
+      <category term="控制" scheme="http://joshshaw.github.io/tags/%E6%8E%A7%E5%88%B6/"/>
     
       <category term="动态规划" scheme="http://joshshaw.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
@@ -409,9 +419,9 @@
       <category term="技术博客" scheme="http://joshshaw.github.io/categories/%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2/"/>
     
     
-      <category term="递归" scheme="http://joshshaw.github.io/tags/%E9%80%92%E5%BD%92/"/>
-    
       <category term="Leetcode" scheme="http://joshshaw.github.io/tags/Leetcode/"/>
+    
+      <category term="递归" scheme="http://joshshaw.github.io/tags/%E9%80%92%E5%BD%92/"/>
     
       <category term="二叉树" scheme="http://joshshaw.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
     
