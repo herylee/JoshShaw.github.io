@@ -60,27 +60,33 @@
 
 
 <meta name="description" content="0x00前言本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。
+
 0x01简介良好的逻辑设计和物理设计是高性能的基石。Schema的设计是极为重要的，下面将会简单介绍具体情况下适合的设计。
+
 0x02选择数据类型
 更小的通常更好。这样会占用更少的磁盘，内存和CPU
-简单就好">
+简单">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《高性能MySQL》のSchema与数据类型优化">
 <meta property="og:url" content="http://joshshaw.github.io/2016/04/28/《高性能MySQL》のSchema与数据类型优化/index.html">
 <meta property="og:site_name" content="Joshua Shaw之秘密花园">
 <meta property="og:description" content="0x00前言本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。
+
 0x01简介良好的逻辑设计和物理设计是高性能的基石。Schema的设计是极为重要的，下面将会简单介绍具体情况下适合的设计。
+
 0x02选择数据类型
 更小的通常更好。这样会占用更少的磁盘，内存和CPU
-简单就好">
-<meta property="og:updated_time" content="2016-04-28T07:07:26.900Z">
+简单">
+<meta property="og:updated_time" content="2016-04-28T11:23:01.665Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《高性能MySQL》のSchema与数据类型优化">
 <meta name="twitter:description" content="0x00前言本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。
+
 0x01简介良好的逻辑设计和物理设计是高性能的基石。Schema的设计是极为重要的，下面将会简单介绍具体情况下适合的设计。
+
 0x02选择数据类型
 更小的通常更好。这样会占用更少的磁盘，内存和CPU
-简单就好">
+简单">
 
 
 
@@ -314,7 +320,9 @@
 
       
         <h2 id="0x00前言"><a href="#0x00前言" class="headerlink" title="0x00前言"></a>0x00前言</h2><p>本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，<br>以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。</p>
+<hr>
 <h2 id="0x01简介"><a href="#0x01简介" class="headerlink" title="0x01简介"></a>0x01简介</h2><p>良好的逻辑设计和物理设计是高性能的基石。Schema的设计是极为重要的，下面将会简单介绍具体情况下适合的设计。</p>
+<hr>
 <h2 id="0x02选择数据类型"><a href="#0x02选择数据类型" class="headerlink" title="0x02选择数据类型"></a>0x02选择数据类型</h2><ul>
 <li>更小的通常更好。这样会占用更少的磁盘，内存和CPU</li>
 <li>简单就好。日期用日期类型DATETIME、TIMESTAMP而不是字符串等等。</li>
@@ -344,7 +352,7 @@
 </table>
 <p>字段非负时最好用上UNSIGNED。标识符一般使用整数字段，并且金钱一般也使用整数来存储，只需要乘以响应的<br>位数，这样计算上不需要使用float或者double，计算速度更快，并且不失精确性。而IPv4地址也最好用整数存储。</p>
 <h3 id="实数类型"><a href="#实数类型" class="headerlink" title="实数类型"></a>实数类型</h3><p>DECIMAL类型也能精确计算，但是代缴较高，能用整数代替时最好用整数。</p>
-<h3 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h3><p>字符串类型用较多种，如VARCHAR、CHAR、TEXT、BOLB等。<br>数据库、表、和表中的列都可以定义自己的字符集和排序规则，但是一般情况下最好统一，这样能简化开发。<br>字符长度不要分配太多，应该分配适合范围内的最小值。</p>
+<h3 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h3><p>字符串类型用较多种，如VARCHAR、CHAR、TEXT、BOLB等。<br>数据库、表、和表中的列都可以定义自己的字符集和排序规则，但是一般情况下最好统一，这样能简化开发。<br>字符长度不要分配太多，应该分配适合范围内的最小值。<br><a id="more"></a></p>
 <h4 id="VARCHAR"><a href="#VARCHAR" class="headerlink" title="VARCHAR"></a>VARCHAR</h4><p>VARCHAR需要使用1或者2个额外字节记录字符串的长度，并且要避免使用<code>ROW_FORMAT=FIXED</code>。能节省存储空间，<br>但是UPDATE时会耗时，于是需要时常更新的列不宜使用。新版本的InnoDB会自动将过长的VARCHAR存储为BLOB。<br>下面场景适合使用：</p>
 <ul>
 <li>当字符串列的最大长度比平均长度大很多</li>
@@ -366,6 +374,7 @@
 <h4 id="SET"><a href="#SET" class="headerlink" title="SET"></a>SET</h4><p>保存大量布尔值集合时使用，不过最好用整数类型的8/4/2/1来代替。</p>
 <h3 id="选择标识符"><a href="#选择标识符" class="headerlink" title="选择标识符"></a>选择标识符</h3><p>像QQ号码就是一个标识符。最好使用整数而不是字符串（耗空间，慢）来实现，关联时关联字段的定义要保持一致。</p>
 <h3 id="特殊类型数据"><a href="#特殊类型数据" class="headerlink" title="特殊类型数据"></a>特殊类型数据</h3><p>强烈推荐使用无符号整数存储IP地址，再通过MySQL的<code>INET_ATON()</code>和<code>INET_NTOA()</code>来转换。</p>
+<hr>
 <h2 id="0x03-设计陷阱"><a href="#0x03-设计陷阱" class="headerlink" title="0x03 设计陷阱"></a>0x03 设计陷阱</h2><p>以下的设计要尽量避免：</p>
 <ul>
 <li>太多的列。当需要使用的数据并不是全部时</li>
@@ -373,6 +382,7 @@
 <li>全能和变相的枚举。枚举尽量避免使用</li>
 <li>哪里都不用NULL。有时候NULL是必须并且有效的</li>
 </ul>
+<hr>
 <h2 id="0x04范式和反范式"><a href="#0x04范式和反范式" class="headerlink" title="0x04范式和反范式"></a>0x04范式和反范式</h2><h3 id="范式的优缺点"><a href="#范式的优缺点" class="headerlink" title="范式的优缺点"></a>范式的优缺点</h3><ul>
 <li>更新操作快</li>
 <li>没有重复数据</li>
@@ -389,7 +399,9 @@
 <h3 id="混用范式和反范式"><a href="#混用范式和反范式" class="headerlink" title="混用范式和反范式"></a>混用范式和反范式</h3><p>排序和汇总时可以适当地使用反范式。</p>
 <h3 id="缓存表和汇总表"><a href="#缓存表和汇总表" class="headerlink" title="缓存表和汇总表"></a>缓存表和汇总表</h3><p>如果能容忍少量的脏数据来增强实时性时可以使用。前者是逻辑上的冗余数据，后者在逻辑上并不冗余。</p>
 <h3 id="计数器表"><a href="#计数器表" class="headerlink" title="计数器表"></a>计数器表</h3><p>加槽来提搞并发量，并且定时删除过多的列。</p>
+<hr>
 <h2 id="0x05加快ALTER-TABLE操作的速度"><a href="#0x05加快ALTER-TABLE操作的速度" class="headerlink" title="0x05加快ALTER TABLE操作的速度"></a>0x05加快ALTER TABLE操作的速度</h2><p>书上的做法并不可取，最好通过在备库上执行ALTER TABLE操作，再切换主备库来实现。</p>
+<hr>
 <h2 id="0x06小结"><a href="#0x06小结" class="headerlink" title="0x06小结"></a>0x06小结</h2><ul>
 <li>尽量避免过度的设计</li>
 <li>尽可能地避免使用NULL值，但也不能太过</li>
@@ -399,6 +411,7 @@
 <li>小心使用ENUM和SET，最好避免使用BIT</li>
 <li>通过在备库上执行ALTER TABLE操作，再切换主备库</li>
 </ul>
+<hr>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://book.douban.com/subject/4241826/" target="_blank" rel="external">《高性能MySQL · 第三版》</a></p>
 
       

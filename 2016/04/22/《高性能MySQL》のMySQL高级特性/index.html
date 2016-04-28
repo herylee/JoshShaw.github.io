@@ -60,21 +60,27 @@
 
 
 <meta name="description" content="0x00前言本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。
+
 0x01简介本章讨论了MySQL的分区表，视图，外键，存储过程，绑定变量，插件，字符集，全文索引，XA事务，查询缓存。
-0x02具体分区表适用于大数据量的过滤场景，或者数据分为历史数据和热点数据，对于单条记">
+
+0x02具体分区表适用于大数据量的过滤场景，或者数据分为历史数据和热点数据，对于单">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《高性能MySQL》のMySQL高级特性">
 <meta property="og:url" content="http://joshshaw.github.io/2016/04/22/《高性能MySQL》のMySQL高级特性/index.html">
 <meta property="og:site_name" content="Joshua Shaw之秘密花园">
 <meta property="og:description" content="0x00前言本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。
+
 0x01简介本章讨论了MySQL的分区表，视图，外键，存储过程，绑定变量，插件，字符集，全文索引，XA事务，查询缓存。
-0x02具体分区表适用于大数据量的过滤场景，或者数据分为历史数据和热点数据，对于单条记">
-<meta property="og:updated_time" content="2016-04-26T05:34:15.442Z">
+
+0x02具体分区表适用于大数据量的过滤场景，或者数据分为历史数据和热点数据，对于单">
+<meta property="og:updated_time" content="2016-04-28T11:23:31.083Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《高性能MySQL》のMySQL高级特性">
 <meta name="twitter:description" content="0x00前言本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。
+
 0x01简介本章讨论了MySQL的分区表，视图，外键，存储过程，绑定变量，插件，字符集，全文索引，XA事务，查询缓存。
-0x02具体分区表适用于大数据量的过滤场景，或者数据分为历史数据和热点数据，对于单条记">
+
+0x02具体分区表适用于大数据量的过滤场景，或者数据分为历史数据和热点数据，对于单">
 
 
 
@@ -308,7 +314,9 @@
 
       
         <h2 id="0x00前言"><a href="#0x00前言" class="headerlink" title="0x00前言"></a>0x00前言</h2><p>本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，<br>以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。</p>
+<hr>
 <h2 id="0x01简介"><a href="#0x01简介" class="headerlink" title="0x01简介"></a>0x01简介</h2><p>本章讨论了MySQL的分区表，视图，外键，存储过程，绑定变量，插件，字符集，全文索引，XA事务，查询缓存。</p>
+<hr>
 <h2 id="0x02具体"><a href="#0x02具体" class="headerlink" title="0x02具体"></a>0x02具体</h2><h3 id="分区表"><a href="#分区表" class="headerlink" title="分区表"></a>分区表</h3><p>适用于大数据量的过滤场景，或者数据分为历史数据和热点数据，对于单条记录的查询并没有多少优势。</p>
 <h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>通过句柄对象转化成对存储引擎的接口调用，对于SQL层是完全封装底层实现的黑盒子。<br>CURD操作都会先代开并锁住所有的底层表，然后在解锁不需要的表。所以并不是在处理过程中都锁住表。</p>
 <h4 id="适用条件"><a href="#适用条件" class="headerlink" title="适用条件"></a>适用条件</h4><ul>
@@ -356,7 +364,9 @@
 <li>UPDATE、DELETE和INSERT操作相比SELECT来说非常少时。</li>
 <li>被缓存的查询本身消耗巨大，即使缓存命中率非常低，也仍然会对系统性能提升有好处。</li>
 </ul>
+<hr>
 <h2 id="0x04小结"><a href="#0x04小结" class="headerlink" title="0x04小结"></a>0x04小结</h2><p>以上的高级特性都不是万能药，使用时要充分用与不用的测量，还包括考虑当前数据库的版本。</p>
+<hr>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://book.douban.com/subject/4241826/" target="_blank" rel="external">《高性能MySQL · 第三版》</a></p>
 
       

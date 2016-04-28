@@ -306,9 +306,10 @@
 
       
         
-          
-            <h2 id="0x00前言"><a href="#0x00前言" class="headerlink" title="0x00前言"></a>0x00前言</h2><p>本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，<br>以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。</p>
+          <h2 id="0x00前言"><a href="#0x00前言" class="headerlink" title="0x00前言"></a>0x00前言</h2><p>本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，<br>以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。</p>
+<hr>
 <h2 id="0x01简介"><a href="#0x01简介" class="headerlink" title="0x01简介"></a>0x01简介</h2><p>良好的逻辑设计和物理设计是高性能的基石。Schema的设计是极为重要的，下面将会简单介绍具体情况下适合的设计。</p>
+<hr>
 <h2 id="0x02选择数据类型"><a href="#0x02选择数据类型" class="headerlink" title="0x02选择数据类型"></a>0x02选择数据类型</h2><ul>
 <li>更小的通常更好。这样会占用更少的磁盘，内存和CPU</li>
 <li>简单就好。日期用日期类型DATETIME、TIMESTAMP而不是字符串等等。</li>
@@ -338,64 +339,12 @@
 </table>
 <p>字段非负时最好用上UNSIGNED。标识符一般使用整数字段，并且金钱一般也使用整数来存储，只需要乘以响应的<br>位数，这样计算上不需要使用float或者double，计算速度更快，并且不失精确性。而IPv4地址也最好用整数存储。</p>
 <h3 id="实数类型"><a href="#实数类型" class="headerlink" title="实数类型"></a>实数类型</h3><p>DECIMAL类型也能精确计算，但是代缴较高，能用整数代替时最好用整数。</p>
-<h3 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h3><p>字符串类型用较多种，如VARCHAR、CHAR、TEXT、BOLB等。<br>数据库、表、和表中的列都可以定义自己的字符集和排序规则，但是一般情况下最好统一，这样能简化开发。<br>字符长度不要分配太多，应该分配适合范围内的最小值。</p>
-<h4 id="VARCHAR"><a href="#VARCHAR" class="headerlink" title="VARCHAR"></a>VARCHAR</h4><p>VARCHAR需要使用1或者2个额外字节记录字符串的长度，并且要避免使用<code>ROW_FORMAT=FIXED</code>。能节省存储空间，<br>但是UPDATE时会耗时，于是需要时常更新的列不宜使用。新版本的InnoDB会自动将过长的VARCHAR存储为BLOB。<br>下面场景适合使用：</p>
-<ul>
-<li>当字符串列的最大长度比平均长度大很多</li>
-<li>列更新少</li>
-<li>使用UTF-8字符集</li>
-</ul>
-<h4 id="CHAR"><a href="#CHAR" class="headerlink" title="CHAR"></a>CHAR</h4><p>CHAR类型是定长的，不足时会填充字符，不会产生碎片。新版本的MySQL会去掉最后的空格。下面场景适合使用：</p>
-<ul>
-<li>存储密码的MD5等散列</li>
-<li>时常变更的数据</li>
-<li>非常短的列</li>
-</ul>
-<h4 id="BLOB和TEXT"><a href="#BLOB和TEXT" class="headerlink" title="BLOB和TEXT"></a>BLOB和TEXT</h4><p>前者没有排序规则或字符集，后者有。排序只与<code>max_sort-length</code>有关。</p>
-<h4 id="枚举（ENUM）代替字符串"><a href="#枚举（ENUM）代替字符串" class="headerlink" title="枚举（ENUM）代替字符串"></a>枚举（ENUM）代替字符串</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> enum_test(</span><br><span class="line">  e ENUM(<span class="string">'fish'</span>, <span class="string">'apple'</span>, <span class="string">'dog'</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<p>实际存储的是整数。并且排序是根据整数而不是字符串排序的。添加和删除字符串必须使用ALTER TABLE。<br>当枚举的数量少并且不时常更改时适合使用，还可以减少整体的存储空间。</p>
-<h3 id="日期和时间类型"><a href="#日期和时间类型" class="headerlink" title="日期和时间类型"></a>日期和时间类型</h3><p>DATETIME能保存大范围的值，TIMESTAMP只能到2038年，但是与时区有关，存储也更小，默认为NOT NULL。<br>推荐使用TIMESTAMP。</p>
-<h3 id="位数据类型"><a href="#位数据类型" class="headerlink" title="位数据类型"></a>位数据类型</h3><p>技术上来说都是字符串类型。</p>
-<h4 id="BIT"><a href="#BIT" class="headerlink" title="BIT"></a>BIT</h4><p>如果想用BIT来存储一个false/true值，能通过创建CHAR(0)来代替，其中NULL为false，空字符串为true。</p>
-<h4 id="SET"><a href="#SET" class="headerlink" title="SET"></a>SET</h4><p>保存大量布尔值集合时使用，不过最好用整数类型的8/4/2/1来代替。</p>
-<h3 id="选择标识符"><a href="#选择标识符" class="headerlink" title="选择标识符"></a>选择标识符</h3><p>像QQ号码就是一个标识符。最好使用整数而不是字符串（耗空间，慢）来实现，关联时关联字段的定义要保持一致。</p>
-<h3 id="特殊类型数据"><a href="#特殊类型数据" class="headerlink" title="特殊类型数据"></a>特殊类型数据</h3><p>强烈推荐使用无符号整数存储IP地址，再通过MySQL的<code>INET_ATON()</code>和<code>INET_NTOA()</code>来转换。</p>
-<h2 id="0x03-设计陷阱"><a href="#0x03-设计陷阱" class="headerlink" title="0x03 设计陷阱"></a>0x03 设计陷阱</h2><p>以下的设计要尽量避免：</p>
-<ul>
-<li>太多的列。当需要使用的数据并不是全部时</li>
-<li>太多的关联。太多关联会使得查询变慢</li>
-<li>全能和变相的枚举。枚举尽量避免使用</li>
-<li>哪里都不用NULL。有时候NULL是必须并且有效的</li>
-</ul>
-<h2 id="0x04范式和反范式"><a href="#0x04范式和反范式" class="headerlink" title="0x04范式和反范式"></a>0x04范式和反范式</h2><h3 id="范式的优缺点"><a href="#范式的优缺点" class="headerlink" title="范式的优缺点"></a>范式的优缺点</h3><ul>
-<li>更新操作快</li>
-<li>没有重复数据</li>
-<li>表通常更小，更好地放在内存里</li>
-<li>更少地需要使用DISTINCT或者GROUP BY</li>
-<li><strong>缺点是需要关联，使得一些索引策略无效</strong></li>
-</ul>
-<h3 id="反范式的优缺点"><a href="#反范式的优缺点" class="headerlink" title="反范式的优缺点"></a>反范式的优缺点</h3><ul>
-<li>避免关联</li>
-<li>当数据量大得比内存多时速度很快</li>
-<li>避免随机IO</li>
-<li><strong>缺点是更改字段时需要做更多，存储也更多</strong></li>
-</ul>
-<h3 id="混用范式和反范式"><a href="#混用范式和反范式" class="headerlink" title="混用范式和反范式"></a>混用范式和反范式</h3><p>排序和汇总时可以适当地使用反范式。</p>
-<h3 id="缓存表和汇总表"><a href="#缓存表和汇总表" class="headerlink" title="缓存表和汇总表"></a>缓存表和汇总表</h3><p>如果能容忍少量的脏数据来增强实时性时可以使用。前者是逻辑上的冗余数据，后者在逻辑上并不冗余。</p>
-<h3 id="计数器表"><a href="#计数器表" class="headerlink" title="计数器表"></a>计数器表</h3><p>加槽来提搞并发量，并且定时删除过多的列。</p>
-<h2 id="0x05加快ALTER-TABLE操作的速度"><a href="#0x05加快ALTER-TABLE操作的速度" class="headerlink" title="0x05加快ALTER TABLE操作的速度"></a>0x05加快ALTER TABLE操作的速度</h2><p>书上的做法并不可取，最好通过在备库上执行ALTER TABLE操作，再切换主备库来实现。</p>
-<h2 id="0x06小结"><a href="#0x06小结" class="headerlink" title="0x06小结"></a>0x06小结</h2><ul>
-<li>尽量避免过度的设计</li>
-<li>尽可能地避免使用NULL值，但也不能太过</li>
-<li>尽量使用相同的数据类型存储相似或相关的值</li>
-<li>注意可变长字符串，临时表和排序时可能会使用大量的内存</li>
-<li>尽量使用整型定义标识列</li>
-<li>小心使用ENUM和SET，最好避免使用BIT</li>
-<li>通过在备库上执行ALTER TABLE操作，再切换主备库</li>
-</ul>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://book.douban.com/subject/4241826/" target="_blank" rel="external">《高性能MySQL · 第三版》</a></p>
-
-          
+<h3 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h3><p>字符串类型用较多种，如VARCHAR、CHAR、TEXT、BOLB等。<br>数据库、表、和表中的列都可以定义自己的字符集和排序规则，但是一般情况下最好统一，这样能简化开发。<br>字符长度不要分配太多，应该分配适合范围内的最小值。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/28/《高性能MySQL》のSchema与数据类型优化/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -509,14 +458,15 @@
         
           <h2 id="0x00前言"><a href="#0x00前言" class="headerlink" title="0x00前言"></a>0x00前言</h2><p>本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，<br>以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。</p>
 <h2 id="0x01简介"><a href="#0x01简介" class="headerlink" title="0x01简介"></a>0x01简介</h2><p>本章阐述所有与复制相关的内容</p>
-<ul>
+<ol>
 <li>简要介绍复制如何工作</li>
-<li>讨论基本的复制服务搭建<ol>
+<li>讨论基本的复制服务搭建<ul>
 <li>与复制相关的配置</li>
 <li>如何管理和优化复制服务器</li>
-</ol>
-</li>
 </ul>
+</li>
+</ol>
+<hr>
 <h2 id="0x02复制概述"><a href="#0x02复制概述" class="headerlink" title="0x02复制概述"></a>0x02复制概述</h2><ul>
 <li>MySQL支持两种复制方式：基于行的复制和基于语句的复制。</li>
 <li>都是通过主库上记录二进制日志，虽然有开销，但是不会很大。</li>
@@ -534,7 +484,8 @@
 <h3 id="复制如何工作"><a href="#复制如何工作" class="headerlink" title="复制如何工作"></a>复制如何工作</h3><ul>
 <li>主库把数据更改记录到二进制日志中。</li>
 <li>备库将主库上的日志复制到自己的中继日志中。</li>
-<li>备库读取中继日志中的事件，将其重放到备库数据之上。
+<li>备库读取中继日志中的事件，将其重放到备库数据之上。</li>
+</ul>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/04/26/《高性能MySQL》の复制/#more" rel="contents">
               阅读全文 &raquo;
@@ -652,7 +603,9 @@
       
         
           <h2 id="0x00前言"><a href="#0x00前言" class="headerlink" title="0x00前言"></a>0x00前言</h2><p>本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，<br>以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。</p>
+<hr>
 <h2 id="0x01简介"><a href="#0x01简介" class="headerlink" title="0x01简介"></a>0x01简介</h2><p>本章讨论了MySQL的分区表，视图，外键，存储过程，绑定变量，插件，字符集，全文索引，XA事务，查询缓存。</p>
+<hr>
 <h2 id="0x02具体"><a href="#0x02具体" class="headerlink" title="0x02具体"></a>0x02具体</h2><h3 id="分区表"><a href="#分区表" class="headerlink" title="分区表"></a>分区表</h3><p>适用于大数据量的过滤场景，或者数据分为历史数据和热点数据，对于单条记录的查询并没有多少优势。</p>
 <h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>通过句柄对象转化成对存储引擎的接口调用，对于SQL层是完全封装底层实现的黑盒子。<br>CURD操作都会先代开并锁住所有的底层表，然后在解锁不需要的表。所以并不是在处理过程中都锁住表。</p>
 <h4 id="适用条件"><a href="#适用条件" class="headerlink" title="适用条件"></a>适用条件</h4><ul>
