@@ -333,20 +333,6 @@
 </ul>
 </li>
 </ol>
-<h3 id="哈希索引"><a href="#哈希索引" class="headerlink" title="哈希索引"></a>哈希索引</h3><ol>
-<li>简介<br>哈希索引基于哈希表实现，只有精确匹配索引所有列的查询才有效。只有Memory引擎显式支持，，且支持的是<br>非唯一哈希索引（哈希值相同的通过链表保存，再做相等比较）同时该引擎也支持B-Tree索引。需要作很多关联<br>的星型schema，使用哈希索引非常适合查找表的需求。</li>
-<li>限制<ul>
-<li>哈希索引只包含哈希值和行指针，不能使用索引中的值来避免读取行（不能进行覆盖索引的意思）</li>
-<li>不是按照索引值顺序存储的，无法用于排序</li>
-<li>不支持部分索引列匹配查找</li>
-<li>只支持等值比较查询，不支持范围查询</li>
-<li>哈希冲突高时，代价也较高（可以用红黑树代替链表，Java8的hashmap已经实现）</li>
-</ul>
-</li>
-<li>可创建自定义哈希索引，主键的哈希值作为索引（需要添加hash列作为冗余），通过触发器进行hash列的维护。<br>但是不要用强哈希函数如MD5或者sha，这样hash列会非常长。查询时要在where查询加入哈希判断。</li>
-</ol>
-<h3 id="空间数据索引（R-Tree）"><a href="#空间数据索引（R-Tree）" class="headerlink" title="空间数据索引（R-Tree）"></a>空间数据索引（R-Tree）</h3><p>空间索引会从所有维度来索引数据。MySQL的MyISAM支持，InnoDB还不支持，其他数据库如PostgreSQL支持。</p>
-<h3 id="全文索引"><a href="#全文索引" class="headerlink" title="全文索引"></a>全文索引</h3><h2 id=""><a href="#" class="headerlink" title=""></a>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/04/29/《高性能MySQL》の创建高性能的索引/#more" rel="contents">
               阅读全文 &raquo;
