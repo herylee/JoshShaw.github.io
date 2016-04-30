@@ -306,8 +306,7 @@
 
       
         
-          
-            <h2 id="0x00前言"><a href="#0x00前言" class="headerlink" title="0x00前言"></a>0x00前言</h2><p>本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，<br>以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。</p>
+          <h2 id="0x00前言"><a href="#0x00前言" class="headerlink" title="0x00前言"></a>0x00前言</h2><p>本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，<br>以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。</p>
 <hr>
 <h2 id="0x01索引基础"><a href="#0x01索引基础" class="headerlink" title="0x01索引基础"></a>0x01索引基础</h2><p>索引可以包含一个或多个列的值。</p>
 <h3 id="B-Tree索引"><a href="#B-Tree索引" class="headerlink" title="B-Tree索引"></a>B-Tree索引</h3><ol>
@@ -347,124 +346,12 @@
 <li>可创建自定义哈希索引，主键的哈希值作为索引（需要添加hash列作为冗余），通过触发器进行hash列的维护。<br>但是不要用强哈希函数如MD5或者sha，这样hash列会非常长。查询时要在where查询加入哈希判断。</li>
 </ol>
 <h3 id="空间数据索引（R-Tree）"><a href="#空间数据索引（R-Tree）" class="headerlink" title="空间数据索引（R-Tree）"></a>空间数据索引（R-Tree）</h3><p>空间索引会从所有维度来索引数据。MySQL的MyISAM支持，InnoDB还不支持，其他数据库如PostgreSQL支持。</p>
-<h3 id="全文索引"><a href="#全文索引" class="headerlink" title="全文索引"></a>全文索引</h3><hr>
-<h2 id="0x02索引的优点"><a href="#0x02索引的优点" class="headerlink" title="0x02索引的优点"></a>0x02索引的优点</h2><ul>
-<li>大大减少服务器需要扫描的数据量</li>
-<li>可以帮助服务器避免排序和临时表</li>
-<li>可以将随机IO变为顺序IO</li>
-</ul>
-<h3 id="“三星”索引的标准"><a href="#“三星”索引的标准" class="headerlink" title="“三星”索引的标准"></a>“三星”索引的标准</h3><ul>
-<li>一星：将相关记录放到一起（多列索引）</li>
-<li>二星：索引中的数据顺序和查找中的排序顺序一致</li>
-<li>三星：覆盖索引</li>
-</ul>
-<hr>
-<h2 id="0x03高性能的索引策略"><a href="#0x03高性能的索引策略" class="headerlink" title="0x03高性能的索引策略"></a>0x03高性能的索引策略</h2><h3 id="独立的列"><a href="#独立的列" class="headerlink" title="独立的列"></a>独立的列</h3><p>如果查询中的列不是独立的，则MySQL就不会使用索引。“独立的列”是指索引列不能是表达式的一部分，也不能是<br>函数的参数。</p>
-<h3 id="前缀索引和索引选择性"><a href="#前缀索引和索引选择性" class="headerlink" title="前缀索引和索引选择性"></a>前缀索引和索引选择性</h3><p>对于BLOB、TEXT或者很长的VARCHAR类型的列，必须使用前缀索引，因为MySQL不允许索引这些列的完整长度。<br>选择足够长的前缀以保证较高地选择性，同时又不能太长（以便节约空间）。<br>下面是选择性的公式：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> &lt;<span class="keyword">col</span>&gt;)/<span class="keyword">COUNT</span>(*) <span class="keyword">FROM</span> &lt;<span class="keyword">table</span>&gt;;</span><br></pre></td></tr></table></figure></p>
-<p>前缀索引是一种能使用索引更小、更快的有效办法，但另一方面也有其缺点：MySQL无法使用前缀索引做ORDER BY<br>和GROUP BY，也无法使用前缀做覆盖扫描。<br>存储网站的会话（session）时，需要在一个很长的十六进制字符串上创建索引。此时如果采用长度为8的前缀索引<br>通常能显著地提升性能，并且这种方法对上层应用完全透明。<br>有时候后缀索引（suffix index）也有用途（邮箱名称，XXXXXX@~~~.com）。</p>
-<h3 id="多列索引"><a href="#多列索引" class="headerlink" title="多列索引"></a>多列索引</h3><p>不要对每个列创建独立的索引，或者按照错误的顺序创建多列索引（下面会解释怎样是正确的顺序）。<br>糟糕的索引建立：</p>
-<ul>
-<li>对多个索引做相交操作（多个AND），需要多列索引而不是每一列一个索引</li>
-<li>对多个索引做联合操作（多个OR），会耗费大量CPU和内存资源在算法的缓存、排序、合并操作上。</li>
-<li>优化器不会把这些计算到“查询成本”中</li>
-<li>有时候UNION的方式往往更好  </li>
-</ul>
-<p>索引合并是MySQL5.0后的新特性，使用EXPLAIN查看发现索引合并时最好重新建立何时的索引。</p>
-<h3 id="选择合适的索引列顺序"><a href="#选择合适的索引列顺序" class="headerlink" title="选择合适的索引列顺序"></a>选择合适的索引列顺序</h3><p>正确的顺序依赖于使用该索引的查询，并且同时需要考虑如何更好地满足排序和分组的需要。（仅适用于B-Tree）<br><strong>经验法则</strong>：将选择性最高的列放到索引最前列。<br>当不需要考虑排序和分组的时候，将选择性最高的列放在前面通常是最好的，此时只是用于优化where条件的查询。<br>性能是根据那些运行频率最高的查询来调整索引列的顺序，如上面的公式，即具体值/整体基数。</p>
-<h3 id="聚簇索引（InnoDB的基本原理，重要）"><a href="#聚簇索引（InnoDB的基本原理，重要）" class="headerlink" title="聚簇索引（InnoDB的基本原理，重要）"></a>聚簇索引（InnoDB的基本原理，重要）</h3><p>并不是一种单独的索引类型，而是一种数据存储方式。数据行存放在索引的叶子页中，简单地说就是索引在数据表中。</p>
-<ol>
-<li>优点：<ul>
-<li>可以把相关数据保存在一起</li>
-<li>数据访问更快</li>
-<li>使用覆盖索引扫描的查询可以直接使用页节点中的主键值</li>
-<li>最大限度地提高了IO密集型应用性能</li>
-</ul>
-</li>
-<li>缺点<ul>
-<li>若全表都在内存里，就没有任何优势，上述最后一项优点就没有了</li>
-<li>插入速度严重依赖于插入顺序</li>
-<li>更新聚簇索引列的代价很高</li>
-<li>基于聚簇索引的表在插入新行，或者主键被更新导致需要移动行的时候，可能面临“页分裂”问题</li>
-<li>聚簇索引可能导致全表扫描变慢，行比较稀疏时或者页分裂导致数据存储不连续时</li>
-<li>二级索引（非聚簇索引）可能比想象的要更大，因该索引会存储的是主键而不是数据行地址（也是优势之一，因为这样二级索引不会时常改变数据行的地址值）</li>
-<li>二级索引访问需要两次索引查询  </li>
-</ul>
-</li>
-</ol>
-<p>聚簇索引的每一个叶子节点都包含：</p>
-<ul>
-<li>主键值</li>
-<li>事务ID</li>
-<li>用于事务和MVCC的回滚指针</li>
-<li>所有剩余列</li>
-</ul>
-<p><strong>最好避免随机的（不连续且值得分布范围非常大）聚簇索引。（主键使用AUTO_INCREMENT为佳）</strong><br>InnoDB默认的最大填充因子是页大小的15/16，留出部分空间用于以后修改。InnoDB无法简单地总是把新行插入<br>到索引的最后，而是需要为新的行寻找合适的位置（MyISAM可以）。  </p>
-<p>InnoDB写入的缺点：</p>
-<ul>
-<li>写入的目标页可能已经刷到磁盘上并从缓存中移除，或者还没有被夹在到缓存中。InnoDB在插入之前不得不先找到并从磁盘读取目标页到内存中，会导致大量的随机IO。</li>
-<li>写入是乱序时，InnoDB不得不频繁地做页分裂操作。会导致移动大量数据。</li>
-<li>频繁地页分裂，页会变得稀疏并被不规则地填充，最终数据会有碎片。</li>
-</ul>
-<p><strong>因此尽可能地使用单调递增地聚簇键的值来插入新行。</strong></p>
-<h3 id="覆盖索引"><a href="#覆盖索引" class="headerlink" title="覆盖索引"></a>覆盖索引</h3><p>MySQL可以使用索引来直接获取列的数据，这样就不在需要读取数据行。这样的优点：</p>
-<ul>
-<li>索引条目通常远小于数据行大小。会极大地减少数据访问量。索引比数据更小，更容易全部放入内存中。</li>
-<li>索引是按照列值顺序存储的，对于IO密集型的范围查询会比随机从磁盘读取每一行数据的IO要少得多。</li>
-<li>MyISAM在内存中只缓存索引，数据依赖于操作系统来缓存，因此访问数据需要系统调用，会耗时。</li>
-<li>二级主键能覆盖查询，则可以避免对主键索引的二次查询。</li>
-</ul>
-<p><strong>哈希索引、空间索引和全文索引等都不存储索引列的值，不能做覆盖索引。</strong><br>执行LIKE操作或者查询所有列不会执行聚簇索引。但是采用<code>延迟关联</code>可以作一定的优化。</p>
-<h3 id="使用索引扫描来做排序"><a href="#使用索引扫描来做排序" class="headerlink" title="使用索引扫描来做排序"></a>使用索引扫描来做排序</h3><ol>
-<li>只有当索引的列顺序和ORDER BY子句的顺序完全一致，并且所有列的排序方向都一样时，才能够使用索引来对结果排序。</li>
-<li>如果是关联查询，只有当ORDER BY子句引用的字段全部为第一个表时，才能使用索引做排序。</li>
-<li>满足最左前缀的要求。例如，第一列提供了常量条件，第二列可进行索引排序。</li>
-<li>其他的都不可以。</li>
-</ol>
-<h3 id="压缩（前缀压缩）索引"><a href="#压缩（前缀压缩）索引" class="headerlink" title="压缩（前缀压缩）索引"></a>压缩（前缀压缩）索引</h3><p>MyISAM压缩每个索引块的方法是：先完全保存索引块中的第一个值，然后将其他值赫尔第一个值进行比较得<br>到相同前缀的字节数和剩余的不同后缀部分。</p>
-<h3 id="冗余和重复索引"><a href="#冗余和重复索引" class="headerlink" title="冗余和重复索引"></a>冗余和重复索引</h3><p>冗余：在同一列上创建不同类型的索引来满足不同的查询需求。<br>重复：毫无益处。<br>应该尽量扩展已有的索引而不是创建新索引，但是有时候扩展已有的索引会导致其变太大。<br>当大量的索引到导致性能瓶颈时，删除之。</p>
-<h3 id="未使用的索引"><a href="#未使用的索引" class="headerlink" title="未使用的索引"></a>未使用的索引</h3><p>删除之。</p>
-<h3 id="索引和锁"><a href="#索引和锁" class="headerlink" title="索引和锁"></a>索引和锁</h3><p>InnoDB只有在访问行的时候才会对其加锁，而索引能够减少InnoDB访问的行数，从而减少锁的数量。<br>即使使用了索引，InnoDB也可能锁住一些不需要的数据。</p>
-<hr>
-<h2 id="0x04索引案例学习（有意思）"><a href="#0x04索引案例学习（有意思）" class="headerlink" title="0x04索引案例学习（有意思）"></a>0x04索引案例学习（有意思）</h2><p>尽可能将需要做范围查询的列放到索引的后面，以便优化器能使用尽可能多的索引列。<br>多个等值条件查询不是范围查询。<br>延迟关联的范式：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> &lt;cols&gt; <span class="keyword">FROM</span> <span class="keyword">profiles</span> <span class="keyword">INNER</span> <span class="keyword">JOIN</span> (</span><br><span class="line">  <span class="keyword">SELECT</span> &lt;primary <span class="keyword">key</span> cols&gt; <span class="keyword">FROM</span> <span class="keyword">profiles</span></span><br><span class="line">  <span class="keyword">WHERE</span> new_table_name.XXX1=? <span class="keyword">ORDER</span> <span class="keyword">BY</span> XXX2 <span class="keyword">LIMIT</span> <span class="number">100</span>, <span class="number">10</span></span><br><span class="line">) <span class="keyword">AS</span> new_table_name <span class="keyword">USING</span> (&lt;primary <span class="keyword">key</span> cols&gt;);</span><br></pre></td></tr></table></figure></p>
-<hr>
-<h2 id="0x05维护索引和表"><a href="#0x05维护索引和表" class="headerlink" title="0x05维护索引和表"></a>0x05维护索引和表</h2><h3 id="减少索引和数据的碎片"><a href="#减少索引和数据的碎片" class="headerlink" title="减少索引和数据的碎片"></a>减少索引和数据的碎片</h3><p>使用OPTMIZE TABLE或者导出再导入的方式来重新整理数据。不支持该指令的表可以改变引擎再执行。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> &lt;<span class="keyword">table</span>&gt; <span class="keyword">ENGINE</span>=&lt;<span class="keyword">engine</span>&gt;;</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>行碎片：数据行被存储为多个地方的多个片段中。</li>
-<li>行间碎片：指逻辑上顺序的页，或者行在磁盘上不是顺序存储的。</li>
-<li>剩余空间碎片：值数据页中有大量的空余空间。造成浪费。</li>
-</ul>
-<p>如果进行碎片整理将数据压缩到一起，可能反而会导致后续的更新操作触发一系列的页分裂和重组，这会<br>对性能造成不良的影响。</p>
-<hr>
-<h2 id="0x06小结"><a href="#0x06小结" class="headerlink" title="0x06小结"></a>0x06小结</h2><ul>
-<li>单行访问是很慢的</li>
-<li>案顺序访问范围数据是很快的</li>
-<li>索引覆盖查询时很快的</li>
-</ul>
-<hr>
-<h2 id="0xff-B树简述"><a href="#0xff-B树简述" class="headerlink" title="0xff B树简述"></a>0xff B树简述</h2><p>B树又叫平衡多路查询树，一颗<strong>m</strong>阶的B树（m叉树）的特征如下：</p>
-<ol>
-<li>树中每个结点最多含有m个孩子（m&gt;=2）（一般例子m=5）</li>
-<li>除根节点和叶子结点外吗，其他每个结点至少有<code>ceil(m/2)</code>个孩子（ceil()取上限，2.5取3）（m=5时，ceil(5/2)=3）</li>
-<li>若根节点不是叶子结点，则至少有2个孩子</li>
-<li>所有叶子结点都出现在同一层</li>
-<li>每个非终端结点中包含：<ul>
-<li>蓝色槽为元素，橙色为指向下一层的指针</li>
-<li>n为蓝色槽的个数，且<code>ceil(m/2)-1 &lt;= n &lt;= m-1</code>（m=5时，2&lt;=n&lt;=4）<img src="/2016/04/29/《高性能MySQL》の创建高性能的索引/btree.jpg" alt="btree.jpg" title="">
-</li>
-</ul>
-</li>
-</ol>
-<p>删除一个元素时，<strong>先向富裕的子结点借，再向父节点借</strong>。</p>
-<p>B树中关键字分布在整个B树中，上层结点出现过的关键字不会再出现在叶结点。<br>B树和B+树的差异是：</p>
-<ul>
-<li>有n棵子树的结点中含n个关键字（B树为n-1，就是蓝色槽比橙色的指针少一个）</li>
-<li>所有的叶子结点中包含了全部关键字</li>
-<li>所有非终端结点可看成索引部分</li>
-</ul>
-<hr>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p> <a href="https://book.douban.com/subject/4241826/" target="_blank" rel="external">《高性能MySQL · 第三版》</a></p>
-
-          
+<h3 id="全文索引"><a href="#全文索引" class="headerlink" title="全文索引"></a>全文索引</h3><h2 id=""><a href="#" class="headerlink" title=""></a>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/29/《高性能MySQL》の创建高性能的索引/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
