@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="关系型数据库,MySQL," />
 
 
 
@@ -59,15 +59,37 @@
 
 
 
-<meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Joshua Shaw之秘密花园">
-<meta property="og:url" content="http://joshshaw.github.io/index.html">
+<meta name="description" content="0x00前言本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。
+
+0x01索引基础索引可以包含一个或多个列的值。
+B-Tree索引
+简介实际上很多存储引擎使用的是B+Tree（如下图）。
+每一个叶子节点都包含指向下一个叶子节点的指针，从而方便叶子节点的范围遍历。
+指向下">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《高性能MySQL》の创建高性能的索引">
+<meta property="og:url" content="http://joshshaw.github.io/2016/04/29/《高性能MySQL》の创建高性能的索引/index.html">
 <meta property="og:site_name" content="Joshua Shaw之秘密花园">
-<meta property="og:description">
+<meta property="og:description" content="0x00前言本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。
+
+0x01索引基础索引可以包含一个或多个列的值。
+B-Tree索引
+简介实际上很多存储引擎使用的是B+Tree（如下图）。
+每一个叶子节点都包含指向下一个叶子节点的指针，从而方便叶子节点的范围遍历。
+指向下">
+<meta property="og:image" content="http://joshshaw.github.io/2016/04/29/《高性能MySQL》の创建高性能的索引/b+tree.jpg">
+<meta property="og:image" content="http://joshshaw.github.io/2016/04/29/《高性能MySQL》の创建高性能的索引/btree.jpg">
+<meta property="og:updated_time" content="2016-04-30T09:01:16.282Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Joshua Shaw之秘密花园">
-<meta name="twitter:description">
+<meta name="twitter:title" content="《高性能MySQL》の创建高性能的索引">
+<meta name="twitter:description" content="0x00前言本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。
+
+0x01索引基础索引可以包含一个或多个列的值。
+B-Tree索引
+简介实际上很多存储引擎使用的是B+Tree（如下图）。
+每一个叶子节点都包含指向下一个叶子节点的指针，从而方便叶子节点的范围遍历。
+指向下">
+<meta name="twitter:image" content="http://joshshaw.github.io/2016/04/29/《高性能MySQL》の创建高性能的索引/b+tree.jpg">
 
 
 
@@ -85,7 +107,7 @@
   };
 </script>
 
-  <title> Joshua Shaw之秘密花园 </title>
+  <title> 《高性能MySQL》の创建高性能的索引 | Joshua Shaw之秘密花园 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -116,9 +138,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -215,9 +235,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -237,10 +257,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/04/29/《高性能MySQL》の创建高性能的索引/" itemprop="url">
-                  《高性能MySQL》の创建高性能的索引
-                </a>
+                《高性能MySQL》の创建高性能的索引
               
             
           </h1>
@@ -305,9 +322,7 @@
       
 
       
-        
-          
-            <h2 id="0x00前言"><a href="#0x00前言" class="headerlink" title="0x00前言"></a>0x00前言</h2><p>本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，<br>以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。</p>
+        <h2 id="0x00前言"><a href="#0x00前言" class="headerlink" title="0x00前言"></a>0x00前言</h2><p>本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，<br>以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。</p>
 <hr>
 <h2 id="0x01索引基础"><a href="#0x01索引基础" class="headerlink" title="0x01索引基础"></a>0x01索引基础</h2><p>索引可以包含一个或多个列的值。</p>
 <h3 id="B-Tree索引"><a href="#B-Tree索引" class="headerlink" title="B-Tree索引"></a>B-Tree索引</h3><ol>
@@ -464,590 +479,76 @@
 <hr>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p> <a href="https://book.douban.com/subject/4241826/" target="_blank" rel="external">《高性能MySQL · 第三版》</a></p>
 
-          
-        
       
     </div>
 
     <div>
       
+        
+      
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/28/《高性能MySQL》のSchema与数据类型优化/" itemprop="url">
-                  《高性能MySQL》のSchema与数据类型优化
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-28T13:41:45+08:00" content="2016-04-28">
-              2016-04-28
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/计算机科学/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机科学</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
+            <a href="/tags/关系型数据库/" rel="tag">#关系型数据库</a>
           
-
+            <a href="/tags/MySQL/" rel="tag">#MySQL</a>
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/28/《高性能MySQL》のSchema与数据类型优化/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/28/《高性能MySQL》のSchema与数据类型优化/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <h2 id="0x00前言"><a href="#0x00前言" class="headerlink" title="0x00前言"></a>0x00前言</h2><p>本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，<br>以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。</p>
-<hr>
-<h2 id="0x01简介"><a href="#0x01简介" class="headerlink" title="0x01简介"></a>0x01简介</h2><p>良好的逻辑设计和物理设计是高性能的基石。Schema的设计是极为重要的，下面将会简单介绍具体情况下适合的设计。</p>
-<hr>
-<h2 id="0x02选择数据类型"><a href="#0x02选择数据类型" class="headerlink" title="0x02选择数据类型"></a>0x02选择数据类型</h2><ul>
-<li>更小的通常更好。这样会占用更少的磁盘，内存和CPU</li>
-<li>简单就好。日期用日期类型DATETIME、TIMESTAMP而不是字符串等等。</li>
-<li>尽量避免NULL。如果该列上建立索引，那么应该尽量避免NULL，但是也不能全不用NULL。</li>
-</ul>
-<h3 id="整数类型"><a href="#整数类型" class="headerlink" title="整数类型"></a>整数类型</h3><table>
-<thead>
-<tr>
-<th style="text-align:center">类型</th>
-<th style="text-align:center">TINYINT</th>
-<th style="text-align:center">SMALLINT</th>
-<th style="text-align:center">MEDIUMINT</th>
-<th style="text-align:center">INT</th>
-<th style="text-align:center">BIGINT</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">比特</td>
-<td style="text-align:center">8</td>
-<td style="text-align:center">16</td>
-<td style="text-align:center">24</td>
-<td style="text-align:center">32</td>
-<td style="text-align:center">64</td>
-</tr>
-</tbody>
-</table>
-<p>字段非负时最好用上UNSIGNED。标识符一般使用整数字段，并且金钱一般也使用整数来存储，只需要乘以响应的<br>位数，这样计算上不需要使用float或者double，计算速度更快，并且不失精确性。而IPv4地址也最好用整数存储。</p>
-<h3 id="实数类型"><a href="#实数类型" class="headerlink" title="实数类型"></a>实数类型</h3><p>DECIMAL类型也能精确计算，但是代缴较高，能用整数代替时最好用整数。</p>
-<h3 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h3><p>字符串类型用较多种，如VARCHAR、CHAR、TEXT、BOLB等。<br>数据库、表、和表中的列都可以定义自己的字符集和排序规则，但是一般情况下最好统一，这样能简化开发。<br>字符长度不要分配太多，应该分配适合范围内的最小值。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/28/《高性能MySQL》のSchema与数据类型优化/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/28/《高性能MySQL》のSchema与数据类型优化/" rel="next" title="《高性能MySQL》のSchema与数据类型优化">
+                <i class="fa fa-chevron-left"></i> 《高性能MySQL》のSchema与数据类型优化
+              </a>
+            
           </div>
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+          <div class="post-nav-prev post-nav-item">
             
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/26/《高性能MySQL》の复制/" itemprop="url">
-                  《高性能MySQL》の复制
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-26T19:19:20+08:00" content="2016-04-26">
-              2016-04-26
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/计算机科学/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机科学</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/26/《高性能MySQL》の复制/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/26/《高性能MySQL》の复制/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <h2 id="0x00前言"><a href="#0x00前言" class="headerlink" title="0x00前言"></a>0x00前言</h2><p>本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，<br>以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。</p>
-<h2 id="0x01简介"><a href="#0x01简介" class="headerlink" title="0x01简介"></a>0x01简介</h2><p>本章阐述所有与复制相关的内容</p>
-<ol>
-<li>简要介绍复制如何工作</li>
-<li>讨论基本的复制服务搭建<ul>
-<li>与复制相关的配置</li>
-<li>如何管理和优化复制服务器</li>
-</ul>
-</li>
-</ol>
-<hr>
-<h2 id="0x02复制概述"><a href="#0x02复制概述" class="headerlink" title="0x02复制概述"></a>0x02复制概述</h2><ul>
-<li>MySQL支持两种复制方式：基于行的复制和基于语句的复制。</li>
-<li>都是通过主库上记录二进制日志，虽然有开销，但是不会很大。</li>
-<li>同一时间点备库上的数据可能与主库存在不一致性，并无法保证主备之间的延迟。</li>
-<li>通过复制可以将读操作指向备库来获得更好地读扩展。</li>
-<li>目前备库只能串行化执行。</li>
-</ul>
-<h3 id="复制解决的问题"><a href="#复制解决的问题" class="headerlink" title="复制解决的问题"></a>复制解决的问题</h3><ul>
-<li>数据分布</li>
-<li>负载均衡</li>
-<li>备份</li>
-<li>高可用性和故障切换</li>
-<li>MySQL升级</li>
-</ul>
-<h3 id="复制如何工作"><a href="#复制如何工作" class="headerlink" title="复制如何工作"></a>复制如何工作</h3><ul>
-<li>主库把数据更改记录到二进制日志中。</li>
-<li>备库将主库上的日志复制到自己的中继日志中。</li>
-<li>备库读取中继日志中的事件，将其重放到备库数据之上。</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/26/《高性能MySQL》の复制/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
+
+    <div class="post-spread">
       
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
 
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/22/《高性能MySQL》のMySQL高级特性/" itemprop="url">
-                  《高性能MySQL》のMySQL高级特性
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-22T14:28:02+08:00" content="2016-04-22">
-              2016-04-22
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/计算机科学/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机科学</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/22/《高性能MySQL》のMySQL高级特性/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/22/《高性能MySQL》のMySQL高级特性/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="0x00前言"><a href="#0x00前言" class="headerlink" title="0x00前言"></a>0x00前言</h2><p>本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，<br>以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。</p>
-<hr>
-<h2 id="0x01简介"><a href="#0x01简介" class="headerlink" title="0x01简介"></a>0x01简介</h2><p>本章讨论了MySQL的分区表，视图，外键，存储过程，绑定变量，插件，字符集，全文索引，XA事务，查询缓存。</p>
-<hr>
-<h2 id="0x02具体"><a href="#0x02具体" class="headerlink" title="0x02具体"></a>0x02具体</h2><h3 id="分区表"><a href="#分区表" class="headerlink" title="分区表"></a>分区表</h3><p>适用于大数据量的过滤场景，或者数据分为历史数据和热点数据，对于单条记录的查询并没有多少优势。</p>
-<h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>通过句柄对象转化成对存储引擎的接口调用，对于SQL层是完全封装底层实现的黑盒子。<br>CURD操作都会先代开并锁住所有的底层表，然后在解锁不需要的表。所以并不是在处理过程中都锁住表。</p>
-<h4 id="适用条件"><a href="#适用条件" class="headerlink" title="适用条件"></a>适用条件</h4><ul>
-<li>表非常大，或者表的最后部分是热点数据，其余是历史数据。</li>
-<li>想大批量地删除数据，可以使用清除整个分区的方式。</li>
-<li>分区表可以分布在不同的物理设备上。</li>
-<li>避免某些特殊瓶颈。如ext3文件系统的inode锁竞争。</li>
-<li>可以备份和恢复独立的分区。
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/22/《高性能MySQL》のMySQL高级特性/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/11/TCP三次握手与四次挥手/" itemprop="url">
-                  TCP三次握手与四次挥手
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-11T17:00:01+08:00" content="2016-04-11">
-              2016-04-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术博客/" itemprop="url" rel="index">
-                    <span itemprop="name">技术博客</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/11/TCP三次握手与四次挥手/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/11/TCP三次握手与四次挥手/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <img src="/2016/04/11/TCP三次握手与四次挥手/tcp.png" alt="tcp.png" title="">
-<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>上图左为tcp连接的状态机，每个圆矩形为一个状态，每个状态有一行或者两行，第一行为该状态的名称，<br>第二行（有的话）为该状态能（或者需要）发送的报文。<br>虚线箭头路径为服务器的常见状态转移路线。虚线框为关闭连接的状态集合。每个状态转移都是通过事件<br>触发，一般为收到一些特定的报文。<br>上图右为时间线下的状态转移示意图，分为常见和特殊情况。</p>
-<h2 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h2><ul>
-<li><a href="#CLOSED">CLOSED</a></li>
-<li><a href="#LISTEN">LISTEN</a></li>
-<li><a href="#SYN_SENT">SYN_SENT</a></li>
-<li><a href="#SYN_RCVD">SYN_RCVD</a></li>
-<li><a href="#ESTABLISED">ESTABLISED</a></li>
-<li><a href="#FIN_WAIT_1">FIN_WAIT_1</a></li>
-<li><a href="#FIN_WAIT_2">FIN_WAIT_2</a></li>
-<li><a href="#CLOSING">CLOSING</a></li>
-<li><a href="#TIME_WAIT">TIME_WAIT</a></li>
-<li><a href="#CLOSE_WAIT">CLOSE_WAIT</a></li>
-<li><a href="#LAST_ACK">LAST_ACK</a>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/11/TCP三次握手与四次挥手/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
+  </div>
 
 
           </div>
@@ -1055,6 +556,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/29/《高性能MySQL》の创建高性能的索引/"
+           data-title="《高性能MySQL》の创建高性能的索引" data-url="http://joshshaw.github.io/2016/04/29/《高性能MySQL》の创建高性能的索引/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -1074,8 +583,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -1177,6 +695,23 @@
       </section>
 
       
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x00前言"><span class="nav-number">1.</span> <span class="nav-text">0x00前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01索引基础"><span class="nav-number">2.</span> <span class="nav-text">0x01索引基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Tree索引"><span class="nav-number">2.1.</span> <span class="nav-text">B-Tree索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#哈希索引"><span class="nav-number">2.2.</span> <span class="nav-text">哈希索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#空间数据索引（R-Tree）"><span class="nav-number">2.3.</span> <span class="nav-text">空间数据索引（R-Tree）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全文索引"><span class="nav-number">2.4.</span> <span class="nav-text">全文索引</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02索引的优点"><span class="nav-number">3.</span> <span class="nav-text">0x02索引的优点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#“三星”索引的标准"><span class="nav-number">3.1.</span> <span class="nav-text">“三星”索引的标准</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03高性能的索引策略"><span class="nav-number">4.</span> <span class="nav-text">0x03高性能的索引策略</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#独立的列"><span class="nav-number">4.1.</span> <span class="nav-text">独立的列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前缀索引和索引选择性"><span class="nav-number">4.2.</span> <span class="nav-text">前缀索引和索引选择性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多列索引"><span class="nav-number">4.3.</span> <span class="nav-text">多列索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择合适的索引列顺序"><span class="nav-number">4.4.</span> <span class="nav-text">选择合适的索引列顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#聚簇索引（InnoDB的基本原理，重要）"><span class="nav-number">4.5.</span> <span class="nav-text">聚簇索引（InnoDB的基本原理，重要）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#覆盖索引"><span class="nav-number">4.6.</span> <span class="nav-text">覆盖索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用索引扫描来做排序"><span class="nav-number">4.7.</span> <span class="nav-text">使用索引扫描来做排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#压缩（前缀压缩）索引"><span class="nav-number">4.8.</span> <span class="nav-text">压缩（前缀压缩）索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#冗余和重复索引"><span class="nav-number">4.9.</span> <span class="nav-text">冗余和重复索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#未使用的索引"><span class="nav-number">4.10.</span> <span class="nav-text">未使用的索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#索引和锁"><span class="nav-number">4.11.</span> <span class="nav-text">索引和锁</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x04索引案例学习（有意思）"><span class="nav-number">5.</span> <span class="nav-text">0x04索引案例学习（有意思）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x05维护索引和表"><span class="nav-number">6.</span> <span class="nav-text">0x05维护索引和表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#减少索引和数据的碎片"><span class="nav-number">6.1.</span> <span class="nav-text">减少索引和数据的碎片</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x06小结"><span class="nav-number">7.</span> <span class="nav-text">0x06小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0xff-B树简述"><span class="nav-number">8.</span> <span class="nav-text">0xff B树简述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">9.</span> <span class="nav-text">引用</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
 
     </div>
   </aside>
@@ -1260,6 +795,167 @@
   
 
   
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
 
   
 
