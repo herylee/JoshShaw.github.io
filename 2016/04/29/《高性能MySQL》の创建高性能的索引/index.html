@@ -79,7 +79,7 @@ B-Tree索引
 指向下">
 <meta property="og:image" content="http://joshshaw.github.io/2016/04/29/《高性能MySQL》の创建高性能的索引/b+tree.jpg">
 <meta property="og:image" content="http://joshshaw.github.io/2016/04/29/《高性能MySQL》の创建高性能的索引/btree.jpg">
-<meta property="og:updated_time" content="2016-04-30T09:04:05.496Z">
+<meta property="og:updated_time" content="2016-04-30T09:05:53.143Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《高性能MySQL》の创建高性能的索引">
 <meta name="twitter:description" content="0x00前言本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。
@@ -363,7 +363,8 @@ B-Tree索引
 <li>可创建自定义哈希索引，主键的哈希值作为索引（需要添加hash列作为冗余），通过触发器进行hash列的维护。<br>但是不要用强哈希函数如MD5或者sha，这样hash列会非常长。查询时要在where查询加入哈希判断。</li>
 </ol>
 <h3 id="空间数据索引（R-Tree）"><a href="#空间数据索引（R-Tree）" class="headerlink" title="空间数据索引（R-Tree）"></a>空间数据索引（R-Tree）</h3><p>空间索引会从所有维度来索引数据。MySQL的MyISAM支持，InnoDB还不支持，其他数据库如PostgreSQL支持。</p>
-<h3 id="全文索引"><a href="#全文索引" class="headerlink" title="全文索引"></a>全文索引</h3><hr>
+<h3 id="全文索引"><a href="#全文索引" class="headerlink" title="全文索引"></a>全文索引</h3><p>复制</p>
+<hr>
 <h2 id="0x02索引的优点"><a href="#0x02索引的优点" class="headerlink" title="0x02索引的优点"></a>0x02索引的优点</h2><ul>
 <li>大大减少服务器需要扫描的数据量</li>
 <li>可以帮助服务器避免排序和临时表</li>
