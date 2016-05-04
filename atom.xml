@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://joshshaw.github.io/"/>
-  <updated>2016-05-04T08:08:49.830Z</updated>
+  <updated>2016-05-04T08:20:09.716Z</updated>
   <id>http://joshshaw.github.io/</id>
   
   <author>
@@ -14,6 +14,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《高性能MySQL》指南摘要</title>
+    <link href="http://joshshaw.github.io/2016/05/04/%E3%80%8A%E9%AB%98%E6%80%A7%E8%83%BDMySQL%E3%80%8B%E6%8C%87%E5%8D%97%E6%91%98%E8%A6%81/"/>
+    <id>http://joshshaw.github.io/2016/05/04/《高性能MySQL》指南摘要/</id>
+    <published>2016-05-04T08:19:15.000Z</published>
+    <updated>2016-05-04T08:20:09.716Z</updated>
+    
+    <content type="html">&lt;p&gt;《高性能MySQL》一书给我们做了许多指导，其中有5章应该精读的：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://joshshaw.github.io/2016/04/28/%E3%80%8A%E9%AB%98%E6%80%A7%E8%83%BDMySQL%E3%80%8B%E3%81%AESchema%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%BC%98%E5%8C%96/&quot;&gt;Schema与数据类型优化&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://joshshaw.github.io/2016/04/29/%E3%80%8A%E9%AB%98%E6%80%A7%E8%83%BDMySQL%E3%80%8B%E3%81%AE%E5%88%9B%E5%BB%BA%E9%AB%98%E6%80%A7%E8%83%BD%E7%9A%84%E7%B4%A2%E5%BC%95/&quot;&gt;创建高性能的索引&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://joshshaw.github.io/2016/05/04/%E3%80%8A%E9%AB%98%E6%80%A7%E8%83%BDMySQL%E3%80%8B%E3%81%AE%E6%9F%A5%E8%AF%A2%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/&quot;&gt;查询性能优化&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://joshshaw.github.io/2016/04/22/%E3%80%8A%E9%AB%98%E6%80%A7%E8%83%BDMySQL%E3%80%8B%E3%81%AEMySQL%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/&quot;&gt;MySQL高级特性&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://joshshaw.github.io/2016/04/26/%E3%80%8A%E9%AB%98%E6%80%A7%E8%83%BDMySQL%E3%80%8B%E3%81%AE%E5%A4%8D%E5%88%B6/&quot;&gt;复制&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我对这几章都读过不下三遍了，有一些理解，当然更多的是疑惑，顺便在阅读的时候做了一些关键的摘要，方便以后查阅，当然在这里也共享给大家阅读一下。&lt;/p&gt;
+&lt;p&gt;可能我的总结有纰漏，请大家评判指正，谢谢。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;《高性能MySQL》一书给我们做了许多指导，其中有5章应该精读的：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://joshshaw.github.io/2016/04/28/%E3%80%8A%E9%AB%98%E6%80%A7%E8%83%BDMySQL%E3
+    
+    </summary>
+    
+      <category term="汇总" scheme="http://joshshaw.github.io/categories/%E6%B1%87%E6%80%BB/"/>
+    
+    
+      <category term="MySQL" scheme="http://joshshaw.github.io/tags/MySQL/"/>
+    
+  </entry>
   
   <entry>
     <title>《高性能MySQL》の查询性能优化</title>

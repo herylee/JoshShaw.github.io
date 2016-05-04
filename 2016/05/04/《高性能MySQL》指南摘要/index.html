@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="关系型数据库,MySQL," />
+  <meta name="keywords" content="MySQL," />
 
 
 
@@ -59,52 +59,43 @@
 
 
 
-<meta name="description" content="0x00前言本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。
-0x01简介本章阐述所有与复制相关的内容
+<meta name="description" content="《高性能MySQL》一书给我们做了许多指导，其中有5章应该精读的：
 
-简要介绍复制如何工作
-讨论基本的复制服务搭建
-与复制相关的配置
-如何管理和优化复制服务器
+Schema与数据类型优化
+创建高性能的索引
+查询性能优化
+MySQL高级特性
+复制
 
-
-
-
-0x02复制概述
-MySQL支持两种复制方式：基于行的复制和基于">
+我对这几章都读过不下三遍了，有一些理解，当然更多的是疑惑，顺便在阅读的时候做了一些关键的摘要，方便以后查阅，当然在这里也共享给大家阅读一下。
+可能我的总结有纰漏，请大家评判指正，谢谢。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《高性能MySQL》の复制">
-<meta property="og:url" content="http://joshshaw.github.io/2016/04/26/《高性能MySQL》の复制/index.html">
+<meta property="og:title" content="《高性能MySQL》指南摘要">
+<meta property="og:url" content="http://joshshaw.github.io/2016/05/04/《高性能MySQL》指南摘要/index.html">
 <meta property="og:site_name" content="Joshua Shaw之秘密花园">
-<meta property="og:description" content="0x00前言本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。
-0x01简介本章阐述所有与复制相关的内容
+<meta property="og:description" content="《高性能MySQL》一书给我们做了许多指导，其中有5章应该精读的：
 
-简要介绍复制如何工作
-讨论基本的复制服务搭建
-与复制相关的配置
-如何管理和优化复制服务器
+Schema与数据类型优化
+创建高性能的索引
+查询性能优化
+MySQL高级特性
+复制
 
-
-
-
-0x02复制概述
-MySQL支持两种复制方式：基于行的复制和基于">
-<meta property="og:updated_time" content="2016-04-28T11:21:59.653Z">
+我对这几章都读过不下三遍了，有一些理解，当然更多的是疑惑，顺便在阅读的时候做了一些关键的摘要，方便以后查阅，当然在这里也共享给大家阅读一下。
+可能我的总结有纰漏，请大家评判指正，谢谢。">
+<meta property="og:updated_time" content="2016-05-04T08:20:09.716Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《高性能MySQL》の复制">
-<meta name="twitter:description" content="0x00前言本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。
-0x01简介本章阐述所有与复制相关的内容
+<meta name="twitter:title" content="《高性能MySQL》指南摘要">
+<meta name="twitter:description" content="《高性能MySQL》一书给我们做了许多指导，其中有5章应该精读的：
 
-简要介绍复制如何工作
-讨论基本的复制服务搭建
-与复制相关的配置
-如何管理和优化复制服务器
+Schema与数据类型优化
+创建高性能的索引
+查询性能优化
+MySQL高级特性
+复制
 
-
-
-
-0x02复制概述
-MySQL支持两种复制方式：基于行的复制和基于">
+我对这几章都读过不下三遍了，有一些理解，当然更多的是疑惑，顺便在阅读的时候做了一些关键的摘要，方便以后查阅，当然在这里也共享给大家阅读一下。
+可能我的总结有纰漏，请大家评判指正，谢谢。">
 
 
 
@@ -122,7 +113,7 @@ MySQL支持两种复制方式：基于行的复制和基于">
   };
 </script>
 
-  <title> 《高性能MySQL》の复制 | Joshua Shaw之秘密花园 </title>
+  <title> 《高性能MySQL》指南摘要 | Joshua Shaw之秘密花园 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -272,7 +263,7 @@ MySQL支持两种复制方式：基于行的复制和基于">
             
             
               
-                《高性能MySQL》の复制
+                《高性能MySQL》指南摘要
               
             
           </h1>
@@ -284,8 +275,8 @@ MySQL支持两种复制方式：基于行的复制和基于">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-26T19:19:20+08:00" content="2016-04-26">
-              2016-04-26
+            <time itemprop="dateCreated" datetime="2016-05-04T16:19:15+08:00" content="2016-05-04">
+              2016-05-04
             </time>
           </span>
 
@@ -298,8 +289,8 @@ MySQL支持两种复制方式：基于行的复制和基于">
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/计算机科学/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机科学</span>
+                  <a href="/categories/汇总/" itemprop="url" rel="index">
+                    <span itemprop="name">汇总</span>
                   </a>
                 </span>
 
@@ -314,8 +305,8 @@ MySQL支持两种复制方式：基于行的复制和基于">
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/26/《高性能MySQL》の复制/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/26/《高性能MySQL》の复制/" itemprop="commentsCount"></span>
+                <a href="/2016/05/04/《高性能MySQL》指南摘要/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/04/《高性能MySQL》指南摘要/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -337,107 +328,16 @@ MySQL支持两种复制方式：基于行的复制和基于">
       
 
       
-        <h2 id="0x00前言"><a href="#0x00前言" class="headerlink" title="0x00前言"></a>0x00前言</h2><p>本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，<br>以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。</p>
-<h2 id="0x01简介"><a href="#0x01简介" class="headerlink" title="0x01简介"></a>0x01简介</h2><p>本章阐述所有与复制相关的内容</p>
-<ol>
-<li>简要介绍复制如何工作</li>
-<li>讨论基本的复制服务搭建<ul>
-<li>与复制相关的配置</li>
-<li>如何管理和优化复制服务器</li>
-</ul>
-</li>
-</ol>
-<hr>
-<h2 id="0x02复制概述"><a href="#0x02复制概述" class="headerlink" title="0x02复制概述"></a>0x02复制概述</h2><ul>
-<li>MySQL支持两种复制方式：基于行的复制和基于语句的复制。</li>
-<li>都是通过主库上记录二进制日志，虽然有开销，但是不会很大。</li>
-<li>同一时间点备库上的数据可能与主库存在不一致性，并无法保证主备之间的延迟。</li>
-<li>通过复制可以将读操作指向备库来获得更好地读扩展。</li>
-<li>目前备库只能串行化执行。</li>
-</ul>
-<h3 id="复制解决的问题"><a href="#复制解决的问题" class="headerlink" title="复制解决的问题"></a>复制解决的问题</h3><ul>
-<li>数据分布</li>
-<li>负载均衡</li>
-<li>备份</li>
-<li>高可用性和故障切换</li>
-<li>MySQL升级</li>
-</ul>
-<h3 id="复制如何工作"><a href="#复制如何工作" class="headerlink" title="复制如何工作"></a>复制如何工作</h3><ul>
-<li>主库把数据更改记录到二进制日志中。</li>
-<li>备库将主库上的日志复制到自己的中继日志中。</li>
-<li>备库读取中继日志中的事件，将其重放到备库数据之上。</li>
-</ul>
-<a id="more"></a>
-<h2 id="0x03配置复制"><a href="#0x03配置复制" class="headerlink" title="0x03配置复制"></a>0x03配置复制</h2><p>（略）</p>
-<hr>
-<h2 id="0x04复制的原理"><a href="#0x04复制的原理" class="headerlink" title="0x04复制的原理"></a>0x04复制的原理</h2><p>现在一般使用基于行的复制更佳。</p>
-<h3 id="基于语句的复制（逻辑复制）"><a href="#基于语句的复制（逻辑复制）" class="headerlink" title="基于语句的复制（逻辑复制）"></a>基于语句的复制（逻辑复制）</h3><h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
-<li>实现相当简单</li>
-<li>不用太多带宽</li>
-<li>容易理解</li>
-</ul>
-<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
-<li>很多情况无法正确复制，如使用了now()等函数</li>
-<li>若使用了触发器或者存储过程也最好不要使用</li>
-</ul>
-<h3 id="基于行的复制"><a href="#基于行的复制" class="headerlink" title="基于行的复制"></a>基于行的复制</h3><h4 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h4><ul>
-<li>减少锁的使用，更高效地复制数据</li>
-<li>占用更少的CPU</li>
-<li>解决数据不一致的情况</li>
-</ul>
-<h4 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h4><ul>
-<li>无法知道服务器正在做什么</li>
-<li>无法处理诸如在备库修改表的schema的情况</li>
-<li>带宽较高</li>
-</ul>
-<hr>
-<h2 id="0x05复制拓扑（往后补充图）"><a href="#0x05复制拓扑（往后补充图）" class="headerlink" title="0x05复制拓扑（往后补充图）"></a>0x05复制拓扑（往后补充图）</h2><p>MySQL的复制有一个限制：每个备库只能有一个主库，但是可以用一些其他方法来解决这样的限制。</p>
-<h3 id="一主库多备库（多用于备份和读写分离）"><a href="#一主库多备库（多用于备份和读写分离）" class="headerlink" title="一主库多备库（多用于备份和读写分离）"></a>一主库多备库（多用于备份和读写分离）</h3><p>备库之间根本没有交互。有以下用途：</p>
+        <p>《高性能MySQL》一书给我们做了许多指导，其中有5章应该精读的：</p>
 <ul>
-<li>为不同的角色使用不同的备库</li>
-<li>可把一个备库当做代用的主库</li>
-<li>把备库放在远程数据中心，用作灾难恢复</li>
-<li>备份，培训，开发，测试</li>
+<li><a href="http://joshshaw.github.io/2016/04/28/%E3%80%8A%E9%AB%98%E6%80%A7%E8%83%BDMySQL%E3%80%8B%E3%81%AESchema%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%BC%98%E5%8C%96/">Schema与数据类型优化</a></li>
+<li><a href="http://joshshaw.github.io/2016/04/29/%E3%80%8A%E9%AB%98%E6%80%A7%E8%83%BDMySQL%E3%80%8B%E3%81%AE%E5%88%9B%E5%BB%BA%E9%AB%98%E6%80%A7%E8%83%BD%E7%9A%84%E7%B4%A2%E5%BC%95/">创建高性能的索引</a></li>
+<li><a href="http://joshshaw.github.io/2016/05/04/%E3%80%8A%E9%AB%98%E6%80%A7%E8%83%BDMySQL%E3%80%8B%E3%81%AE%E6%9F%A5%E8%AF%A2%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">查询性能优化</a></li>
+<li><a href="http://joshshaw.github.io/2016/04/22/%E3%80%8A%E9%AB%98%E6%80%A7%E8%83%BDMySQL%E3%80%8B%E3%81%AEMySQL%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/">MySQL高级特性</a></li>
+<li><a href="http://joshshaw.github.io/2016/04/26/%E3%80%8A%E9%AB%98%E6%80%A7%E8%83%BDMySQL%E3%80%8B%E3%81%AE%E5%A4%8D%E5%88%B6/">复制</a></li>
 </ul>
-<h3 id="主动-主动模式下的主-主复制"><a href="#主动-主动模式下的主-主复制" class="headerlink" title="主动-主动模式下的主-主复制"></a>主动-主动模式下的主-主复制</h3><p>用于两个处于不同地理位置的办公室，并且都需要一份可写的数据拷贝。弊大于利。</p>
-<h3 id="主动-被动模式下的主-主复制"><a href="#主动-被动模式下的主-主复制" class="headerlink" title="主动-被动模式下的主-主复制"></a>主动-被动模式下的主-主复制</h3><p>切换主动被动服务器很方便。</p>
-<h3 id="拥有备库的主-主结构"><a href="#拥有备库的主-主结构" class="headerlink" title="拥有备库的主-主结构"></a>拥有备库的主-主结构</h3><p>（用于增加冗余）</p>
-<h3 id="环形复制"><a href="#环形复制" class="headerlink" title="环形复制"></a>环形复制</h3><p>（要避免成环）</p>
-<h3 id="主库、分发主库以及备库"><a href="#主库、分发主库以及备库" class="headerlink" title="主库、分发主库以及备库"></a>主库、分发主库以及备库</h3><ul>
-<li>当备库足够多时。会对主库造成很大的负载，于是需要采用blackhole存储引擎的分发主库。</li>
-<li>不一定只使用一个分发主库。</li>
-<li>blackhole表没有任何数据，但是目前有bug</li>
-</ul>
-<h3 id="树或金字塔形"><a href="#树或金字塔形" class="headerlink" title="树或金字塔形"></a>树或金字塔形</h3><p>(多台备库)</p>
-<h3 id="定制的复制方案"><a href="#定制的复制方案" class="headerlink" title="定制的复制方案"></a>定制的复制方案</h3><ul>
-<li>选择复制性</li>
-<li>分离功能（分离OLTP和OLAP）</li>
-<li>数据归档</li>
-<li>将备库用作全文索引</li>
-<li>只读备库</li>
-<li>模拟多主库复制</li>
-<li>创建没有数据的日志服务器</li>
-</ul>
-<hr>
-<h2 id="0x06复制和容量规划"><a href="#0x06复制和容量规划" class="headerlink" title="0x06复制和容量规划"></a>0x06复制和容量规划</h2><p>主备库的模式下，并不是增加备库就能线性增加读写功能。并且在开启复制功能时，要考虑监控延时，可用性（各个<br>库的状态，包括主和被），规划冗余容量和性能，改变主库，还有解决问题的方法。</p>
-<hr>
-<h2 id="0x07-MySQL复制的高级特性"><a href="#0x07-MySQL复制的高级特性" class="headerlink" title="0x07 MySQL复制的高级特性"></a>0x07 MySQL复制的高级特性</h2><h3 id="半同步复制"><a href="#半同步复制" class="headerlink" title="半同步复制"></a>半同步复制</h3><p>可以帮助确保备库拥有主库数据的拷贝，减少潜在的数据丢失危机。有助于备库提供更好地冗余度和持久性。<br>半同步复制在提交过程中增加一个延迟：当提交事务时，在客户端接收到查询结束反馈前必须保证二进制日志已经传输<br>到至少一台备库上。</p>
-<ul>
-<li>在主库上已经完成<strong>事务</strong>提交，只有通知客户端被延迟了。</li>
-<li>备库在接<strong>收到事务后</strong>发送反馈而非（备库）完成事务后发送。</li>
-<li>如果备库一直没有回应已收到事件，会超时并转化为正常的异步复制模式。</li>
-</ul>
-<h3 id="复制心跳"><a href="#复制心跳" class="headerlink" title="复制心跳"></a>复制心跳</h3><p>保持备库一直与主库相联系，避免悄无声息地断开连接。</p>
-<hr>
-<h2 id="0x08小结"><a href="#0x08小结" class="headerlink" title="0x08小结"></a>0x08小结</h2><ul>
-<li>KISS原则（Keep It Simple Stupid），用简单的就好。</li>
-<li>监控，监控，监控，重要的事情说三遍。</li>
-<li>理解复制的异步本质，且设计你的应用避免或容忍从备库读取脏数据。</li>
-<li>在一个复制拓扑中不要写入多于一个服务器，把备库配置为只读，并降低权限以阻止对数据的改变。</li>
-<li>打开本章锁讨论的明智且安全的设置。（往后补充）</li>
-</ul>
-<hr>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://book.douban.com/subject/4241826/" target="_blank" rel="external">《高性能MySQL · 第三版》</a></p>
+<p>我对这几章都读过不下三遍了，有一些理解，当然更多的是疑惑，顺便在阅读的时候做了一些关键的摘要，方便以后查阅，当然在这里也共享给大家阅读一下。</p>
+<p>可能我的总结有纰漏，请大家评判指正，谢谢。</p>
 
       
     </div>
@@ -452,8 +352,6 @@ MySQL支持两种复制方式：基于行的复制和基于">
       
         <div class="post-tags">
           
-            <a href="/tags/关系型数据库/" rel="tag">#关系型数据库</a>
-          
             <a href="/tags/MySQL/" rel="tag">#MySQL</a>
           
         </div>
@@ -463,17 +361,13 @@ MySQL支持两种复制方式：基于行的复制和基于">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/22/《高性能MySQL》のMySQL高级特性/" rel="next" title="《高性能MySQL》のMySQL高级特性">
-                <i class="fa fa-chevron-left"></i> 《高性能MySQL》のMySQL高级特性
+              <a href="/2016/05/04/《高性能MySQL》の查询性能优化/" rel="next" title="《高性能MySQL》の查询性能优化">
+                <i class="fa fa-chevron-left"></i> 《高性能MySQL》の查询性能优化
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/28/《高性能MySQL》のSchema与数据类型优化/" rel="prev" title="《高性能MySQL》のSchema与数据类型优化">
-                《高性能MySQL》のSchema与数据类型优化 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -522,8 +416,8 @@ MySQL支持两种复制方式：基于行的复制和基于">
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/26/《高性能MySQL》の复制/"
-           data-title="《高性能MySQL》の复制" data-url="http://joshshaw.github.io/2016/04/26/《高性能MySQL》の复制/">
+      <div class="ds-thread" data-thread-key="2016/05/04/《高性能MySQL》指南摘要/"
+           data-title="《高性能MySQL》指南摘要" data-url="http://joshshaw.github.io/2016/05/04/《高性能MySQL》指南摘要/">
       </div>
     
   </div>
@@ -668,7 +562,7 @@ MySQL支持两种复制方式：基于行的复制和基于">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x00前言"><span class="nav-number">1.</span> <span class="nav-text">0x00前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01简介"><span class="nav-number">2.</span> <span class="nav-text">0x01简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02复制概述"><span class="nav-number">3.</span> <span class="nav-text">0x02复制概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#复制解决的问题"><span class="nav-number">3.1.</span> <span class="nav-text">复制解决的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复制如何工作"><span class="nav-number">3.2.</span> <span class="nav-text">复制如何工作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03配置复制"><span class="nav-number">4.</span> <span class="nav-text">0x03配置复制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x04复制的原理"><span class="nav-number">5.</span> <span class="nav-text">0x04复制的原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基于语句的复制（逻辑复制）"><span class="nav-number">5.1.</span> <span class="nav-text">基于语句的复制（逻辑复制）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-number">5.1.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点"><span class="nav-number">5.1.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于行的复制"><span class="nav-number">5.2.</span> <span class="nav-text">基于行的复制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点-1"><span class="nav-number">5.2.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点-1"><span class="nav-number">5.2.2.</span> <span class="nav-text">缺点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x05复制拓扑（往后补充图）"><span class="nav-number">6.</span> <span class="nav-text">0x05复制拓扑（往后补充图）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一主库多备库（多用于备份和读写分离）"><span class="nav-number">6.1.</span> <span class="nav-text">一主库多备库（多用于备份和读写分离）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主动-主动模式下的主-主复制"><span class="nav-number">6.2.</span> <span class="nav-text">主动-主动模式下的主-主复制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主动-被动模式下的主-主复制"><span class="nav-number">6.3.</span> <span class="nav-text">主动-被动模式下的主-主复制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拥有备库的主-主结构"><span class="nav-number">6.4.</span> <span class="nav-text">拥有备库的主-主结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#环形复制"><span class="nav-number">6.5.</span> <span class="nav-text">环形复制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主库、分发主库以及备库"><span class="nav-number">6.6.</span> <span class="nav-text">主库、分发主库以及备库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#树或金字塔形"><span class="nav-number">6.7.</span> <span class="nav-text">树或金字塔形</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定制的复制方案"><span class="nav-number">6.8.</span> <span class="nav-text">定制的复制方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x06复制和容量规划"><span class="nav-number">7.</span> <span class="nav-text">0x06复制和容量规划</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x07-MySQL复制的高级特性"><span class="nav-number">8.</span> <span class="nav-text">0x07 MySQL复制的高级特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#半同步复制"><span class="nav-number">8.1.</span> <span class="nav-text">半同步复制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复制心跳"><span class="nav-number">8.2.</span> <span class="nav-text">复制心跳</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x08小结"><span class="nav-number">9.</span> <span class="nav-text">0x08小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">10.</span> <span class="nav-text">引用</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
