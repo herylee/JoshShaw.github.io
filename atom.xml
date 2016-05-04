@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://joshshaw.github.io/"/>
-  <updated>2016-04-30T09:08:52.717Z</updated>
+  <updated>2016-05-04T08:07:06.895Z</updated>
   <id>http://joshshaw.github.io/</id>
   
   <author>
@@ -14,6 +14,120 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《高性能MySQL》の查询性能优化</title>
+    <link href="http://joshshaw.github.io/2016/05/04/%E3%80%8A%E9%AB%98%E6%80%A7%E8%83%BDMySQL%E3%80%8B%E3%81%AE%E6%9F%A5%E8%AF%A2%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    <id>http://joshshaw.github.io/2016/05/04/《高性能MySQL》の查询性能优化/</id>
+    <published>2016-05-04T07:07:23.000Z</published>
+    <updated>2016-05-04T08:07:06.895Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;0x00前言&quot;&gt;&lt;a href=&quot;#0x00前言&quot; class=&quot;headerlink&quot; title=&quot;0x00前言&quot;&gt;&lt;/a&gt;0x00前言&lt;/h2&gt;&lt;p&gt;本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，&lt;br&gt;以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;0x01-为什么查询速度会慢&quot;&gt;&lt;a href=&quot;#0x01-为什么查询速度会慢&quot; class=&quot;headerlink&quot; title=&quot;0x01 为什么查询速度会慢&quot;&gt;&lt;/a&gt;0x01 为什么查询速度会慢&lt;/h2&gt;&lt;p&gt;查询性能低下的最基本的原因是访问的数据太多。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;查询不需要的记录。使用LIMIT来限制。&lt;/li&gt;
+&lt;li&gt;多表关联时返回全部列。&lt;/li&gt;
+&lt;li&gt;总是取出全部列。可简化开发或者有利于某种缓存机制。&lt;/li&gt;
+&lt;li&gt;重复查询相同的数据。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;响应时间：包括服务时间和排队时间，排队时间最常见和重要的是IO和锁等待。&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;快速上限估计：获得一个大概参考值来判断当前响应时间是不是一个合理的值。&lt;/strong&gt;&lt;br&gt;扫描后返回行数和访问类型：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;做一个关联查询时，服务器必须要扫描多行才能生成结果集中的一行。扫描的行数对返回的行数的比率通常很小，&lt;br&gt;如果在1:1到10:1之间是比较好的。&lt;/li&gt;
+&lt;li&gt;全表扫描 &amp;lt; 索引扫描 &amp;lt; 范围扫描 &amp;lt; 唯一索引查询 &amp;lt; 常数引用。优秀的索引能极大地提高扫描的速度。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;应用WHERE条件时从好到坏依次为：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在索引中过滤不匹配的记录，在存储引擎层完成。&lt;/li&gt;
+&lt;li&gt;使用索引覆盖扫描，在MySQL服务器层完成，无需回到数据表进行查询。&lt;/li&gt;
+&lt;li&gt;从数据表返回数据，MySQL需要先从数据表读出记录然后过滤，在MySQL服务器层完成。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;因此，不需要的数据应该尽可能地从越底层被过滤，如果数据还要提升到服务器层（而不是在存储引擎层）进行过滤&lt;br&gt;那么就会对性能有影响。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;如果发现查询需要扫描大量的数据但是只返回少数的行，优化技巧如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用索引覆盖扫描&lt;/li&gt;
+&lt;li&gt;使用单独的汇总表&lt;/li&gt;
+&lt;li&gt;重写查询语句&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;0x02重构查询&quot;&gt;&lt;a href=&quot;#0x02重构查询&quot; class=&quot;headerlink&quot; title=&quot;0x02重构查询&quot;&gt;&lt;/a&gt;0x02重构查询&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;设计查询时，是否需要将一个复杂的查询分成多个简单的查询。&lt;/li&gt;
+&lt;li&gt;如果是事务型引擎，很多时候小事务能够更高效。&lt;/li&gt;
+&lt;li&gt;分解关联查询的优势和使用场景：&lt;ul&gt;
+&lt;li&gt;优势&lt;ul&gt;
+&lt;li&gt;让缓存的效率更高&lt;/li&gt;
+&lt;li&gt;将查询分解后，执行单个查询可以减少锁的竞争&lt;/li&gt;
+&lt;li&gt;查询本身效率也可能有所提升&lt;/li&gt;
+&lt;li&gt;可以减少冗余记录的查询&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;使用场景&lt;ul&gt;
+&lt;li&gt;当应用能方便地缓存单个查询的结果&lt;/li&gt;
+&lt;li&gt;可以将数据分布到不同的MySQL服务器上&lt;/li&gt;
+&lt;li&gt;能够使用IN()方式代替关联查询&lt;/li&gt;
+&lt;li&gt;当查询中使用同一个数据表&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;0x03查询执行的步骤&quot;&gt;&lt;a href=&quot;#0x03查询执行的步骤&quot; class=&quot;headerlink&quot; title=&quot;0x03查询执行的步骤&quot;&gt;&lt;/a&gt;0x03查询执行的步骤&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;客户端发送一条查询给服务器。  &lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;半双工的。&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;将结果缓存还是直接获取？数据量大时，直接获取。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;服务器先检查查询缓存，如果命中了缓存，则立即返回存储在缓存中的结果，否则进入下一阶段。&lt;ul&gt;
+&lt;li&gt;查询缓存中的查询即是只有一个字节不同，那么就不会匹配缓存结果。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;服务器端进行SQL解析、预处理，再由优化器生成对应的执行计划。&lt;ul&gt;
+&lt;li&gt;SQL语句结构相同而参数不同时，使用&lt;code&gt;prepareStatment()&lt;/code&gt;对大量相同的查询有利。&lt;/li&gt;
+&lt;li&gt;优化器是通过成本计算而不是最短时间来选择优化的&lt;/li&gt;
+&lt;li&gt;优化策略包括静态（编译）优化和动态（运行）优化&lt;/li&gt;
+&lt;li&gt;MySQL的优化器是自动执行的，不需要认为干预，一般运行良好&lt;/li&gt;
+&lt;li&gt;需要认为干预时可以使用HINT提示，提前要做好测试&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;MySQL根据优化器生成的执行计划，调用存储引擎的API来执行查询。&lt;ul&gt;
+&lt;li&gt;MySQL的执行计划总是一颗左侧深度优先的树&lt;/li&gt;
+&lt;li&gt;关联操作时会自动优化执行，关联的表多时采用贪心策略&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;将结果返回给客户端。&lt;ul&gt;
+&lt;li&gt;一个增量、逐步返回的过程，好处包括：&lt;ul&gt;
+&lt;li&gt;服务器端无须存储太多的结果，节省内存&lt;/li&gt;
+&lt;li&gt;让MySQL客户端第一时间获得返回的结果&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;0x04一些特定的优化策略&quot;&gt;&lt;a href=&quot;#0x04一些特定的优化策略&quot; class=&quot;headerlink&quot; title=&quot;0x04一些特定的优化策略&quot;&gt;&lt;/a&gt;0x04一些特定的优化策略&lt;/h2&gt;&lt;p&gt;具体看书，通用性不大&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;0x05一个案例学习&quot;&gt;&lt;a href=&quot;#0x05一个案例学习&quot; class=&quot;headerlink&quot; title=&quot;0x05一个案例学习&quot;&gt;&lt;/a&gt;0x05一个案例学习&lt;/h2&gt;&lt;p&gt;使用MySQL构建一个队列表时，不要只用一张表保存整个队列，队列中包括未处理，正在处理和已经处理的数据，&lt;br&gt;而是使用两个（或者以上）表，让未处理的表保持数据量较少，而已处理的数据表为历史数据表。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;0x06小结&quot;&gt;&lt;a href=&quot;#0x06小结&quot; class=&quot;headerlink&quot; title=&quot;0x06小结&quot;&gt;&lt;/a&gt;0x06小结&lt;/h2&gt;&lt;p&gt;一般来说，先实现再优化，但是要有预见性。所以，切记自己的需求。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;引用&quot;&gt;&lt;a href=&quot;#引用&quot; class=&quot;headerlink&quot; title=&quot;引用&quot;&gt;&lt;/a&gt;引用&lt;/h2&gt;&lt;p&gt; &lt;a href=&quot;https://book.douban.com/subject/4241826/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《高性能MySQL · 第三版》&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;0x00前言&quot;&gt;&lt;a href=&quot;#0x00前言&quot; class=&quot;headerlink&quot; title=&quot;0x00前言&quot;&gt;&lt;/a&gt;0x00前言&lt;/h2&gt;&lt;p&gt;本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重
+    
+    </summary>
+    
+      <category term="计算机科学" scheme="http://joshshaw.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/"/>
+    
+    
+      <category term="关系型数据库" scheme="http://joshshaw.github.io/tags/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+      <category term="MySQL" scheme="http://joshshaw.github.io/tags/MySQL/"/>
+    
+  </entry>
   
   <entry>
     <title>《高性能MySQL》の创建高性能的索引</title>

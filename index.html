@@ -238,6 +238,210 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/04/《高性能MySQL》の查询性能优化/" itemprop="url">
+                  《高性能MySQL》の查询性能优化
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-04T15:07:23+08:00" content="2016-05-04">
+              2016-05-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/计算机科学/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机科学</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/04/《高性能MySQL》の查询性能优化/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/04/《高性能MySQL》の查询性能优化/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="0x00前言"><a href="#0x00前言" class="headerlink" title="0x00前言"></a>0x00前言</h2><p>本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，<br>以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。</p>
+<hr>
+<h2 id="0x01-为什么查询速度会慢"><a href="#0x01-为什么查询速度会慢" class="headerlink" title="0x01 为什么查询速度会慢"></a>0x01 为什么查询速度会慢</h2><p>查询性能低下的最基本的原因是访问的数据太多。</p>
+<ul>
+<li>查询不需要的记录。使用LIMIT来限制。</li>
+<li>多表关联时返回全部列。</li>
+<li>总是取出全部列。可简化开发或者有利于某种缓存机制。</li>
+<li>重复查询相同的数据。</li>
+</ul>
+<p><strong>响应时间：包括服务时间和排队时间，排队时间最常见和重要的是IO和锁等待。</strong><br><strong>快速上限估计：获得一个大概参考值来判断当前响应时间是不是一个合理的值。</strong><br>扫描后返回行数和访问类型：</p>
+<ol>
+<li>做一个关联查询时，服务器必须要扫描多行才能生成结果集中的一行。扫描的行数对返回的行数的比率通常很小，<br>如果在1:1到10:1之间是比较好的。</li>
+<li>全表扫描 &lt; 索引扫描 &lt; 范围扫描 &lt; 唯一索引查询 &lt; 常数引用。优秀的索引能极大地提高扫描的速度。</li>
+</ol>
+<p>应用WHERE条件时从好到坏依次为：</p>
+<ol>
+<li>在索引中过滤不匹配的记录，在存储引擎层完成。</li>
+<li>使用索引覆盖扫描，在MySQL服务器层完成，无需回到数据表进行查询。</li>
+<li>从数据表返回数据，MySQL需要先从数据表读出记录然后过滤，在MySQL服务器层完成。</li>
+</ol>
+<p><strong>因此，不需要的数据应该尽可能地从越底层被过滤，如果数据还要提升到服务器层（而不是在存储引擎层）进行过滤<br>那么就会对性能有影响。</strong></p>
+<p>如果发现查询需要扫描大量的数据但是只返回少数的行，优化技巧如下：</p>
+<ul>
+<li>使用索引覆盖扫描</li>
+<li>使用单独的汇总表</li>
+<li>重写查询语句</li>
+</ul>
+<hr>
+<h2 id="0x02重构查询"><a href="#0x02重构查询" class="headerlink" title="0x02重构查询"></a>0x02重构查询</h2><ol>
+<li>设计查询时，是否需要将一个复杂的查询分成多个简单的查询。</li>
+<li>如果是事务型引擎，很多时候小事务能够更高效。</li>
+<li>分解关联查询的优势和使用场景：<ul>
+<li>优势<ul>
+<li>让缓存的效率更高</li>
+<li>将查询分解后，执行单个查询可以减少锁的竞争</li>
+<li>查询本身效率也可能有所提升</li>
+<li>可以减少冗余记录的查询</li>
+</ul>
+</li>
+<li>使用场景<ul>
+<li>当应用能方便地缓存单个查询的结果</li>
+<li>可以将数据分布到不同的MySQL服务器上</li>
+<li>能够使用IN()方式代替关联查询</li>
+<li>当查询中使用同一个数据表</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="0x03查询执行的步骤"><a href="#0x03查询执行的步骤" class="headerlink" title="0x03查询执行的步骤"></a>0x03查询执行的步骤</h2><ol>
+<li>客户端发送一条查询给服务器。  <ul>
+<li><strong>半双工的。</strong></li>
+<li>将结果缓存还是直接获取？数据量大时，直接获取。</li>
+</ul>
+</li>
+<li>服务器先检查查询缓存，如果命中了缓存，则立即返回存储在缓存中的结果，否则进入下一阶段。<ul>
+<li>查询缓存中的查询即是只有一个字节不同，那么就不会匹配缓存结果。</li>
+</ul>
+</li>
+<li>服务器端进行SQL解析、预处理，再由优化器生成对应的执行计划。<ul>
+<li>SQL语句结构相同而参数不同时，使用<code>prepareStatment()</code>对大量相同的查询有利。</li>
+<li>优化器是通过成本计算而不是最短时间来选择优化的</li>
+<li>优化策略包括静态（编译）优化和动态（运行）优化</li>
+<li>MySQL的优化器是自动执行的，不需要认为干预，一般运行良好</li>
+<li>需要认为干预时可以使用HINT提示，提前要做好测试</li>
+</ul>
+</li>
+<li>MySQL根据优化器生成的执行计划，调用存储引擎的API来执行查询。<ul>
+<li>MySQL的执行计划总是一颗左侧深度优先的树</li>
+<li>关联操作时会自动优化执行，关联的表多时采用贪心策略</li>
+</ul>
+</li>
+<li>将结果返回给客户端。<ul>
+<li>一个增量、逐步返回的过程，好处包括：<ul>
+<li>服务器端无须存储太多的结果，节省内存</li>
+<li>让MySQL客户端第一时间获得返回的结果</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="0x04一些特定的优化策略"><a href="#0x04一些特定的优化策略" class="headerlink" title="0x04一些特定的优化策略"></a>0x04一些特定的优化策略</h2><p>具体看书，通用性不大</p>
+<hr>
+<h2 id="0x05一个案例学习"><a href="#0x05一个案例学习" class="headerlink" title="0x05一个案例学习"></a>0x05一个案例学习</h2><p>使用MySQL构建一个队列表时，不要只用一张表保存整个队列，队列中包括未处理，正在处理和已经处理的数据，<br>而是使用两个（或者以上）表，让未处理的表保持数据量较少，而已处理的数据表为历史数据表。</p>
+<hr>
+<h2 id="0x06小结"><a href="#0x06小结" class="headerlink" title="0x06小结"></a>0x06小结</h2><p>一般来说，先实现再优化，但是要有预见性。所以，切记自己的需求。</p>
+<hr>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p> <a href="https://book.douban.com/subject/4241826/" target="_blank" rel="external">《高性能MySQL · 第三版》</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/29/《高性能MySQL》の创建高性能的索引/" itemprop="url">
                   《高性能MySQL》の创建高性能的索引
                 </a>
@@ -784,136 +988,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/11/TCP三次握手与四次挥手/" itemprop="url">
-                  TCP三次握手与四次挥手
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-11T17:00:01+08:00" content="2016-04-11">
-              2016-04-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术博客/" itemprop="url" rel="index">
-                    <span itemprop="name">技术博客</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/11/TCP三次握手与四次挥手/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/11/TCP三次握手与四次挥手/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <img src="/2016/04/11/TCP三次握手与四次挥手/tcp.png" alt="tcp.png" title="">
-<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>上图左为tcp连接的状态机，每个圆矩形为一个状态，每个状态有一行或者两行，第一行为该状态的名称，<br>第二行（有的话）为该状态能（或者需要）发送的报文。<br>虚线箭头路径为服务器的常见状态转移路线。虚线框为关闭连接的状态集合。每个状态转移都是通过事件<br>触发，一般为收到一些特定的报文。<br>上图右为时间线下的状态转移示意图，分为常见和特殊情况。</p>
-<h2 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h2><ul>
-<li><a href="#CLOSED">CLOSED</a></li>
-<li><a href="#LISTEN">LISTEN</a></li>
-<li><a href="#SYN_SENT">SYN_SENT</a></li>
-<li><a href="#SYN_RCVD">SYN_RCVD</a></li>
-<li><a href="#ESTABLISED">ESTABLISED</a></li>
-<li><a href="#FIN_WAIT_1">FIN_WAIT_1</a></li>
-<li><a href="#FIN_WAIT_2">FIN_WAIT_2</a></li>
-<li><a href="#CLOSING">CLOSING</a></li>
-<li><a href="#TIME_WAIT">TIME_WAIT</a></li>
-<li><a href="#CLOSE_WAIT">CLOSE_WAIT</a></li>
-<li><a href="#LAST_ACK">LAST_ACK</a>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/11/TCP三次握手与四次挥手/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -959,7 +1033,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
