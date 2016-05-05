@@ -79,7 +79,7 @@ B-Tree索引
 指向下">
 <meta property="og:image" content="http://joshshaw.github.io/2016/04/29/《高性能MySQL》の创建高性能的索引/b+tree.jpg">
 <meta property="og:image" content="http://joshshaw.github.io/2016/04/29/《高性能MySQL》の创建高性能的索引/btree.jpg">
-<meta property="og:updated_time" content="2016-04-30T09:08:52.717Z">
+<meta property="og:updated_time" content="2016-05-05T05:35:57.710Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《高性能MySQL》の创建高性能的索引">
 <meta name="twitter:description" content="0x00前言本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。
@@ -461,7 +461,7 @@ B-Tree索引
 <h2 id="0xff-B树简述"><a href="#0xff-B树简述" class="headerlink" title="0xff B树简述"></a>0xff B树简述</h2><p>B树又叫平衡多路查询树，一颗<strong>m</strong>阶的B树（m叉树）的特征如下：</p>
 <ol>
 <li>树中每个结点最多含有m个孩子（m&gt;=2）（一般例子m=5）</li>
-<li>除根节点和叶子结点外吗，其他每个结点至少有<code>ceil(m/2)</code>个孩子（ceil()取上限，2.5取3）（m=5时，ceil(5/2)=3）</li>
+<li>除根节点外，其他每个结点（包括中间节点和叶子节点）至少有<code>ceil(m/2)</code>个孩子（ceil()取上限，2.5取3）（m=5时，ceil(5/2)=3）</li>
 <li>若根节点不是叶子结点，则至少有2个孩子</li>
 <li>所有叶子结点都出现在同一层</li>
 <li>每个非终端结点中包含：<ul>
@@ -479,7 +479,7 @@ B-Tree索引
 <li>所有非终端结点可看成索引部分</li>
 </ul>
 <hr>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p> <a href="https://book.douban.com/subject/4241826/" target="_blank" rel="external">《高性能MySQL · 第三版》</a></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p> <a href="https://book.douban.com/subject/4241826/" target="_blank" rel="external">《高性能MySQL · 第三版》</a><br> <a href="http://blog.csdn.net/v_JULY_v/article/details/6530142/" target="_blank" rel="external">B树、B+树、B*树和R树</a></p>
 
       
     </div>
