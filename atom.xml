@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://joshshaw.github.io/"/>
-  <updated>2016-05-12T11:34:57.874Z</updated>
+  <updated>2016-05-12T11:47:18.580Z</updated>
   <id>http://joshshaw.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://joshshaw.github.io/2016/05/12/%E6%88%91%E7%9A%84vim/"/>
     <id>http://joshshaw.github.io/2016/05/12/我的vim/</id>
     <published>2016-05-12T09:11:43.000Z</published>
-    <updated>2016-05-12T11:34:57.874Z</updated>
+    <updated>2016-05-12T11:47:18.580Z</updated>
     
     <content type="html">&lt;h1 id=&quot;光标移动&quot;&gt;&lt;a href=&quot;#光标移动&quot; class=&quot;headerlink&quot; title=&quot;光标移动&quot;&gt;&lt;/a&gt;光标移动&lt;/h1&gt;&lt;table&gt;
 &lt;thead&gt;
@@ -43,7 +43,7 @@
 &lt;td style=&quot;text-align:left&quot;&gt;上移&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;i&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;l&lt;/td&gt;
 &lt;td style=&quot;text-align:left&quot;&gt;右移&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -100,6 +100,7 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h1 id=&quot;字符串的查找与替换&quot;&gt;&lt;a href=&quot;#字符串的查找与替换&quot; class=&quot;headerlink&quot; title=&quot;字符串的查找与替换&quot;&gt;&lt;/a&gt;字符串的查找与替换&lt;/h1&gt;&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -173,7 +174,80 @@
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th style=&quot;text-align:center&quot;&gt;操作&lt;/th&gt;
-&lt;th st
+&lt;th style=&quot;text-align:left&quot;&gt;含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;h&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;左移&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;j&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;右移&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;k&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;上移&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;l&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;右移&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;[Ctrl]+f&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;上移一页&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;[Ctrl]+b&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;下移一页&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;[Ctrl]+d&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;上移半页&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;[Ctrl]+u&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;下移半页&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;0, [HOME]&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;一行的最前页&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;$, [END]&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;一行的最后页&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;H&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;移动到该页的第一行第一个字符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;M&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;移动到该页的中间行第一个字符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;L&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;移动到该页的最后行第一个字符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;G&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;移动到文件最后一行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;nG&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;移动到第n行（1G移动到文件头）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;gg&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;等同1G&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;n[Enter]&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;光标向下移动n行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
     
     </summary>
     
@@ -435,7 +509,7 @@
     <link href="http://joshshaw.github.io/2016/04/29/%E3%80%8A%E9%AB%98%E6%80%A7%E8%83%BDMySQL%E3%80%8B%E3%81%AE%E5%88%9B%E5%BB%BA%E9%AB%98%E6%80%A7%E8%83%BD%E7%9A%84%E7%B4%A2%E5%BC%95/"/>
     <id>http://joshshaw.github.io/2016/04/29/《高性能MySQL》の创建高性能的索引/</id>
     <published>2016-04-29T08:07:50.000Z</published>
-    <updated>2016-05-05T05:35:57.710Z</updated>
+    <updated>2016-05-12T11:51:53.046Z</updated>
     
     <content type="html">&lt;h2 id=&quot;0x00前言&quot;&gt;&lt;a href=&quot;#0x00前言&quot; class=&quot;headerlink&quot; title=&quot;0x00前言&quot;&gt;&lt;/a&gt;0x00前言&lt;/h2&gt;&lt;p&gt;本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，&lt;br&gt;以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。&lt;/p&gt;
 &lt;hr&gt;
@@ -466,7 +540,7 @@
 &lt;/ol&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h3 id=&quot;哈希索引&quot;&gt;&lt;a href=&quot;#哈希索引&quot; class=&quot;headerlink&quot; title=&quot;哈希索引&quot;&gt;&lt;/a&gt;哈希索引&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;简介&lt;br&gt;哈希索引基于哈希表实现，只有精确匹配索引所有列的查询才有效。只有Memory引擎显式支持，，且支持的是&lt;br&gt;非唯一哈希索引（哈希值相同的通过链表保存，再做相等比较）同时该引擎也支持B-Tree索引。需要作很多关联&lt;br&gt;的星型schema，使用哈希索引非常适合查找表的需求。&lt;/li&gt;
+&lt;li&gt;简介&lt;br&gt;哈希索引基于哈希表实现，只有精确匹配索引所有列的查询才有效。只有Memory引擎显式支持，且支持的是&lt;br&gt;非唯一哈希索引（哈希值相同的通过链表保存，再做相等比较）同时该引擎也支持B-Tree索引。需要作很多关联&lt;br&gt;的星型schema，使用哈希索引非常适合查找表的需求。&lt;/li&gt;
 &lt;li&gt;限制&lt;ul&gt;
 &lt;li&gt;哈希索引只包含哈希值和行指针，不能使用索引中的值来避免读取行（不能进行覆盖索引的意思）&lt;/li&gt;
 &lt;li&gt;不是按照索引值顺序存储的，无法用于排序&lt;/li&gt;

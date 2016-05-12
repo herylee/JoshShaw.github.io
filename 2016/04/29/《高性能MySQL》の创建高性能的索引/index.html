@@ -79,7 +79,7 @@ B-Tree索引
 指向下">
 <meta property="og:image" content="http://joshshaw.github.io/2016/04/29/《高性能MySQL》の创建高性能的索引/b+tree.jpg">
 <meta property="og:image" content="http://joshshaw.github.io/2016/04/29/《高性能MySQL》の创建高性能的索引/btree.jpg">
-<meta property="og:updated_time" content="2016-05-05T05:35:57.710Z">
+<meta property="og:updated_time" content="2016-05-12T11:51:53.046Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《高性能MySQL》の创建高性能的索引">
 <meta name="twitter:description" content="0x00前言本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。
@@ -351,7 +351,7 @@ B-Tree索引
 </ol>
 <a id="more"></a>
 <h3 id="哈希索引"><a href="#哈希索引" class="headerlink" title="哈希索引"></a>哈希索引</h3><ol>
-<li>简介<br>哈希索引基于哈希表实现，只有精确匹配索引所有列的查询才有效。只有Memory引擎显式支持，，且支持的是<br>非唯一哈希索引（哈希值相同的通过链表保存，再做相等比较）同时该引擎也支持B-Tree索引。需要作很多关联<br>的星型schema，使用哈希索引非常适合查找表的需求。</li>
+<li>简介<br>哈希索引基于哈希表实现，只有精确匹配索引所有列的查询才有效。只有Memory引擎显式支持，且支持的是<br>非唯一哈希索引（哈希值相同的通过链表保存，再做相等比较）同时该引擎也支持B-Tree索引。需要作很多关联<br>的星型schema，使用哈希索引非常适合查找表的需求。</li>
 <li>限制<ul>
 <li>哈希索引只包含哈希值和行指针，不能使用索引中的值来避免读取行（不能进行覆盖索引的意思）</li>
 <li>不是按照索引值顺序存储的，无法用于排序</li>
