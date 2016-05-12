@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://joshshaw.github.io/"/>
-  <updated>2016-05-06T07:01:08.234Z</updated>
+  <updated>2016-05-12T11:34:57.874Z</updated>
   <id>http://joshshaw.github.io/</id>
   
   <author>
@@ -14,6 +14,191 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>我的vim</title>
+    <link href="http://joshshaw.github.io/2016/05/12/%E6%88%91%E7%9A%84vim/"/>
+    <id>http://joshshaw.github.io/2016/05/12/我的vim/</id>
+    <published>2016-05-12T09:11:43.000Z</published>
+    <updated>2016-05-12T11:34:57.874Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;光标移动&quot;&gt;&lt;a href=&quot;#光标移动&quot; class=&quot;headerlink&quot; title=&quot;光标移动&quot;&gt;&lt;/a&gt;光标移动&lt;/h1&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;操作&lt;/th&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;h&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;左移&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;j&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;右移&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;k&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;上移&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;i&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;右移&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;[Ctrl]+f&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;上移一页&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;[Ctrl]+b&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;下移一页&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;[Ctrl]+d&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;上移半页&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;[Ctrl]+u&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;下移半页&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;0, [HOME]&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;一行的最前页&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;$, [END]&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;一行的最后页&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;H&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;移动到该页的第一行第一个字符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;M&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;移动到该页的中间行第一个字符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;L&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;移动到该页的最后行第一个字符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;G&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;移动到文件最后一行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;nG&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;移动到第n行（1G移动到文件头）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;gg&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;等同1G&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;n[Enter]&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;光标向下移动n行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&quot;字符串的查找与替换&quot;&gt;&lt;a href=&quot;#字符串的查找与替换&quot; class=&quot;headerlink&quot; title=&quot;字符串的查找与替换&quot;&gt;&lt;/a&gt;字符串的查找与替换&lt;/h1&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;操作&lt;/th&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;/word&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;向下寻找word字符串（?word为向上）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;n&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;重复前一个操作&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;N&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;反方向重复前一个操作&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;:n1, n2s/word1/word2/g(c)&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;从第n1行到第n2行查找word1并换成word2，+c的话需要用户确认每次替换&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;1, $&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;上一行的n1和n2，全文的查找和替换&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&quot;复制、撤销、重复&quot;&gt;&lt;a href=&quot;#复制、撤销、重复&quot; class=&quot;headerlink&quot; title=&quot;复制、撤销、重复&quot;&gt;&lt;/a&gt;复制、撤销、重复&lt;/h1&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;操作&lt;/th&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;v&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;光标选定模式，配合上下左右选定段，再按y复制&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;yy&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;复制当前行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;p, P&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;将已经复制的数据在光标下一行粘贴，大写P为上一行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;u&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;复原前一操作&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;[Ctrl]+r&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;重做上一操作&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;nyy&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;复制光标（包括光标行）向下n行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&quot;我的-vimrc配置&quot;&gt;&lt;a href=&quot;#我的-vimrc配置&quot; class=&quot;headerlink&quot; title=&quot;我的.vimrc配置&quot;&gt;&lt;/a&gt;我的&lt;code&gt;.vimrc&lt;/code&gt;配置&lt;/h1&gt;&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;number&lt;/span&gt;           &lt;span class=&quot;comment&quot;&gt;&quot;显示行号&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;set&lt;/span&gt; nowrap           &lt;span class=&quot;comment&quot;&gt;&quot;不换行&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;shiftwidth&lt;/span&gt;=&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;     &lt;span class=&quot;comment&quot;&gt;&quot;默认缩进4个空格&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;set&lt;/span&gt; softtabstop=&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;    &lt;span class=&quot;comment&quot;&gt;&quot;使用tab时 tab空格数&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;set&lt;/span&gt; tabstop=&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;        &lt;span class=&quot;comment&quot;&gt;&quot;tab代表4个空格&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;set&lt;/span&gt; laststatus=&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;     &lt;span class=&quot;comment&quot;&gt;&quot;总是显示状态行&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                     &lt;span class=&quot;comment&quot;&gt;&quot; indent 删除自动缩进的值&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                     &lt;span class=&quot;comment&quot;&gt;&quot; eol 删除上一行行末尾的回车，两行合并&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                     &lt;span class=&quot;comment&quot;&gt;&quot; start 除了刚输入的，还删除原来的字符&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;set&lt;/span&gt; backspace=&lt;span class=&quot;built_in&quot;&gt;indent&lt;/span&gt;,eol,start&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;set&lt;/span&gt; expandtab       &lt;span class=&quot;comment&quot;&gt;&quot;使用空格替换tab&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;set&lt;/span&gt; autoindent      &lt;span class=&quot;comment&quot;&gt;&quot; 自动缩进&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;colorscheme&lt;/span&gt; evening &lt;span class=&quot;comment&quot;&gt;&quot;颜色模式&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;syn &lt;span class=&quot;keyword&quot;&gt;on&lt;/span&gt;              &lt;span class=&quot;comment&quot;&gt;&quot;语法高亮&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;filetype&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;on&lt;/span&gt;         &lt;span class=&quot;comment&quot;&gt;&quot;文件类型&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;set&lt;/span&gt; encoding=utf-&lt;span class=&quot;number&quot;&gt;8&lt;/span&gt;  &lt;span class=&quot;comment&quot;&gt;&quot;编码为utf8&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;光标移动&quot;&gt;&lt;a href=&quot;#光标移动&quot; class=&quot;headerlink&quot; title=&quot;光标移动&quot;&gt;&lt;/a&gt;光标移动&lt;/h1&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;操作&lt;/th&gt;
+&lt;th st
+    
+    </summary>
+    
+    
+      <category term="偏好配置" scheme="http://joshshaw.github.io/tags/%E5%81%8F%E5%A5%BD%E9%85%8D%E7%BD%AE/"/>
+    
+      <category term="vim" scheme="http://joshshaw.github.io/tags/vim/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>RAID</title>
+    <link href="http://joshshaw.github.io/2016/05/09/RAID/"/>
+    <id>http://joshshaw.github.io/2016/05/09/RAID/</id>
+    <published>2016-05-09T06:55:06.000Z</published>
+    <updated>2016-05-09T06:55:06.437Z</updated>
+    
+    <content type="html"></content>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>MySQL主从库复制配置入门</title>

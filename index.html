@@ -238,6 +238,339 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/12/我的vim/" itemprop="url">
+                  我的vim
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-12T17:11:43+08:00" content="2016-05-12">
+              2016-05-12
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/12/我的vim/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/12/我的vim/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="光标移动"><a href="#光标移动" class="headerlink" title="光标移动"></a>光标移动</h1><table>
+<thead>
+<tr>
+<th style="text-align:center">操作</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">h</td>
+<td style="text-align:left">左移</td>
+</tr>
+<tr>
+<td style="text-align:center">j</td>
+<td style="text-align:left">右移</td>
+</tr>
+<tr>
+<td style="text-align:center">k</td>
+<td style="text-align:left">上移</td>
+</tr>
+<tr>
+<td style="text-align:center">i</td>
+<td style="text-align:left">右移</td>
+</tr>
+<tr>
+<td style="text-align:center">[Ctrl]+f</td>
+<td style="text-align:left">上移一页</td>
+</tr>
+<tr>
+<td style="text-align:center">[Ctrl]+b</td>
+<td style="text-align:left">下移一页</td>
+</tr>
+<tr>
+<td style="text-align:center">[Ctrl]+d</td>
+<td style="text-align:left">上移半页</td>
+</tr>
+<tr>
+<td style="text-align:center">[Ctrl]+u</td>
+<td style="text-align:left">下移半页</td>
+</tr>
+<tr>
+<td style="text-align:center">0, [HOME]</td>
+<td style="text-align:left">一行的最前页</td>
+</tr>
+<tr>
+<td style="text-align:center">$, [END]</td>
+<td style="text-align:left">一行的最后页</td>
+</tr>
+<tr>
+<td style="text-align:center">H</td>
+<td style="text-align:left">移动到该页的第一行第一个字符</td>
+</tr>
+<tr>
+<td style="text-align:center">M</td>
+<td style="text-align:left">移动到该页的中间行第一个字符</td>
+</tr>
+<tr>
+<td style="text-align:center">L</td>
+<td style="text-align:left">移动到该页的最后行第一个字符</td>
+</tr>
+<tr>
+<td style="text-align:center">G</td>
+<td style="text-align:left">移动到文件最后一行</td>
+</tr>
+<tr>
+<td style="text-align:center">nG</td>
+<td style="text-align:left">移动到第n行（1G移动到文件头）</td>
+</tr>
+<tr>
+<td style="text-align:center">gg</td>
+<td style="text-align:left">等同1G</td>
+</tr>
+<tr>
+<td style="text-align:center">n[Enter]</td>
+<td style="text-align:left">光标向下移动n行</td>
+</tr>
+</tbody>
+</table>
+<h1 id="字符串的查找与替换"><a href="#字符串的查找与替换" class="headerlink" title="字符串的查找与替换"></a>字符串的查找与替换</h1><table>
+<thead>
+<tr>
+<th style="text-align:center">操作</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">/word</td>
+<td style="text-align:left">向下寻找word字符串（?word为向上）</td>
+</tr>
+<tr>
+<td style="text-align:center">n</td>
+<td style="text-align:left">重复前一个操作</td>
+</tr>
+<tr>
+<td style="text-align:center">N</td>
+<td style="text-align:left">反方向重复前一个操作</td>
+</tr>
+<tr>
+<td style="text-align:center">:n1, n2s/word1/word2/g(c)</td>
+<td style="text-align:left">从第n1行到第n2行查找word1并换成word2，+c的话需要用户确认每次替换</td>
+</tr>
+<tr>
+<td style="text-align:center">1, $</td>
+<td style="text-align:left">上一行的n1和n2，全文的查找和替换</td>
+</tr>
+</tbody>
+</table>
+<h1 id="复制、撤销、重复"><a href="#复制、撤销、重复" class="headerlink" title="复制、撤销、重复"></a>复制、撤销、重复</h1><table>
+<thead>
+<tr>
+<th style="text-align:center">操作</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">v</td>
+<td style="text-align:left">光标选定模式，配合上下左右选定段，再按y复制</td>
+</tr>
+<tr>
+<td style="text-align:center">yy</td>
+<td style="text-align:left">复制当前行</td>
+</tr>
+<tr>
+<td style="text-align:center">p, P</td>
+<td style="text-align:left">将已经复制的数据在光标下一行粘贴，大写P为上一行</td>
+</tr>
+<tr>
+<td style="text-align:center">u</td>
+<td style="text-align:left">复原前一操作</td>
+</tr>
+<tr>
+<td style="text-align:center">[Ctrl]+r</td>
+<td style="text-align:left">重做上一操作</td>
+</tr>
+<tr>
+<td style="text-align:center">nyy</td>
+<td style="text-align:left">复制光标（包括光标行）向下n行</td>
+</tr>
+</tbody>
+</table>
+<h1 id="我的-vimrc配置"><a href="#我的-vimrc配置" class="headerlink" title="我的.vimrc配置"></a>我的<code>.vimrc</code>配置</h1><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> <span class="keyword">number</span>           <span class="comment">"显示行号</span></span><br><span class="line"><span class="keyword">set</span> nowrap           <span class="comment">"不换行</span></span><br><span class="line"><span class="keyword">set</span> <span class="built_in">shiftwidth</span>=<span class="number">4</span>     <span class="comment">"默认缩进4个空格</span></span><br><span class="line"><span class="keyword">set</span> softtabstop=<span class="number">4</span>    <span class="comment">"使用tab时 tab空格数</span></span><br><span class="line"><span class="keyword">set</span> tabstop=<span class="number">4</span>        <span class="comment">"tab代表4个空格</span></span><br><span class="line"><span class="keyword">set</span> laststatus=<span class="number">2</span>     <span class="comment">"总是显示状态行</span></span><br><span class="line"></span><br><span class="line">                     <span class="comment">" indent 删除自动缩进的值</span></span><br><span class="line">                     <span class="comment">" eol 删除上一行行末尾的回车，两行合并</span></span><br><span class="line">                     <span class="comment">" start 除了刚输入的，还删除原来的字符</span></span><br><span class="line"><span class="keyword">set</span> backspace=<span class="built_in">indent</span>,eol,start</span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span> expandtab       <span class="comment">"使用空格替换tab</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span> autoindent      <span class="comment">" 自动缩进</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">colorscheme</span> evening <span class="comment">"颜色模式</span></span><br><span class="line"></span><br><span class="line">syn <span class="keyword">on</span>              <span class="comment">"语法高亮</span></span><br><span class="line"><span class="keyword">filetype</span> <span class="keyword">on</span>         <span class="comment">"文件类型</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span> encoding=utf-<span class="number">8</span>  <span class="comment">"编码为utf8</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/09/RAID/" itemprop="url">
+                  RAID
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-09T14:55:06+08:00" content="2016-05-09">
+              2016-05-09
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/09/RAID/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/09/RAID/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/06/MySQL主从库复制配置/" itemprop="url">
                   MySQL主从库复制配置入门
                 </a>
@@ -610,299 +943,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/29/《高性能MySQL》の创建高性能的索引/" itemprop="url">
-                  《高性能MySQL》の创建高性能的索引
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-29T16:07:50+08:00" content="2016-04-29">
-              2016-04-29
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/计算机科学/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机科学</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/29/《高性能MySQL》の创建高性能的索引/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/29/《高性能MySQL》の创建高性能的索引/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="0x00前言"><a href="#0x00前言" class="headerlink" title="0x00前言"></a>0x00前言</h2><p>本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，<br>以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。</p>
-<hr>
-<h2 id="0x01索引基础"><a href="#0x01索引基础" class="headerlink" title="0x01索引基础"></a>0x01索引基础</h2><p>索引可以包含一个或多个列的值。</p>
-<h3 id="B-Tree索引"><a href="#B-Tree索引" class="headerlink" title="B-Tree索引"></a>B-Tree索引</h3><ol>
-<li>简介<br>实际上很多存储引擎使用的是B+Tree（如下图）。<ul>
-<li>每一个叶子节点都包含指向下一个叶子节点的指针，从而方便叶子节点的范围遍历。</li>
-<li>指向下层子节点的指针实际上定义了子节点页中值的上限和下限。</li>
-<li>叶子节点的指针指向的是被索引的数据。<img src="/2016/04/29/《高性能MySQL》の创建高性能的索引/b+tree.jpg" alt="b+tree.jpg" title="">
-（文章最后有B树和B+树的一些简介）</li>
-</ul>
-</li>
-<li>可以使用B-Tree索引的查询类型<ul>
-<li>全值匹配</li>
-<li>匹配最左前缀</li>
-<li>匹配列前缀</li>
-<li>匹配范围值</li>
-<li>精确匹配某一列并范围匹配另外一列</li>
-<li>只访问索引的查询</li>
-</ul>
-</li>
-<li>B-Tree索引的限制<br>这些限制都和索引列的顺序有关。<ul>
-<li>不能从索引的中间列开始查找</li>
-<li>不能跳过索引中的列</li>
-<li>若查询中有某个列的范围查询，则右边所有列都无法使用索引来优化查询</li>
-</ul>
-</li>
-</ol>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/29/《高性能MySQL》の创建高性能的索引/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/28/《高性能MySQL》のSchema与数据类型优化/" itemprop="url">
-                  《高性能MySQL》のSchema与数据类型优化
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-28T13:41:45+08:00" content="2016-04-28">
-              2016-04-28
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/计算机科学/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机科学</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/28/《高性能MySQL》のSchema与数据类型优化/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/28/《高性能MySQL》のSchema与数据类型优化/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="0x00前言"><a href="#0x00前言" class="headerlink" title="0x00前言"></a>0x00前言</h2><p>本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，<br>以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。</p>
-<hr>
-<h2 id="0x01简介"><a href="#0x01简介" class="headerlink" title="0x01简介"></a>0x01简介</h2><p>良好的逻辑设计和物理设计是高性能的基石。Schema的设计是极为重要的，下面将会简单介绍具体情况下适合的设计。</p>
-<hr>
-<h2 id="0x02选择数据类型"><a href="#0x02选择数据类型" class="headerlink" title="0x02选择数据类型"></a>0x02选择数据类型</h2><ul>
-<li>更小的通常更好。这样会占用更少的磁盘，内存和CPU</li>
-<li>简单就好。日期用日期类型DATETIME、TIMESTAMP而不是字符串等等。</li>
-<li>尽量避免NULL。如果该列上建立索引，那么应该尽量避免NULL，但是也不能全不用NULL。</li>
-</ul>
-<h3 id="整数类型"><a href="#整数类型" class="headerlink" title="整数类型"></a>整数类型</h3><table>
-<thead>
-<tr>
-<th style="text-align:center">类型</th>
-<th style="text-align:center">TINYINT</th>
-<th style="text-align:center">SMALLINT</th>
-<th style="text-align:center">MEDIUMINT</th>
-<th style="text-align:center">INT</th>
-<th style="text-align:center">BIGINT</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">比特</td>
-<td style="text-align:center">8</td>
-<td style="text-align:center">16</td>
-<td style="text-align:center">24</td>
-<td style="text-align:center">32</td>
-<td style="text-align:center">64</td>
-</tr>
-</tbody>
-</table>
-<p>字段非负时最好用上UNSIGNED。标识符一般使用整数字段，并且金钱一般也使用整数来存储，只需要乘以响应的<br>位数，这样计算上不需要使用float或者double，计算速度更快，并且不失精确性。而IPv4地址也最好用整数存储。</p>
-<h3 id="实数类型"><a href="#实数类型" class="headerlink" title="实数类型"></a>实数类型</h3><p>DECIMAL类型也能精确计算，但是代缴较高，能用整数代替时最好用整数。</p>
-<h3 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h3><p>字符串类型用较多种，如VARCHAR、CHAR、TEXT、BOLB等。<br>数据库、表、和表中的列都可以定义自己的字符集和排序规则，但是一般情况下最好统一，这样能简化开发。<br>字符长度不要分配太多，应该分配适合范围内的最小值。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/28/《高性能MySQL》のSchema与数据类型优化/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -948,7 +988,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -965,7 +1005,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

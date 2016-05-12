@@ -238,6 +238,299 @@
             
               
                 
+                <a class="post-title-link" href="/2016/04/29/《高性能MySQL》の创建高性能的索引/" itemprop="url">
+                  《高性能MySQL》の创建高性能的索引
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-29T16:07:50+08:00" content="2016-04-29">
+              2016-04-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/计算机科学/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机科学</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/29/《高性能MySQL》の创建高性能的索引/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/29/《高性能MySQL》の创建高性能的索引/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="0x00前言"><a href="#0x00前言" class="headerlink" title="0x00前言"></a>0x00前言</h2><p>本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，<br>以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。</p>
+<hr>
+<h2 id="0x01索引基础"><a href="#0x01索引基础" class="headerlink" title="0x01索引基础"></a>0x01索引基础</h2><p>索引可以包含一个或多个列的值。</p>
+<h3 id="B-Tree索引"><a href="#B-Tree索引" class="headerlink" title="B-Tree索引"></a>B-Tree索引</h3><ol>
+<li>简介<br>实际上很多存储引擎使用的是B+Tree（如下图）。<ul>
+<li>每一个叶子节点都包含指向下一个叶子节点的指针，从而方便叶子节点的范围遍历。</li>
+<li>指向下层子节点的指针实际上定义了子节点页中值的上限和下限。</li>
+<li>叶子节点的指针指向的是被索引的数据。<img src="/2016/04/29/《高性能MySQL》の创建高性能的索引/b+tree.jpg" alt="b+tree.jpg" title="">
+（文章最后有B树和B+树的一些简介）</li>
+</ul>
+</li>
+<li>可以使用B-Tree索引的查询类型<ul>
+<li>全值匹配</li>
+<li>匹配最左前缀</li>
+<li>匹配列前缀</li>
+<li>匹配范围值</li>
+<li>精确匹配某一列并范围匹配另外一列</li>
+<li>只访问索引的查询</li>
+</ul>
+</li>
+<li>B-Tree索引的限制<br>这些限制都和索引列的顺序有关。<ul>
+<li>不能从索引的中间列开始查找</li>
+<li>不能跳过索引中的列</li>
+<li>若查询中有某个列的范围查询，则右边所有列都无法使用索引来优化查询</li>
+</ul>
+</li>
+</ol>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/29/《高性能MySQL》の创建高性能的索引/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/28/《高性能MySQL》のSchema与数据类型优化/" itemprop="url">
+                  《高性能MySQL》のSchema与数据类型优化
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-28T13:41:45+08:00" content="2016-04-28">
+              2016-04-28
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/计算机科学/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机科学</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/28/《高性能MySQL》のSchema与数据类型优化/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/28/《高性能MySQL》のSchema与数据类型优化/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="0x00前言"><a href="#0x00前言" class="headerlink" title="0x00前言"></a>0x00前言</h2><p>本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，<br>以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。</p>
+<hr>
+<h2 id="0x01简介"><a href="#0x01简介" class="headerlink" title="0x01简介"></a>0x01简介</h2><p>良好的逻辑设计和物理设计是高性能的基石。Schema的设计是极为重要的，下面将会简单介绍具体情况下适合的设计。</p>
+<hr>
+<h2 id="0x02选择数据类型"><a href="#0x02选择数据类型" class="headerlink" title="0x02选择数据类型"></a>0x02选择数据类型</h2><ul>
+<li>更小的通常更好。这样会占用更少的磁盘，内存和CPU</li>
+<li>简单就好。日期用日期类型DATETIME、TIMESTAMP而不是字符串等等。</li>
+<li>尽量避免NULL。如果该列上建立索引，那么应该尽量避免NULL，但是也不能全不用NULL。</li>
+</ul>
+<h3 id="整数类型"><a href="#整数类型" class="headerlink" title="整数类型"></a>整数类型</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">TINYINT</th>
+<th style="text-align:center">SMALLINT</th>
+<th style="text-align:center">MEDIUMINT</th>
+<th style="text-align:center">INT</th>
+<th style="text-align:center">BIGINT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">比特</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">16</td>
+<td style="text-align:center">24</td>
+<td style="text-align:center">32</td>
+<td style="text-align:center">64</td>
+</tr>
+</tbody>
+</table>
+<p>字段非负时最好用上UNSIGNED。标识符一般使用整数字段，并且金钱一般也使用整数来存储，只需要乘以响应的<br>位数，这样计算上不需要使用float或者double，计算速度更快，并且不失精确性。而IPv4地址也最好用整数存储。</p>
+<h3 id="实数类型"><a href="#实数类型" class="headerlink" title="实数类型"></a>实数类型</h3><p>DECIMAL类型也能精确计算，但是代缴较高，能用整数代替时最好用整数。</p>
+<h3 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h3><p>字符串类型用较多种，如VARCHAR、CHAR、TEXT、BOLB等。<br>数据库、表、和表中的列都可以定义自己的字符集和排序规则，但是一般情况下最好统一，这样能简化开发。<br>字符长度不要分配太多，应该分配适合范围内的最小值。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/28/《高性能MySQL》のSchema与数据类型优化/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/26/《高性能MySQL》の复制/" itemprop="url">
                   《高性能MySQL》の复制
                 </a>
@@ -621,244 +914,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/05/小资-两道编程题/" itemprop="url">
-                  小资-两道编程题
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-05T10:36:12+08:00" content="2016-04-05">
-              2016-04-05
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术博客/" itemprop="url" rel="index">
-                    <span itemprop="name">技术博客</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/05/小资-两道编程题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/05/小资-两道编程题/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="0x00第一题（回形矩阵）"><a href="#0x00第一题（回形矩阵）" class="headerlink" title="0x00第一题（回形矩阵）"></a>0x00第一题（回形矩阵）</h1><h2 id="0x01描述"><a href="#0x01描述" class="headerlink" title="0x01描述"></a>0x01描述</h2><p>输入矩阵的边长，如5，然后生成如下的回形矩阵，最后一行行地输出。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> 1  2  3  4  5</span><br><span class="line">16 17 18 19  6</span><br><span class="line">15 24 25 20  7</span><br><span class="line">14 23 22 21  8</span><br><span class="line">13 12 11 10  9</span><br></pre></td></tr></table></figure></p>
-<h2 id="0x02思路"><a href="#0x02思路" class="headerlink" title="0x02思路"></a>0x02思路</h2><p>定义上下左右四个方向，递增地往当前方向走，判断越界或者是否已经被占用，是则向右走，<br>再一次判断是否可以走，可以则走，不可以说明已经全部走完，程序结束。<br>于是在代码中最主要的方法为<code>boolean hasNext()</code>，同时对越界的判断要仔细。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/05/小资-两道编程题/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/30/堆，堆排序，及Java实现/" itemprop="url">
-                  堆，堆排序，及Java实现
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-30T17:21:12+08:00" content="2016-03-30">
-              2016-03-30
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术博客/" itemprop="url" rel="index">
-                    <span itemprop="name">技术博客</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/30/堆，堆排序，及Java实现/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/30/堆，堆排序，及Java实现/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="0x00简介"><a href="#0x00简介" class="headerlink" title="0x00简介"></a>0x00简介</h2><p>堆是一个完全二叉树的结构，可以用数组实现。最大（小）堆使用递归定义：非叶节点的权值比左右子节点的<br>权值都大（小）。</p>
-<h2 id="0x01代码"><a href="#0x01代码" class="headerlink" title="0x01代码"></a>0x01代码</h2><p>引用一个博客的代码，在此基础之上小改了一点点，并且更新了一下注释。重点在于<code>heapify(int i, int size)</code><br>方法和<code>buildHeap()</code>方法。</p>
-<ul>
-<li><code>heapify(int i, int size)</code><br>该方法使得当前节点通过权值的比较落到合适的位置，包括位置不变或者落到子节点内。就最大堆为例，如图<br>子节点的<code>10</code>最大，于是<code>5</code>和<code>10</code>位置互换，此时以<code>5</code>为子根节点的子树结构可能不符合定义，于是递归<br>地为执行<code>heapify()</code>方法。     <img src="/2016/03/30/堆，堆排序，及Java实现/pic1.png" alt="堆化前后" title="堆化前后">
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/03/30/堆，堆排序，及Java实现/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -904,7 +959,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -921,7 +976,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
