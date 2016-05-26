@@ -238,6 +238,264 @@
             
               
                 
+                <a class="post-title-link" href="/2016/04/22/《高性能MySQL》のMySQL高级特性/" itemprop="url">
+                  《高性能MySQL》のMySQL高级特性
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-22T14:28:02+08:00" content="2016-04-22">
+              2016-04-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/计算机科学/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机科学</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/22/《高性能MySQL》のMySQL高级特性/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/22/《高性能MySQL》のMySQL高级特性/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="0x00前言"><a href="#0x00前言" class="headerlink" title="0x00前言"></a>0x00前言</h2><p>本书讲述到定稿前的MySQL5.5版，所以下面内容的适用范围止步于MySQL5.5。本文仅仅强调书中讲述的重中之重，<br>以便快速查阅，详细的内容还请认真阅读书本和MySQL的官方文档。</p>
+<hr>
+<h2 id="0x01简介"><a href="#0x01简介" class="headerlink" title="0x01简介"></a>0x01简介</h2><p>本章讨论了MySQL的分区表，视图，外键，存储过程，绑定变量，插件，字符集，全文索引，XA事务，查询缓存。</p>
+<hr>
+<h2 id="0x02具体"><a href="#0x02具体" class="headerlink" title="0x02具体"></a>0x02具体</h2><h3 id="分区表"><a href="#分区表" class="headerlink" title="分区表"></a>分区表</h3><p>适用于大数据量的过滤场景，或者数据分为历史数据和热点数据，对于单条记录的查询并没有多少优势。</p>
+<h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>通过句柄对象转化成对存储引擎的接口调用，对于SQL层是完全封装底层实现的黑盒子。<br>CURD操作都会先代开并锁住所有的底层表，然后在解锁不需要的表。所以并不是在处理过程中都锁住表。</p>
+<h4 id="适用条件"><a href="#适用条件" class="headerlink" title="适用条件"></a>适用条件</h4><ul>
+<li>表非常大，或者表的最后部分是热点数据，其余是历史数据。</li>
+<li>想大批量地删除数据，可以使用清除整个分区的方式。</li>
+<li>分区表可以分布在不同的物理设备上。</li>
+<li>避免某些特殊瓶颈。如ext3文件系统的inode锁竞争。</li>
+<li>可以备份和恢复独立的分区。
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/22/《高性能MySQL》のMySQL高级特性/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/11/TCP三次握手与四次挥手/" itemprop="url">
+                  TCP三次握手与四次挥手
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-11T17:00:01+08:00" content="2016-04-11">
+              2016-04-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/" itemprop="url" rel="index">
+                    <span itemprop="name">技术博客</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/11/TCP三次握手与四次挥手/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/11/TCP三次握手与四次挥手/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <img src="/2016/04/11/TCP三次握手与四次挥手/tcp.png" alt="tcp.png" title="">
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>上图左为tcp连接的状态机，每个圆矩形为一个状态，每个状态有一行或者两行，第一行为该状态的名称，<br>第二行（有的话）为该状态能（或者需要）发送的报文。<br>虚线箭头路径为服务器的常见状态转移路线。虚线框为关闭连接的状态集合。每个状态转移都是通过事件<br>触发，一般为收到一些特定的报文。<br>上图右为时间线下的状态转移示意图，分为常见和特殊情况。</p>
+<h2 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h2><ul>
+<li><a href="#CLOSED">CLOSED</a></li>
+<li><a href="#LISTEN">LISTEN</a></li>
+<li><a href="#SYN_SENT">SYN_SENT</a></li>
+<li><a href="#SYN_RCVD">SYN_RCVD</a></li>
+<li><a href="#ESTABLISED">ESTABLISED</a></li>
+<li><a href="#FIN_WAIT_1">FIN_WAIT_1</a></li>
+<li><a href="#FIN_WAIT_2">FIN_WAIT_2</a></li>
+<li><a href="#CLOSING">CLOSING</a></li>
+<li><a href="#TIME_WAIT">TIME_WAIT</a></li>
+<li><a href="#CLOSE_WAIT">CLOSE_WAIT</a></li>
+<li><a href="#LAST_ACK">LAST_ACK</a>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/11/TCP三次握手与四次挥手/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/05/小资-两道编程题/" itemprop="url">
                   小资-两道编程题
                 </a>
@@ -580,251 +838,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/24/JPEG图像部分加密/" itemprop="url">
-                  JPEG图像部分加密
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-24T14:28:20+08:00" content="2016-03-24">
-              2016-03-24
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术博客/" itemprop="url" rel="index">
-                    <span itemprop="name">技术博客</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/24/JPEG图像部分加密/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/24/JPEG图像部分加密/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="JPEG编码流程"><a href="#JPEG编码流程" class="headerlink" title="JPEG编码流程"></a>JPEG编码流程</h2><img src="/2016/03/24/JPEG图像部分加密/jpeg.png" alt="jpeg.png" title="">
-<h2 id="各种加密操作效果以及破解"><a href="#各种加密操作效果以及破解" class="headerlink" title="各种加密操作效果以及破解"></a>各种加密操作效果以及破解</h2><img src="/2016/03/24/JPEG图像部分加密/pic1.jpg" alt="pic1.jpg" title="">
-<img src="/2016/03/24/JPEG图像部分加密/pic2.jpg" alt="pic2.jpg" title="">
-<ul>
-<li>图（1, 1）Lena原图</li>
-<li>图（1, 2）= 图（1, 1）符号位加密</li>
-<li>图（1, 3）= 图（1, 2）DCT取正（包括DC和AC）</li>
-<li>图（2, 2）= 图（1, 1）AC置乱，符号位加密</li>
-<li>图（2, 3）= 图（2, 2）零块二值化</li>
-<li>图（3, 1）= Tiffany原图</li>
-<li>图（3, 2）= 图（3, 1）AC置乱，符号位加密</li>
-<li>图（3, 3）= 图（3, 2）零块二值化</li>
-</ul>
-<h2 id="MCU置换-AC置乱效果"><a href="#MCU置换-AC置乱效果" class="headerlink" title="MCU置换+AC置乱效果"></a>MCU置换+AC置乱效果</h2><img src="/2016/03/24/JPEG图像部分加密/pic3.jpg" alt="pic3.jpg" title="">
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/20/关于公正和公信/" itemprop="url">
-                  关于公正和公信
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-20T10:58:51+08:00" content="2016-03-20">
-              2016-03-20
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/一派胡言/" itemprop="url" rel="index">
-                    <span itemprop="name">一派胡言</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/20/关于公正和公信/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/20/关于公正和公信/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>看完《八恶人》，其中有两个细节我想强调一下。<br><img src="/2016/03/20/关于公正和公信/poster.jpg" alt="poster.jpg" title=""><br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/03/20/关于公正和公信/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -870,7 +883,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -887,7 +900,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

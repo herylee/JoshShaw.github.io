@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="配置," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -59,34 +59,37 @@
 
 
 
-<meta name="description" content="创建复制账号12mysql &amp;gt; grant replication slave, replication client on *.*          to &apos;repl&apos;@&apos;172.18.%&apos; identified by &apos;password&apos;;
+<meta name="description" content="drunbility无处不在装逼无处不在，何况作为一名工程师，额，技术人员，额，码农，额…必要的装逼技巧可以让你无时无刻都环绕一种巨星光环（闪绕的吐沫）。
+还犹豫什么？擦亮眼睛，竖起耳朵，看我become drunbility。
+准备物品
+一台装有类Unix(Linux)系统的电脑
+一杯咖啡
+没有了
 
-在主备库都创建该账号，把账户限制在本地网络。
-为了方便才以后能交换主备库的角色。
-
-
-配置主库和备库主库在my.cnf中增加（修改）：12log_">
+忠告本文的行笔将同本文的作用保持一致，于是高能反应往后一直存在，若承受不了，请迅速撤离，免受祸害">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySQL主从库复制配置入门">
-<meta property="og:url" content="http://joshshaw.github.io/2016/05/06/MySQL主从库复制配置/index.html">
+<meta property="og:title" content="How to be drunbility(zhuangbility)?">
+<meta property="og:url" content="http://joshshaw.github.io/2016/05/17/How-to-be-drunbility-zhuangbility/index.html">
 <meta property="og:site_name" content="Joshua Shaw之秘密花园">
-<meta property="og:description" content="创建复制账号12mysql &amp;gt; grant replication slave, replication client on *.*          to &apos;repl&apos;@&apos;172.18.%&apos; identified by &apos;password&apos;;
+<meta property="og:description" content="drunbility无处不在装逼无处不在，何况作为一名工程师，额，技术人员，额，码农，额…必要的装逼技巧可以让你无时无刻都环绕一种巨星光环（闪绕的吐沫）。
+还犹豫什么？擦亮眼睛，竖起耳朵，看我become drunbility。
+准备物品
+一台装有类Unix(Linux)系统的电脑
+一杯咖啡
+没有了
 
-在主备库都创建该账号，把账户限制在本地网络。
-为了方便才以后能交换主备库的角色。
-
-
-配置主库和备库主库在my.cnf中增加（修改）：12log_">
-<meta property="og:updated_time" content="2016-05-06T07:01:08.234Z">
+忠告本文的行笔将同本文的作用保持一致，于是高能反应往后一直存在，若承受不了，请迅速撤离，免受祸害">
+<meta property="og:updated_time" content="2016-05-18T10:25:37.855Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MySQL主从库复制配置入门">
-<meta name="twitter:description" content="创建复制账号12mysql &amp;gt; grant replication slave, replication client on *.*          to &apos;repl&apos;@&apos;172.18.%&apos; identified by &apos;password&apos;;
+<meta name="twitter:title" content="How to be drunbility(zhuangbility)?">
+<meta name="twitter:description" content="drunbility无处不在装逼无处不在，何况作为一名工程师，额，技术人员，额，码农，额…必要的装逼技巧可以让你无时无刻都环绕一种巨星光环（闪绕的吐沫）。
+还犹豫什么？擦亮眼睛，竖起耳朵，看我become drunbility。
+准备物品
+一台装有类Unix(Linux)系统的电脑
+一杯咖啡
+没有了
 
-在主备库都创建该账号，把账户限制在本地网络。
-为了方便才以后能交换主备库的角色。
-
-
-配置主库和备库主库在my.cnf中增加（修改）：12log_">
+忠告本文的行笔将同本文的作用保持一致，于是高能反应往后一直存在，若承受不了，请迅速撤离，免受祸害">
 
 
 
@@ -104,7 +107,7 @@
   };
 </script>
 
-  <title> MySQL主从库复制配置入门 | Joshua Shaw之秘密花园 </title>
+  <title> How to be drunbility(zhuangbility)? | Joshua Shaw之秘密花园 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -254,7 +257,7 @@
             
             
               
-                MySQL主从库复制配置入门
+                How to be drunbility(zhuangbility)?
               
             
           </h1>
@@ -266,38 +269,19 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-06T14:17:12+08:00" content="2016-05-06">
-              2016-05-06
+            <time itemprop="dateCreated" datetime="2016-05-17T17:06:47+08:00" content="2016-05-17">
+              2016-05-17
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/配置笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">配置笔记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/05/06/MySQL主从库复制配置/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/06/MySQL主从库复制配置/" itemprop="commentsCount"></span>
+                <a href="/2016/05/17/How-to-be-drunbility-zhuangbility/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/17/How-to-be-drunbility-zhuangbility/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -319,30 +303,17 @@
       
 
       
-        <h2 id="创建复制账号"><a href="#创建复制账号" class="headerlink" title="创建复制账号"></a>创建复制账号</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql &gt; grant replication slave, replication client on *.*</span><br><span class="line">          to 'repl'@'172.18.%' identified by 'password';</span><br></pre></td></tr></table></figure>
-<ol>
-<li>在主备库都创建该账号，把账户限制在本地网络。</li>
-<li>为了方便才以后能交换主备库的角色。</li>
-</ol>
-<hr>
-<h2 id="配置主库和备库"><a href="#配置主库和备库" class="headerlink" title="配置主库和备库"></a>配置主库和备库</h2><h3 id="主库"><a href="#主库" class="headerlink" title="主库"></a>主库</h3><p>在<code>my.cnf</code>中增加（修改）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">log_bin    = mysql-bin</span><br><span class="line">server_id  = 10         # 千万不要设置为1</span><br></pre></td></tr></table></figure></p>
-<p>可以通过下面指令查看复制log文件和log位置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql &gt; show master status\G;</span><br></pre></td></tr></table></figure></p>
-<h3 id="备库"><a href="#备库" class="headerlink" title="备库"></a>备库</h3><p>同样在<code>my.cnf</code>中增加（修改）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">log_bin           = mysql-bin                        # 和主库一致</span><br><span class="line">server_id         = 2                                # 要和主库不一样</span><br><span class="line">relay_log         = /var/lib/mysql/mysql-relay-bin   # 配置为绝对路径</span><br><span class="line">log_slave_updates = 1                                # 不开启会出问题</span><br><span class="line">read_only         = 1                                # repl账户只能读</span><br></pre></td></tr></table></figure></p>
-<a id="more"></a>
-<h3 id="重启与启动复制"><a href="#重启与启动复制" class="headerlink" title="重启与启动复制"></a>重启与启动复制</h3><p>上述配置完需要重启mysql。<br>启动复制前要让备库知道主库的信息，以便获取和重放其二进制日志。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql &gt; change master to master_host='ip',</span><br><span class="line">        master_user='repl',</span><br><span class="line">        master_password='password'</span><br><span class="line">        master_log_file='mysql-bin.000001',</span><br><span class="line">        master_log_pos=0;</span><br></pre></td></tr></table></figure></p>
-<p>启动slave：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql &gt; start slave;</span><br></pre></td></tr></table></figure></p>
-<p>查看slave的状态查看<code>slave_IO_Running</code>、<code>Slave_SQL_Running</code>等情况：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql &gt; show slave status\G</span><br></pre></td></tr></table></figure></p>
-<hr>
-<h2 id="错误分析"><a href="#错误分析" class="headerlink" title="错误分析"></a>错误分析</h2><h3 id="从库不能重放行为"><a href="#从库不能重放行为" class="headerlink" title="从库不能重放行为"></a>从库不能重放行为</h3><ol>
-<li>开启复制后才会重放主库的所有行为，因为此时的行为才会被记录到复制日志中，所以开启复制后的创建数据库、<br>建表操作，CRUD操作才能在从库重放。</li>
-<li>而配置复制前在主库建立的数据库，由于没有记录日志，所以从库没有该数据库，也没有该表，虽然记录了CRUD<br>在日志里，但是不能重放。解决办法是手动建库建表。</li>
-</ol>
-<h3 id="日志文件和位置错乱"><a href="#日志文件和位置错乱" class="headerlink" title="日志文件和位置错乱"></a>日志文件和位置错乱</h3><p>有时候日志文件和位置错乱时，就要通过查看主库的master状态来更新备库的信息。更新信息前要<code>stop slave</code>。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql &gt; change master to</span><br><span class="line">        master_log_file='mysql-bin.000002',</span><br><span class="line">        master_log_pos=1234;</span><br></pre></td></tr></table></figure></p>
-<hr>
-<h2 id="推荐配置"><a href="#推荐配置" class="headerlink" title="推荐配置"></a>推荐配置</h2><p>上述的配置外，在数据完整性的重要性高于性能时，在主库配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sync_binlog = 1</span><br></pre></td></tr></table></figure></p>
-<p>MySQL每次在提交事务前会将二进制日志同步到磁盘上，能保证服务器崩溃时不会丢失事件。<br>而在备库中，如果使用的是MySQL5.5版本，并且不介意额外的fsync()导致的性能开销，最好配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sync_master_info    = 1</span><br><span class="line">sync_relay_log      = 1</span><br><span class="line">sync_relay_log_info = 1</span><br></pre></td></tr></table></figure></p>
-<hr>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>以上的配置为数据库还没有数据时的配置，若主库在配置复制前已经有数据了，有一些其他的配置可供使用，这里先不详述。</p>
+        <h2 id="drunbility无处不在"><a href="#drunbility无处不在" class="headerlink" title="drunbility无处不在"></a>drunbility无处不在</h2><p>装逼无处不在，何况作为一名工程师，额，技术人员，额，码农，额…<br>必要的装逼技巧可以让你无时无刻都环绕一种巨星光环（闪绕的吐沫）。</p>
+<p>还犹豫什么？<br>擦亮眼睛，竖起耳朵，看我become drunbility。</p>
+<h3 id="准备物品"><a href="#准备物品" class="headerlink" title="准备物品"></a>准备物品</h3><ul>
+<li>一台装有类Unix(Linux)系统的电脑</li>
+<li>一杯咖啡</li>
+<li>没有了</li>
+</ul>
+<h3 id="忠告"><a href="#忠告" class="headerlink" title="忠告"></a>忠告</h3><p>本文的行笔将同本文的作用保持一致，于是高能反应往后一直存在，若承受不了，请迅速撤离，免受祸害。<br>特此公告！</p>
+<h2 id="黑客帝国范er"><a href="#黑客帝国范er" class="headerlink" title="黑客帝国范er"></a>黑客帝国范er</h2><p>从前有一部《黑客帝国》，有一个typical scene，现在你只需在你的Linux上安装<code>cmatrix</code>即可。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># command</span><br><span class="line">cmatrix</span><br><span class="line"></span><br><span class="line"># typical configuration</span><br><span class="line">alias ma=&apos;cmatrix -s -u 5&apos;</span><br></pre></td></tr></table></figure></p>
+<h2 id="打字老翁"><a href="#打字老翁" class="headerlink" title="打字老翁"></a>打字老翁</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># command</span><br><span class="line">pv</span><br><span class="line"></span><br><span class="line"># typical usage</span><br><span class="line">cat $file | pv -qL 10</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">figlet</span><br><span class="line">toilet</span><br><span class="line">aafire</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -355,27 +326,21 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/配置/" rel="tag">#配置</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/05/04/《高性能MySQL》指南摘要/" rel="next" title="《高性能MySQL》指南摘要">
-                <i class="fa fa-chevron-left"></i> 《高性能MySQL》指南摘要
+              <a href="/2016/05/12/我的vim/" rel="next" title="我的vim">
+                <i class="fa fa-chevron-left"></i> 我的vim
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/05/09/RAID/" rel="prev" title="RAID">
-                RAID <i class="fa fa-chevron-right"></i>
+              <a href="/2016/05/26/Bash-shell的日常/" rel="prev" title="Bash shell的日常">
+                Bash shell的日常 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -425,8 +390,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/05/06/MySQL主从库复制配置/"
-           data-title="MySQL主从库复制配置入门" data-url="http://joshshaw.github.io/2016/05/06/MySQL主从库复制配置/">
+      <div class="ds-thread" data-thread-key="2016/05/17/How-to-be-drunbility-zhuangbility/"
+           data-title="How to be drunbility(zhuangbility)?" data-url="http://joshshaw.github.io/2016/05/17/How-to-be-drunbility-zhuangbility/">
       </div>
     
   </div>
@@ -571,7 +536,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建复制账号"><span class="nav-number">1.</span> <span class="nav-text">创建复制账号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置主库和备库"><span class="nav-number">2.</span> <span class="nav-text">配置主库和备库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#主库"><span class="nav-number">2.1.</span> <span class="nav-text">主库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#备库"><span class="nav-number">2.2.</span> <span class="nav-text">备库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重启与启动复制"><span class="nav-number">2.3.</span> <span class="nav-text">重启与启动复制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#错误分析"><span class="nav-number">3.</span> <span class="nav-text">错误分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#从库不能重放行为"><span class="nav-number">3.1.</span> <span class="nav-text">从库不能重放行为</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日志文件和位置错乱"><span class="nav-number">3.2.</span> <span class="nav-text">日志文件和位置错乱</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推荐配置"><span class="nav-number">4.</span> <span class="nav-text">推荐配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">5.</span> <span class="nav-text">小结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#drunbility无处不在"><span class="nav-number">1.</span> <span class="nav-text">drunbility无处不在</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备物品"><span class="nav-number">1.1.</span> <span class="nav-text">准备物品</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#忠告"><span class="nav-number">1.2.</span> <span class="nav-text">忠告</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#黑客帝国范er"><span class="nav-number">2.</span> <span class="nav-text">黑客帝国范er</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打字老翁"><span class="nav-number">3.</span> <span class="nav-text">打字老翁</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
